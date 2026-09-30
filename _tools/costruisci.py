@@ -174,7 +174,7 @@ PIEDE = (f'<footer class="ape-piede"><p><strong>APE &mdash; Assemblea Popolare E
          f'Un progetto aperto a tutti: cittadini, associazioni, movimenti, comitati, con peso paritario.</p>'
          f'<p>Ideato da Angelo Nicotra. Tra i promotori della <a href="rete.html">Rete APE</a>: '
          f'<a href="{SITO_PA}" rel="noopener">Partecipazione Attiva</a>.</p>'
-         f'<p class="ape-piccolo"><a href="mailto:partecipazioneattiva21@gmail.com">partecipazioneattiva21@gmail.com</a>'
+         f'<p class="ape-piccolo"><a href="mailto:info@assembleapopolareecumenica.it">info@assembleapopolareecumenica.it</a>'
          f' &middot; <a href="{SITO_PA}privacy.html">Privacy</a> &middot; Questo sito non usa cookie di profilazione '
          f'n&eacute; tracciatori.</p><p class="ape-piccolo">&copy; {datetime.date.today().year}</p></footer>')
 
