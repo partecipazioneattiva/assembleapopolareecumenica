@@ -4,79 +4,81 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>APE — Assemblea Popolare Ecumenica</title>
-<meta name="description" content="Con APE, Partecipazione Attiva propone un&#x27;assemblea permanente di cittadini sorteggiati che obbliga le istituzioni a rispondere.">
+<meta name="description" content="APE, Assemblea Popolare Ecumenica: un&#x27;assemblea permanente di cittadini sorteggiati che obbliga le istituzioni a rispondere. Un progetto aperto a tutti.">
 <link rel="canonical" href="https://www.assembleapopolareecumenica.it/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="APE — Assemblea Popolare Ecumenica">
 <meta property="og:title" content="APE — Assemblea Popolare Ecumenica">
-<meta property="og:description" content="Con APE, Partecipazione Attiva propone un&#x27;assemblea permanente di cittadini sorteggiati che obbliga le istituzioni a rispondere.">
+<meta property="og:description" content="APE, Assemblea Popolare Ecumenica: un&#x27;assemblea permanente di cittadini sorteggiati che obbliga le istituzioni a rispondere. Un progetto aperto a tutti.">
 <meta property="og:url" content="https://www.assembleapopolareecumenica.it/">
-<meta property="og:image" content="https://www.assembleapopolareecumenica.it/images/ape-og.jpg">
+<meta property="og:image" content="https://www.assembleapopolareecumenica.it/images/ape-anteprima.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="APE — Assemblea Popolare Ecumenica">
-<meta name="twitter:description" content="Con APE, Partecipazione Attiva propone un&#x27;assemblea permanente di cittadini sorteggiati che obbliga le istituzioni a rispondere.">
-<meta name="twitter:image" content="https://www.assembleapopolareecumenica.it/images/ape-og.jpg">
+<meta name="twitter:description" content="APE, Assemblea Popolare Ecumenica: un&#x27;assemblea permanente di cittadini sorteggiati che obbliga le istituzioni a rispondere. Un progetto aperto a tutti.">
+<meta name="twitter:image" content="https://www.assembleapopolareecumenica.it/images/ape-anteprima.jpg">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%90%9D%3C/text%3E%3C/svg%3E">
 <link href="fonts/caratteri.css" rel="stylesheet">
-<link rel="stylesheet" href="css/pa-leggibilita.css">
-<link rel="stylesheet" href="css/pa-base.css">
+<link rel="stylesheet" href="css/ape-leggibilita.css">
+<link rel="stylesheet" href="css/ape-base.css">
 <style>
-.ape-testa{background:#fff;border-bottom:3px solid #e8900a;position:sticky;top:0;z-index:50}
+.ape-testa{background:#fff;border-bottom:3px solid #2981c9;position:sticky;top:0;z-index:50}
 .ape-testa-in{max-width:1100px;margin:0 auto;padding:10px 16px;display:flex;flex-wrap:wrap;
   align-items:center;justify-content:space-between;gap:8px 18px}
-.ape-marchio{display:flex;align-items:center;gap:10px;text-decoration:none;color:#3a2000}
+.ape-marchio{display:flex;align-items:center;gap:10px;text-decoration:none;color:#081f32}
 .ape-marchio .ape-ape{font-size:2em;line-height:1}
 .ape-marchio b{display:block;font-family:Montserrat,system-ui,sans-serif;font-weight:900;
-  font-size:1.25em;letter-spacing:1px;color:#8a4e00}
+  font-size:1.25em;letter-spacing:1px;color:#134a77}
 .ape-marchio span span{display:block;font-family:Montserrat,system-ui,sans-serif;font-size:.72em;
-  font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#5a4a3a}
+  font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#3e4b56}
 .ape-voci{display:flex;flex-wrap:wrap;gap:6px 8px;font-family:Montserrat,system-ui,sans-serif}
-.ape-voci a{text-decoration:none;color:#3a2000;font-weight:700;font-size:1em;padding:9px 14px;
+.ape-voci a{text-decoration:none;color:#081f32;font-weight:700;font-size:1em;padding:9px 14px;
   border-radius:50px;min-height:44px;display:inline-flex;align-items:center}
-.ape-voci a:hover,.ape-voci a:focus{background:#fff1dc}
-.ape-voci a[aria-current=page]{background:#8a4e00;color:#fff}
-.ape-voci a.ape-fuori{border:2px solid #e8900a}
+.ape-voci a:hover,.ape-voci a:focus{background:#e1effa}
+.ape-voci a[aria-current=page]{background:#134a77;color:#fff}
+.ape-voci a.ape-fuori{border:2px solid #2981c9}
+/* i pulsanti di PA hanno testo scuro su arancio: sul blu serve il bianco (pa11y: 4,39 -> a norma) */
+main a.btn,main a.btn:visited,main a[href^="mailto:"][style*="background"]{background:#17507a!important;color:#fff!important}
 .ape-salta{position:absolute;left:-9999px}
-.ape-salta:focus{left:8px;top:8px;background:#fff;padding:10px 14px;z-index:99;border:2px solid #8a4e00}
-.ape-piede{background:#3a2000;color:#fff;padding:34px 18px;text-align:center;
+.ape-salta:focus{left:8px;top:8px;background:#fff;padding:10px 14px;z-index:99;border:2px solid #134a77}
+.ape-piede{background:#081f32;color:#fff;padding:34px 18px;text-align:center;
   font-family:Montserrat,system-ui,sans-serif;font-size:1em;line-height:1.7}
-.ape-piede a{color:#ffd580;font-weight:700}
+.ape-piede a{color:#92c4ed;font-weight:700}
 .ape-piede p{max-width:760px;margin:0 auto 10px}
-.ape-piede .ape-piccolo{font-size:.9em;color:#f3e6d3}
+.ape-piede .ape-piccolo{font-size:.9em;color:#d7e4ef}
 @media(max-width:700px){.ape-testa{position:static}.ape-voci a{padding:8px 11px;font-size:.95em}}
 </style>
 <style>
-.pa-trascr{margin:18px auto 26px;max-width:720px;border:1px solid #f0dcc0;
-  border-radius:12px;background:#fffaf3}
+.pa-trascr{margin:18px auto 26px;max-width:720px;border:1px solid #c7dae9;
+  border-radius:12px;background:#f5f9fd}
 .pa-trascr summary{cursor:pointer;padding:12px 16px;font-family:Montserrat,
-  system-ui,sans-serif;font-weight:600;font-size:.95em;color:#8a4e00;
+  system-ui,sans-serif;font-weight:600;font-size:.95em;color:#134a77;
   list-style:none}
 .pa-trascr summary::-webkit-details-marker{display:none}
 .pa-trascr summary::before{content:"\25B8";display:inline-block;margin-right:8px;
-  color:#995f06;transition:transform .2s}
+  color:#1b5584;transition:transform .2s}
 .pa-trascr[open] summary::before{transform:rotate(90deg)}
 .pa-trascr-testo{padding:0 16px 14px;font-family:Merriweather,Georgia,serif;
   font-size:.94em;line-height:1.75;color:#4a4038}
 .pa-trascr-testo p{margin:0 0 10px}
 </style>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"APE — Assemblea Popolare Ecumenica","url":"https://www.assembleapopolareecumenica.it/","description":"Con APE, Partecipazione Attiva propone un'assemblea permanente di cittadini sorteggiati che obbliga le istituzioni a rispondere.","inLanguage":"it","isPartOf":{"@type":"WebSite","name":"APE — Assemblea Popolare Ecumenica","url":"https://www.assembleapopolareecumenica.it/"},"author":{"@type":"Person","name":"Angelo Nicotra"},"publisher":{"@type":"Organization","name":"Partecipazione Attiva","url":"https://partecipazione-attiva.it/"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"APE — Assemblea Popolare Ecumenica","url":"https://www.assembleapopolareecumenica.it/","description":"APE, Assemblea Popolare Ecumenica: un'assemblea permanente di cittadini sorteggiati che obbliga le istituzioni a rispondere. Un progetto aperto a tutti.","inLanguage":"it","isPartOf":{"@type":"WebSite","name":"APE — Assemblea Popolare Ecumenica","url":"https://www.assembleapopolareecumenica.it/"},"author":{"@type":"Person","name":"Angelo Nicotra"}}</script>
 </head>
 <body>
-<a class="ape-salta" href="#contenuto">Salta al contenuto</a><header class="ape-testa"><div class="ape-testa-in"><a class="ape-marchio" href="./" aria-label="APE, Assemblea Popolare Ecumenica: pagina iniziale"><span class="ape-ape" aria-hidden="true">&#x1F41D;</span><span><b>APE</b><span>Assemblea Popolare Ecumenica</span></span></a><nav class="ape-voci" aria-label="Menu principale"><a href="./" aria-current=page>Il progetto</a><a href="rete.html">Rete APE</a><a href="./#documenti">Documenti</a><a class="ape-fuori" href="https://partecipazione-attiva.it/" rel="noopener">Partecipazione Attiva &#8599;</a></nav></div></header>
+<a class="ape-salta" href="#contenuto">Salta al contenuto</a><header class="ape-testa"><div class="ape-testa-in"><a class="ape-marchio" href="./" aria-label="APE, Assemblea Popolare Ecumenica: pagina iniziale"><span class="ape-ape" aria-hidden="true">&#x1F41D;</span><span><b>APE</b><span>Assemblea Popolare Ecumenica</span></span></a><nav class="ape-voci" aria-label="Menu principale"><a href="./" aria-current=page>Il progetto</a><a href="rete.html">Rete APE</a><a href="./#documenti">Documenti</a></nav></div></header>
 <main id="contenuto">
 <div class="article-hero">
   <div class="categoria">🐝 Proposta di Legge</div>
   <h1>APE — Assemblea Popolare Ecumenica</h1>
-  <p class="sottotitolo">La proposta di Partecipazione Attiva per un canale permanente di voce dei cittadini, oltre la democrazia delegativa.</p>
+  <p class="sottotitolo">Un canale permanente di voce dei cittadini, oltre la democrazia delegativa. Aperto a tutti.</p>
   <div class="author-hero">
-    <img loading=lazy src="images/organigramma/angelo-nicotra-finale.webp" alt="Angelo Nicotra Presidente Partecipazione Attiva" width="500" height="750">
+    <img loading=lazy src="images/angelo-nicotra-volto.webp" alt="Angelo Nicotra" width="300" height="300">
     <div class="author-hero-info">
       <div class="nome">Angelo Nicotra</div>
-      <div class="ruolo">Presidente &mdash; Partecipazione Attiva</div>
+      <div class="ruolo">Ideatore del Progetto APE</div>
     </div>
   </div>
   <div class="article-meta">
-    <span class="badge-pa">Partecipazione Attiva</span>
+    
     <span>&#x1F4C5; 22 luglio 2026 &middot; aggiornato il 18 settembre</span>
     <span>&#x23F1; 10 minuti di lettura</span>
   </div>
@@ -86,53 +88,39 @@
 
 <style>
 .pa-hero-img{display:block;max-width:100%;border-radius:18px;box-shadow:0 10px 30px rgba(0,0,0,.15);margin:0 0 28px}
-.pa-lead{font-size:1.12em!important;color:#8a4e00!important;font-weight:600}
+.pa-lead{font-size:1.12em!important;color:#134a77!important;font-weight:600}
 .pa-fig{margin:32px 0}
 .pa-fig video{width:100%;max-width:480px;display:block;margin:0 auto;border-radius:14px;box-shadow:0 6px 20px rgba(0,0,0,.12)}
-.pa-fig figcaption{font-family:montserrat,sans-serif;font-size:.85em;color:#9c5b00;margin-top:14px;text-align:center;font-weight:700;max-width:620px;margin-left:auto;margin-right:auto;line-height:1.5}
-.pa-box{background:#fff8ee;border:2px solid #ffd580;border-radius:16px;padding:24px 28px;margin:28px 0}
-.pa-box h3{font-family:montserrat,sans-serif;color:#9c5b00;font-size:1em;font-weight:800;text-transform:uppercase;letter-spacing:.5px;margin:0 0 10px}
+.pa-fig figcaption{font-family:montserrat,sans-serif;font-size:.85em;color:#165486;margin-top:14px;text-align:center;font-weight:700;max-width:620px;margin-left:auto;margin-right:auto;line-height:1.5}
+.pa-box{background:#f0f7fd;border:2px solid #92c4ed;border-radius:16px;padding:24px 28px;margin:28px 0}
+.pa-box h3{font-family:montserrat,sans-serif;color:#165486;font-size:1em;font-weight:800;text-transform:uppercase;letter-spacing:.5px;margin:0 0 10px}
 .pa-tbl{width:100%;border-collapse:collapse;margin:22px 0;font-family:montserrat,sans-serif;font-size:.86em}
-.pa-tbl th,.pa-tbl td{border:1px solid #f0e6d3;padding:9px 12px;text-align:left;vertical-align:top}
-.pa-tbl thead th{background:#5f3500;color:#fff;font-weight:700}
-.pa-tbl tbody th{background:#fff8ee;color:#8a4e00;font-weight:700}
+.pa-tbl th,.pa-tbl td{border:1px solid #d7e3ec;padding:9px 12px;text-align:left;vertical-align:top}
+.pa-tbl thead th{background:#0d3352;color:#fff;font-weight:700}
+.pa-tbl tbody th{background:#f0f7fd;color:#134a77;font-weight:700}
 .pa-stat{display:flex;flex-wrap:wrap;gap:14px;margin:26px 0}
-.pa-stat .s{flex:1 1 220px;background:#fff8ee;border-radius:12px;padding:18px 20px}
-.pa-stat .n{font-family:merriweather,serif;font-size:1.8em;font-weight:900;line-height:1;color:#8a4e00}
+.pa-stat .s{flex:1 1 220px;background:#f0f7fd;border-radius:12px;padding:18px 20px}
+.pa-stat .n{font-family:merriweather,serif;font-size:1.8em;font-weight:900;line-height:1;color:#134a77}
 .pa-stat .l{font-size:.82em;color:#555;margin-top:6px;font-family:montserrat,sans-serif;line-height:1.5}
-.pa-dl{display:flex;align-items:center;gap:16px;border:2px solid #e8900a;border-radius:14px;padding:20px 22px;margin:30px 0;background:#fff8ee}
-.pa-dl .ico{flex:0 0 auto;width:46px;height:46px;border-radius:10px;background:#5f3500;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:.72em;font-family:montserrat,sans-serif}
+.pa-dl{display:flex;align-items:center;gap:16px;border:2px solid #2981c9;border-radius:14px;padding:20px 22px;margin:30px 0;background:#f0f7fd}
+.pa-dl .ico{flex:0 0 auto;width:46px;height:46px;border-radius:10px;background:#0d3352;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:.72em;font-family:montserrat,sans-serif}
 .pa-dl .t{flex:1 1 auto;font-family:montserrat,sans-serif;font-size:.84em;color:#555;line-height:1.5}
-.pa-dl .t b{color:#8a4e00;display:block;margin-bottom:3px}
-.pa-dl a.btn{flex:0 0 auto;background:#e8900a;color:#2b1a00;text-decoration:none;padding:11px 20px;border-radius:50px;font-family:montserrat,sans-serif;font-weight:700;font-size:.84em}
+.pa-dl .t b{color:#134a77;display:block;margin-bottom:3px}
+.pa-dl a.btn{flex:0 0 auto;background:#2981c9;color:#061725;text-decoration:none;padding:11px 20px;border-radius:50px;font-family:montserrat,sans-serif;font-weight:700;font-size:.84em}
 .pa-confini{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(240px,100%),1fr));gap:14px;margin:24px 0}
-.pa-confini div{background:#fff8ee;border-left:4px solid #e8900a;border-radius:0 10px 10px 0;padding:16px 18px;font-size:.88em;color:#444;line-height:1.6}
-.pa-confini strong{color:#8a4e00;display:block;margin-bottom:4px}
+.pa-confini div{background:#f0f7fd;border-left:4px solid #2981c9;border-radius:0 10px 10px 0;padding:16px 18px;font-size:.88em;color:#444;line-height:1.6}
+.pa-confini strong{color:#134a77;display:block;margin-bottom:4px}
 </style>
 
 <article class="article-wrap">
 
 <img class="pa-hero-img" src="images/ape-copertina.webp" alt="APE — Assemblea Popolare Ecumenica: un canale permanente di voce dei cittadini. Angelo Nicotra, Partecipazione Attiva" width="1368" height="1935">
 
-<p class="pa-lead">Con APE (Assemblea Popolare Ecumenica), Partecipazione Attiva lancia una nuova idea di Democrazia Partecipativa per rendere i cittadini parte attiva nella gestione politica del nostro Paese.</p>
+<p class="pa-lead">APE (Assemblea Popolare Ecumenica) è una nuova idea di Democrazia Partecipativa per rendere i cittadini parte attiva nella gestione politica del nostro Paese.</p>
 
-<p>È la proposta di legge più importante del movimento: una riforma costituzionale che non aggiunge un partito né un candidato, ma uno strumento permanente attraverso cui ogni cittadino può obbligare le istituzioni ad ascoltare e a rispondere. Elaborata da Angelo Nicotra, Presidente di Partecipazione Attiva, ed è oggi proposta ufficiale del movimento.</p>
+<p>È una riforma costituzionale che non aggiunge un partito né un candidato, ma uno strumento permanente attraverso cui ogni cittadino può obbligare le istituzioni ad ascoltare e a rispondere. L’ha elaborata Angelo Nicotra.</p>
 
-<div class="pa-fig">
-<video controls preload="metadata" playsinline poster="images/video-ape-tocca-a-noi-copertina.webp">
-<source src="https://partecipazione-attiva.it/video/ape-tocca-a-noi.mp4" type="video/mp4">
-Il tuo browser non supporta il video.
-</video>
-<!-- pa-trascrizione:ape-tocca-a-noi -->
-<details class="pa-trascr">
-  <summary>Trascrizione del video</summary>
-  <div class="pa-trascr-testo">
-    <p>Da troppo tempo nessuno ascolta una voce. La tua. Per cambiare le cose non serve un salvatore. Non arriverà. Serviamo noi, tutti, alla pari. Possiamo essere i leader di noi stessi. Tocca a noi.</p>
-  </div>
-</details>
-<p style="font-family:montserrat,sans-serif;font-size:.9em;margin:14px 0 24px;padding:12px 16px;background:#fff8ee;border-left:4px solid #e8900a;border-radius:0 10px 10px 0">&#x1F3A5; Il video ha una pagina tutta sua: <a href="https://partecipazione-attiva.it/video-ape-tocca-a-noi.html" style="color:#9c5b00;font-weight:700">&laquo;Tocca a noi&raquo;: lo spot di APE</a></p>
-<figcaption>Con APE (Assemblea Popolare Ecumenica), Partecipazione Attiva lancia una nuova idea di Democrazia Partecipativa per rendere i cittadini parte attiva nella gestione politica del nostro Paese.</figcaption>
-</div>
+
 
 <div class="pa-dl" id="documenti">
 <div class="ico">PDF</div>
@@ -247,7 +235,7 @@ Il tuo browser non supporta il video.
 <h2>La Rete APE: una chiamata unitaria, non di Partecipazione Attiva</h2>
 <div class="pa-box">
 <p style="margin:0 0 14px">Siamo nella fase di massima diffusione: si parla a tutti i cittadini, e in particolare alle tante piccole associazioni — come lo è Partecipazione Attiva — che da sole pesano poco e insieme possono incidere. Per questo Partecipazione Attiva ha aperto una rete che invita singoli cittadini, associazioni, movimenti e comitati civici a condividere questi principi, con peso paritario per ogni soggetto aderente: nessuna gerarchia, nessuna proprietà del progetto. Non è la proposta di un movimento che chiede sostegno: è una chiamata a costruire insieme, da attivisti e sostenitori alla pari, uno strumento istituzionale vero attraverso cui i cittadini abbiano finalmente voce.</p>
-<p style="margin:0"><a href="rete.html" style="color:#9c5b00;font-weight:700">→ Scopri la Rete APE e come aderire</a></p>
+<p style="margin:0"><a href="rete.html" style="color:#165486;font-weight:700">→ Scopri la Rete APE e come aderire</a></p>
 </div>
 
 <div class="pa-box">
@@ -261,6 +249,6 @@ Il tuo browser non supporta il video.
 
 </article>
 </main>
-<footer class="ape-piede"><p><strong>APE &mdash; Assemblea Popolare Ecumenica</strong><br>Progetto ideato da Angelo Nicotra.</p><p>Sito promosso e curato da <a href="https://partecipazione-attiva.it/">Partecipazione Attiva</a>, movimento popolare dei cittadini italiani.</p><p class="ape-piccolo"><a href="mailto:partecipazioneattiva21@gmail.com">partecipazioneattiva21@gmail.com</a> &middot; <a href="https://partecipazione-attiva.it/privacy.html">Privacy</a> &middot; Questo sito non usa cookie di profilazione n&eacute; tracciatori.</p><p class="ape-piccolo">&copy; 2026</p></footer>
+<footer class="ape-piede"><p><strong>APE &mdash; Assemblea Popolare Ecumenica</strong><br>Un progetto aperto a tutti: cittadini, associazioni, movimenti, comitati, con peso paritario.</p><p>Ideato da Angelo Nicotra. Tra i promotori della <a href="rete.html">Rete APE</a>: <a href="https://partecipazione-attiva.it/" rel="noopener">Partecipazione Attiva</a>.</p><p class="ape-piccolo"><a href="mailto:partecipazioneattiva21@gmail.com">partecipazioneattiva21@gmail.com</a> &middot; <a href="https://partecipazione-attiva.it/privacy.html">Privacy</a> &middot; Questo sito non usa cookie di profilazione n&eacute; tracciatori.</p><p class="ape-piccolo">&copy; 2026</p></footer>
 </body>
 </html>
