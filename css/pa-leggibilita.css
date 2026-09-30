@@ -1,0 +1,608 @@
+/* ═══════════════════════════════════════════════════════════════════════════
+   UN SOLO FOGLIO DI STILE CONDIVISO — PERCHE'
+   Fino all'8 agosto 2026 le regole dell'intestazione stavano in un file a
+   parte (css/pa-intestazione.css). MISURATO: un foglio di stile in piu' e' un
+   viaggio di rete in piu' PRIMA che la pagina si disegni — il ritardo di
+   disegno era passato da 36 a 1.888 ms. Uniti, nello stesso ordine di prima:
+   prima l'intestazione, poi la leggibilita'.
+
+   ⚠️ REGOLA D'ORO, invariata: le regole del menu stanno SOLO qui sotto, nella
+   sezione INTESTAZIONE. Se una pagina se le riporta dentro, torna il
+   disordine: si ripulisce con _tools/intestazione_unica.py.
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* ══════════════════════════════════════════════════════════════════════════
+   L'INTESTAZIONE DI PARTECIPAZIONE ATTIVA — UNA SOLA, PER TUTTE LE PAGINE
+   ══════════════════════════════════════════════════════════════════════════
+
+   Ordine di Fernando, 8 agosto 2026:
+     «devi creare il menu/navbar uguale per tutte le pagine, le cose cambiano
+      da dopo il menu in poi. Il campione e' quello che ti ho condiviso.»
+   Campione: l'intestazione di mappa.html — logo tondo, accanto il nome e sotto
+   "MOVIMENTO POPOLARE DEI CITTADINI ITALIANI", le voci al centro, i due
+   bottoni e la lente a destra. Piu' bassa di prima: gli spazi vuoti erano
+   troppi.
+
+   PERCHE' UN FILE A PARTE, E PERCHE' LE PAGINE NON DEVONO PIU' AVERE IL LORO
+   Il sito e' HTML statico senza template condiviso: ogni pagina si portava
+   dentro la propria copia del menu. MISURATO l'8 agosto 2026:
+     - 61 pagine su 64 con regole proprie del menu, 67 selettori diversi;
+     - quattro versioni della regola delle voci (18px di spazio sopra e sotto
+       su 12 pagine, 14px su 10; testo .92em contro .76em);
+     - meta' delle pagine senza la regola del sottotitolo, che il browser
+       disegnava a 16,7 px invece di 11,6;
+     - 56 pagine dichiaravano il logo 400x400 e lo caricavano in ritardo;
+     - risultato: intestazioni da 108 a 247 px a seconda della pagina.
+   Non era una scelta di nessuno: era il sito cresciuto a pezzi in due anni.
+
+   ⚠️ REGOLA D'ORO: le regole del menu stanno SOLO qui.
+   Se una pagina se le riporta dentro, torna il disordine. Per cambiare
+   l'intestazione si tocca questo file, e cambia su tutte e 64 le pagine.
+   Lo strumento che toglie le copie dalle pagine e'
+   _tools/intestazione_unica.py.
+   ══════════════════════════════════════════════════════════════════════════ */
+
+/* ── la barra scura in alto ─────────────────────────────────────────────── */
+/* SPENTA il 19/08/2026. Misurata: costava 57 px in cima a ogni pagina, cioe'
+   il 7% dello schermo di un telefono, per ripetere tre cose che stanno gia'
+   nel pie' di pagina — l'indirizzo email, Facebook e YouTube — piu' un link
+   "Contatti" che e' anche nel menu. Gli studi sulla prima impressione (Tuch e
+   altri, 2012) misurano l'affollamento come l'unica variabile che peggiora il
+   giudizio nei primi millisecondi, e il Nielsen Norman Group mette le
+   ripetizioni fra le cose da togliere dalla home.
+   Il markup resta nelle pagine apposta: allinea_barra_strumento.py copia
+   l'intestazione partendo proprio da <div class="topbar">, e cancellarlo lo
+   romperebbe. Per riaccenderla: togliere la riga .topbar{display:none}. */
+.topbar{background:#5f3500;color:#fff;padding:6px 18px;display:flex;
+        justify-content:space-between;align-items:center;font-size:.78em;
+        flex-wrap:wrap;gap:4px 12px}
+.topbar a{color:#ffd580;text-decoration:none;margin-left:16px;font-weight:600}
+.topbar a:hover{color:#fff}
+/* deve stare DOPO la regola qui sopra, altrimenti display:flex la vince */
+.topbar{display:none}
+
+/* Una pagina (sanitapubblica.html) avvolge il contenuto del menu in un
+   .nav-inner: con display:contents i figli entrano direttamente nella barra e
+   il menu viene identico a tutti gli altri. */
+.navbar .nav-inner{display:contents}
+
+/* ── la barra bianca del menu ───────────────────────────────────────────── */
+.navbar{position:sticky;top:0;z-index:999;background:#fff;
+        border-bottom:3px solid #e8900a;box-shadow:0 2px 12px rgba(0,0,0,.08);
+        display:flex;align-items:center;gap:12px;padding:6px 18px;
+        min-height:0}
+/* ⚠️ QUI C'ERA UN «position:relative» IN CODA, che annullava lo «sticky»
+   scritto tre righe sopra: in CSS vince l'ultima dichiarazione. Il menu
+   quindi scorreva via con la pagina, e per cambiare sezione bisognava
+   risalire in cima. Segnalato da Fernando il 9 agosto 2026.
+   Il «relative» serviva ad ancorare il menu a tendina del telefono
+   (.mob-menu, che e' position:absolute): ma «sticky» fa gia' da ancora
+   esattamente come «relative», quindi era superfluo oltre che dannoso. */
+
+/* il logo col nome accanto — la parte che Fernando voleva su tutte le pagine */
+.nav-logo{display:flex;align-items:center;gap:12px;padding:4px 0;
+          text-decoration:none;flex-shrink:0}
+.nav-logo img{width:60px;height:60px;border-radius:50%}
+/* ── IL LOGO CON LE SCRITTE ────────────────────────────────────────────────
+   Ordine di Fernando, 8 agosto 2026: il blocco deve essere ESATTAMENTE quello
+   del disegno che ha mandato, su tutti i menu nessuno escluso. Solo la
+   dimensione si puo' adattare.
+
+       (logo tondo)   Partecipazione
+                      Attiva
+                      MOVIMENTO
+                      POPOLARE DEI
+                      CITTADINI ITALIANI
+
+   Le interruzioni di riga sono fisse nel testo (_tools/allinea_logo.py), non
+   affidate al browser: "MOVIMENTO POPOLARE" e' lungo quanto "CITTADINI
+   ITALIANI", quindi lasciando fare al browser il testo si spezzerebbe in un
+   altro punto. Cosi' e' identico ovunque.
+
+   Carattere con le grazie (Merriweather) come nel disegno, non il senza
+   grazie che c'era prima. */
+.nav-nome{font-family:merriweather,Georgia,serif;
+          font-weight:700;font-size:1.18em;color:#8a4e00;line-height:1.08;
+          text-decoration:underline;text-decoration-thickness:1px;
+          text-underline-offset:2px}
+.nav-nome small{display:block;font-family:merriweather,Georgia,serif;
+                font-weight:400;font-size:.56em;color:#7b736a;
+                letter-spacing:2.2px;text-transform:uppercase;line-height:1.38;
+                margin-top:4px;text-decoration:underline;
+                text-decoration-thickness:.5px;text-underline-offset:2px}
+
+/* le voci: spazio verticale ridotto, era il vuoto da recuperare */
+.nav-links{display:flex;align-items:center;gap:0;flex-wrap:wrap;
+           flex:1 1 auto;justify-content:center}
+.nav-links a{padding:9px 11px;color:#444;text-decoration:none;font-size:.9em;
+             font-weight:700;text-transform:uppercase;letter-spacing:.4px;
+             line-height:1.45;                     /* fissa: altrimenti ogni pagina
+                                                      impone la sua e l'intestazione
+                                                      cambia altezza (39 px su una
+                                                      pagina, 45 su un'altra) */
+             border-bottom:3px solid transparent;
+             transition:color .2s,border-color .2s;white-space:nowrap}
+.nav-links a:hover,.nav-links a.active{color:#9c5b00;border-bottom-color:#9c5b00}
+
+/* i due bottoni e la lente, a destra */
+.nav-cta{display:flex;gap:10px;margin-left:auto;flex-shrink:0;align-self:center}
+.btn-iscr,.btn-sost{padding:10px 18px;border-radius:50px;text-decoration:none;
+                    font-size:.85em;font-weight:900;white-space:nowrap;
+                    line-height:1.45;              /* come sopra: fissa */
+                    transition:background .2s}
+.btn-iscr{background:#188739;color:#fff;box-shadow:0 4px 14px rgba(26,143,60,.35)}
+.btn-iscr:hover{background:#146e2e}
+.btn-sost{background:#e8900a;color:#2b1a00;border:2px solid #e8900a;
+          box-shadow:0 4px 14px rgba(232,144,10,.35)}
+.btn-sost:hover{background:#c77607}
+
+/* il pulsante a tre righe, solo da telefono */
+.burger{display:none;background:transparent;border:none;cursor:pointer;
+        flex-direction:column;gap:5px;padding:8px}
+.burger span{display:block;width:24px;height:2px;background:#5f3500;
+             border-radius:2px;transition:all .3s}
+.mob-menu{display:none;flex-direction:column;background:#fff;
+          border-top:2px solid #f0f0f0;position:absolute;top:100%;left:0;right:0;
+          box-shadow:0 8px 20px rgba(0,0,0,.12)}
+.mob-menu.on{display:flex}
+.mob-menu a{padding:14px 24px;color:#333;text-decoration:none;font-weight:700;
+            font-size:.9em;border-bottom:1px solid #f5f5f5}
+.mob-menu a:hover{background:#fff8ee;color:#9c5b00}
+
+/* ── DA TABLET IN GIU': le voci si chiudono nel pulsante a tre righe ───────
+   La soglia e' 1200 px, non 900: con 12 voci, sotto quella misura il menu
+   andava su tre o quattro righe (183 px di intestazione a 1024, 141 a 1152).
+   Meglio il menu a tendina che un'intestazione che mangia un quinto di schermo.
+
+   MISURATO l'8 agosto 2026 su uno schermo da 375 px: logo+nome (225) piu' i
+   due bottoni (174) piu' la lente (42) piu' il pulsante a tre righe (40)
+   fanno 543 px. Non ci stanno su una riga, e nessuna riga sola li contiene.
+
+   Il campione (mappa.html) risolveva nascondendo i due bottoni. Ma il menu a
+   tendina contiene "Iscriviti" e NON "Sostienici": nasconderli toglierebbe le
+   donazioni dal telefono, che e' il posto da cui la gente guarda il sito.
+
+   Quindi su telefono l'intestazione va su DUE righe — logo e nome sopra,
+   lente, bottoni e menu sotto — e resta tutto raggiungibile. Il sottotitolo
+   invece sparisce: da solo e' largo 370 px e non entra in nessun caso. */
+@media(max-width:1260px){
+  .topbar{padding:6px 14px}
+  .navbar{padding:4px 14px;flex-wrap:wrap;gap:6px 10px;row-gap:0}
+  .nav-links{display:none}
+  .burger{display:flex;order:3}
+  .nav-cta{order:2;margin-left:auto;gap:8px}
+  .nav-cta a{padding:9px 16px;font-size:.86em}
+  .nav-nome{font-size:1.02em}
+  /* il sottotitolo resta anche su telefono: Fernando lo vuole su TUTTI i menu,
+     nessuno escluso, e con le righe fisse il blocco e' abbastanza stretto */
+  .nav-logo{padding:2px 0}
+  .nav-logo img{width:46px;height:46px}
+}
+
+@media(max-width:420px){
+  .nav-nome{font-size:.94em}
+  .nav-logo img{width:40px;height:40px}
+  .nav-cta a{padding:8px 12px;font-size:.8em}
+}
+
+/* Telefoni piccoli e vecchi (iPhone SE e simili): a 320 px sfondava di 4 px. */
+@media(max-width:360px){
+  .navbar{padding:4px 10px;gap:4px 8px}
+  .nav-logo{gap:8px}
+  .nav-nome{font-size:.86em;max-width:150px}
+  .nav-cta a{padding:7px 10px;font-size:.76em}
+}
+
+
+/* Testo di lettura piu' grande, per chi legge dal telefono.
+
+   MISURATO il 26/07/2026: i paragrafi degli articoli venivano a 14,7 px,
+   perche' ogni pagina si portava dentro una regola p{font-size:.92em}. Lo
+   standard comodo per un testo lungo e' 16-17 px, e il pubblico di
+   Partecipazione Attiva legge soprattutto dal telefono.
+
+   I selettori partono da "body" apposta: cosi' pesano piu' delle regole
+   scritte dentro le singole pagine, e non serve badare a in che ordine i
+   fogli di stile vengono letti. */
+
+body .article-wrap p,
+body .article-wrap li,
+body .content p,
+body .content li {
+  font-size: 1.05rem;   /* 16,8 px */
+  line-height: 1.8;
+}
+
+/* Il testo introduttivo di un articolo puo' restare piu' grande del corpo,
+   ma non piu' piccolo. */
+body .article-wrap .article-sommario,
+body .article-wrap .sommario {
+  font-size: 1.15rem;
+  line-height: 1.7;
+}
+
+/* Le dimensioni scritte dentro i tag <img> servono a far RISERVARE il posto al
+   browser, cosi' la pagina non salta mentre carica. Non devono pero' fissare
+   l'altezza: un'immagine larga al 100% verrebbe stirata. Questa riga lo
+   impedisce, e cede il passo alle pagine che l'altezza la fissano apposta
+   (loghi, foto tonde), perche' quelle regole sono piu' specifiche o vengono
+   dopo. */
+img { height: auto; }
+
+/* ...e questa e' l'altra meta', che mancava.
+
+   MISURATO l'8 agosto 2026: la home sfondava lo schermo di 63 px a 320 px e di
+   8 px a 375. Non era il ticker (quello e' gia' tagliato dal suo contenitore):
+   era che NESSUNA immagine del sito aveva un max-width. Un'immagine senza
+   max-width si disegna alla sua larghezza naturale, e dentro una griglia
+   costringe la colonna ad allargarsi oltre il contenitore che la contiene —
+   la colonna misurava 366,594 px dentro una griglia da 343.
+
+   Insieme a "height: auto" qui sopra, questa riga fa la cosa giusta: l'immagine
+   non supera mai il suo contenitore e mantiene le proporzioni. */
+img, svg, video, iframe { max-width: 100%; }
+
+/* --- E questa e' la causa vera dello sfondamento -------------------------
+
+   Dentro una griglia, un elemento nasce con "min-width: auto", che vuol dire
+   "non scendere MAI sotto la larghezza del tuo contenuto". Su uno schermo
+   stretto il contenuto non ci sta, l'elemento si rifiuta di rimpicciolire, e
+   la colonna diventa piu' larga della griglia che la contiene: misurava
+   366,594 px dentro una griglia da 343.
+
+   "min-width: 0" toglie quel divieto: la colonna torna a seguire lo schermo e
+   il testo va a capo, che e' quello che deve fare.
+
+   MISURATO l'8 agosto 2026: 63 px di sfondamento a 320, 8 px a 375. */
+.mob-1col > *, .mob-2col > *,
+.notizia-card-grid > *, .doc-grid > *,
+.iscr-box > *, .iscr-due > *, .foot-grid > *,
+.pa-dl > *, .doc-card > *, .topbar > *, .tipo > * { min-width: 0; }
+
+/* ...ma "min-width: 0" da solo non basta, e il 9 agosto 2026 e' costato una
+   segnalazione del presidente: sulla pagina dell'APE, a 375 px esatti — la
+   larghezza di mezzo parco iPhone — il testo dentro .pa-dl si schiacciava a
+   41 px e usciva UNA LETTERA PER RIGA, in colonna.
+
+   Il motivo: .pa-dl mette in fila icona, testo e pulsante. Il pulsante non si
+   restringe, e senza il pavimento sotto i piedi il testo si strozza fino a
+   sparire. Prima sbordava di lato (il difetto che avevo corretto), dopo
+   collassava in verticale: due facce dello stesso errore.
+
+   Il rimedio giusto non e' rimettere il pavimento — tornerebbe lo sbordo — ma
+   dire al riquadro di ANDARE A CAPO quando non ci sta. */
+.pa-dl { flex-wrap: wrap; }
+.pa-dl .t { flex: 1 1 200px; }
+.doc-card { flex-wrap: wrap; }
+
+/* La scelta "Cittadino / Associazione" del modulo della Mappa e' una griglia a
+   due colonne fisse. Su uno schermo da 320 px non ci stanno: la sola parola
+   "Associazione" e' larga 150, due colonne piu' i margini fanno 364.
+   Sotto i 420 px vanno una sotto l'altra — ed e' anche piu' comodo da toccare.
+   MISURATO l'8 agosto 2026: erano i 4 px di sfondamento di mappa.html. */
+@media (max-width: 420px) {
+  body .tipo { grid-template-columns: 1fr; }
+}
+
+/* --- Le parole lunghissime devono andare a capo --------------------------
+
+   Una parola senza spazi (il nome di un file, un indirizzo web) non va a capo
+   da sola: esce dal suo riquadro e si porta dietro tutta la pagina.
+
+   MISURATO l'8 agosto 2026: documenti.html sfondava di 190 px su OGNI telefono
+   per colpa di un estratto che riportava il nome del file
+   "29/09/2022_DEF PARTECIPAZIONE ATTIVA MANIFESTO...". Non se n'era accorto
+   nessuno perche' nessuno aveva mai misurato le pagine interne. */
+body { overflow-wrap: break-word; }
+
+/* Le etichette dei moduli non devono uscire dal loro spazio: sui filtri della
+   Mappa una LABEL sfondava di 4 px su uno schermo da 320. */
+label { max-width: 100%; }
+
+/* ── «SALTA AL CONTENUTO» ──────────────────────────────────────────────────
+   Non si vede a nessuno, tranne a chi arriva col tasto TAB: allora salta
+   fuori in alto a sinistra e permette di scavalcare le dodici voci del menu.
+
+   MISURATO l'8 agosto 2026: NESSUNA pagina del sito ce l'aveva. Chi non usa il
+   mouse — per una disabilita', per abitudine, o con un lettore vocale — a ogni
+   pagina doveva ripassare tutto il menu prima di arrivare al testo. */
+.salta-contenuto{
+  position:absolute; left:-9999px; top:0; z-index:100000;
+  background:#8a4e00; color:#fff; padding:12px 22px;
+  font-family:montserrat,sans-serif; font-weight:700; font-size:.95rem;
+  border-radius:0 0 10px 0; text-decoration:none;
+}
+.salta-contenuto:focus{
+  left:0;                       /* col TAB compare */
+  outline:3px solid #ffd580; outline-offset:2px;
+}
+
+/* Titoli delle colonne del pie' di pagina: erano <h4> dopo un <h2>,
+   cioe' un livello saltato. Portati a h2, questa regola tiene l'aspetto
+   di prima sulle pagine che non hanno una regola propria. */
+footer h2{font-size:1em;font-weight:700;color:inherit;margin:1.33em 0}
+
+
+/* ══ CONTRASTI — solo i sette casi CERTI, misurati nel browser ═════════════
+   Il conteggio automatico dei contrasti da' molti falsi allarmi: quando sotto
+   il testo c'e' una sfumatura o una foto, il colore di sfondo non si puo'
+   leggere e sembra sempre "bianco su bianco". Questi sette invece hanno uno
+   sfondo pieno e sono veri (misurati l'8 agosto 2026).
+
+   La radice e' una sola: l'arancione del movimento #E8900A e' troppo chiaro
+   sia per portare testo bianco sia per essere testo su bianco. Non lo tocco
+   dove fa da sfondo decorativo: cambio solo il testo che ci sta sopra o
+   accanto, usando colori che il sito gia' usa. */
+
+/* 1. il ticker in cima alla home: giallo su rosso, 3,91 invece di 4,5.
+      Schiarisco il testo, il rosso resta quello. */
+body #tk, body #tk a, body #tk strong, body #tk a strong { color: #ffeacb !important; }
+
+/* 2. bottone arancione con scritta bianca (2,49): la scritta diventa scura,
+      come sul bottone "Sostienici" che era gia' fatto bene. */
+body .sottomappa .btn { color: #2b1a00; }
+
+/* 3. l'arancione usato come TESTO su fondo chiaro (2,49): diventa il bruno
+      che il sito usa gia' per i collegamenti attivi (4,6 su bianco). */
+body .dove, body summary .dove, body .voce .dove { color: #9c5b00; }
+
+/* I collegamenti scritti nell'arancione del movimento su fondo chiaro:
+   2,49 invece di 4,5. Passano al bruno che il sito usa gia' per la voce
+   di menu attiva (4,6 su bianco). L'arancione resta dov'e' uno sfondo. */
+body .voce a, body .det a, body details a:not(.btn):not([class*="btn-"]),
+body .elenco-box a:not(.btn) { color: #9c5b00; }
+/* il bottone arancione del modulo: scritta scura invece che bianca */
+body .form .btn, body button.btn, body #invia { color: #2b1a00; }
+
+/* 4. oro scuro su blu notte (3,11): oro piu' chiaro. */
+body [style*="0d1b4b"] strong, body [style*="#0D1B4B"] strong { color: #e8b84b; }
+
+/* 5. la riga del copyright nel pie' di pagina: grigio #666 su quasi-nero,
+      3,03. Sono i dati dell'associazione: devono potersi leggere. */
+body .footer-bottom, body .foot-bottom, body .footer-bottom span, body .foot-bottom span { color: #b3b3b3; }
+
+
+/* La riga «Parlerò · Salotto Culturale · News FB · YouTube» di
+   sanitapubblica.html: stava dentro la barra scura del menu ed era scritta in
+   chiaro. Spostandola fuori (per rendere il menu uguale a tutte le altre
+   pagine) e' finita su fondo chiaro e non si leggeva piu': 1,36 invece di 4,5.
+   L'ho causato io l'8 agosto 2026, e qui lo rimedio. */
+body .nav-row{background:#5f3500;padding:6px 18px;flex-wrap:wrap}
+/* «flex-wrap: wrap» e' il rimedio numero 3 dell'elenco di Ahmad Shadeed
+   (Smashing Magazine, «Overflow Issues In CSS»): una riga flessibile che non
+   va a capo non si restringe — spinge i figli fuori dallo schermo e basta.
+   Qui erano i link PARLERO' / Salotto Culturale / News FB / YouTube, che a
+   320 px uscivano di 39 px. Trovato il 9 agosto 2026. */
+body .nav-row a, body .nav-row span{color:#ffe9cb}
+body .nav-row .parlero-link{color:#ffd580;font-weight:700}
+body .nav-row .parlero-sub{color:#f0dfc6}
+body .nav-row .separator{color:#c9a97a}
+
+/* Il riquadro «Vuoi contribuire a questa battaglia?» di sanitapubblica.html:
+   arancione #E07B2A con scritte bianche = 2,98 invece di 4,5. Scurisco il
+   fondo (l'arancione resta arancione) e il bottone bianco prende testo scuro.
+   Difetto preesistente, non causato dai lavori dell'8 agosto. */
+body .cta-section{background:#a8551a}
+body .cta-section .cta-btn{color:#7a3d10}
+
+
+/* ══ BERSAGLI DA TOCCARE COL DITO ═════════════════════════════════════════
+   MISURATO l'8 agosto 2026 su schermo da 375 px: 45 elementi cliccabili piu'
+   bassi di 44 px sulla home, 26 dei quali sotto i 24 px. I link del pie' di
+   pagina stavano a 15 px: per chi ha mani grandi, ottant'anni o il tremore
+   e' un bersaglio che si sbaglia.
+
+   DUE MISURE DIVERSE, apposta:
+     44 px dove il dito deve arrivare davvero — bottoni, scarichi, menu del
+           telefono, colonne del pie' di pagina;
+     24 px (il minimo che la norma chiede) nella barra fitta in alto, che a
+           44 si gonfierebbe di 17 px proprio dopo averla stretta.
+
+   I collegamenti DENTRO al testo non si toccano: la norma li esenta apposta,
+   e ingrandirli rovinerebbe la lettura. */
+
+@media (pointer: coarse), (max-width: 900px) {
+  body footer a, body .foot-col a,
+  body .doc-scarica, body .btn-leggi,
+  body .iscr-dl a, body .mob-btns a,
+  body .nav-cta a, body .pa-cerca-btn, body .burger,
+  body .mob-menu a {
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+  }
+  body .mob-menu a { display: flex; }
+
+  /* la barra in alto: 24 px, il minimo di norma, senza gonfiarla */
+  body .topbar a { display: inline-flex; align-items: center; min-height: 24px; }
+  /* i link del ticker che scorre: 15 px, alzati al minimo di norma */
+  body #tk a { display: inline-flex; align-items: center; min-height: 24px; }
+  /* la briciola di pane in cima agli articoli (Home › Proposta di legge) */
+  body .breadcrumb a { display: inline-flex; align-items: center; min-height: 24px; }
+
+  /* moduli: le caselle da spuntare e i campi da riempire */
+  body input[type=checkbox], body input[type=radio] { min-width: 24px; min-height: 24px; }
+  body .form input:not([type=checkbox]):not([type=radio]),
+  body .form select, body .form textarea { min-height: 44px; }
+}
+
+
+/* ══ «E ADESSO?» IN FONDO AGLI ARTICOLI ═══════════════════════════════════
+   CONTATO l'8 agosto 2026: 37 pagine su 64 finivano con «Hai trovato utile
+   questo articolo? Condividilo» e tre bottoni social. Punto. Chi aveva appena
+   letto un'analisi sulla legge elettorale non aveva modo di sapere che esiste
+   una proposta collegata, una battaglia in corso, o come dire la sua.
+   L'articolo era un vicolo cieco.
+
+   Il blocco sta PRIMA dell'invito a condividere: il passo successivo conta
+   piu' della condivisione. */
+.pa-e-adesso{
+  max-width:700px; margin:38px auto 26px; padding:22px 24px;
+  border:2px solid #e8900a; border-radius:14px; background:#fffaf2;
+}
+.pa-e-adesso-tit{
+  font-family:montserrat,sans-serif; font-weight:900; font-size:1.05rem;
+  color:#8a4e00; letter-spacing:.5px; margin-bottom:14px;
+}
+.pa-e-adesso-link{display:flex; flex-wrap:wrap; gap:10px}
+.pa-e-adesso-link a{
+  display:inline-flex; align-items:center; min-height:44px;
+  padding:10px 18px; border-radius:50px;
+  background:#8a4e00; color:#fff; text-decoration:none;
+  font-family:montserrat,sans-serif; font-weight:700; font-size:.9rem;
+  line-height:1.3; transition:background .2s;
+}
+.pa-e-adesso-link a:hover{background:#6d3d00}
+@media(max-width:520px){
+  .pa-e-adesso{padding:18px 16px; margin:28px auto 20px}
+  .pa-e-adesso-link{flex-direction:column}
+  .pa-e-adesso-link a{justify-content:center}
+}
+
+
+/* «Ultimo aggiornamento» sulle schede delle battaglie (fase 3.3).
+   Non promette uno stato che nessuno poi mantiene: dice quando e' uscito
+   l'ultimo articolo su quella battaglia, e il lettore ne trae le conclusioni. */
+.bat-aggiornata{
+  font-family:montserrat,sans-serif; font-size:.8rem; color:#6f675c;
+  margin:0 0 14px; padding-top:4px; border-top:1px solid #eee;
+}
+
+
+/* ══ LA GRAMMATICA DELLE ETICHETTE (fase 3.2) ═════════════════════════════
+   Nell'audit dell'8 agosto 2026 avevo scritto che le etichette delle card
+   «mescolano tre alfabeti nella stessa casella». Misurandole, NON E' VERO:
+   i tre alfabeti hanno gia' forme diverse. Il sistema regge. Quello che
+   mancava e' che non fosse scritto da nessuna parte — cosi' la prossima card
+   rischia di inventarsi una quarta forma.
+
+   Eccolo, e da qui in avanti si rispetta:
+
+     PILLOLA ROSSA  (#c0392b)   una novita': «Ultimo aggiornamento»,
+                                «Nuovo TG nazionale · 5 agosto 2026»
+     PILLOLA BLU    (#1a6aa8)   edizione regionale: «Nuovo TG Campania»
+     PILLOLA VERDE  (#188739)   la voce degli iscritti
+     MAIUSCOLO senza sfondo     il TEMA: riforma elettorale, proposta di
+                                legge, mobilitazione, riqualificazione urbana
+     🆕 + DATA                  quando e' uscito
+
+   Una card puo' avere una pillola, un tema e una data — sono cose diverse e
+   si vedono diverse. Non puo' avere due pillole.
+
+   ⚠️ Se serve una categoria nuova, si aggiunge QUI un colore con un
+   significato, non si inventa una forma nuova sulla singola card. */
+
+/* ---------------------------------------------------------------------
+   LE TABELLE STANNO DENTRO LO SCHERMO STRETTO
+   Trovato il 9 agosto 2026 passando tutte le 66 pagine a 375 px: era
+   l'ultimo sbordo rimasto. Una tabella non si restringe sotto la sua
+   misura minima, e con 12 px di spazio per lato in ogni cella su tre
+   colonne usciva di 13 px.
+   Si recupera dai margini interni, non dal corpo del testo: su queste
+   pagine i numeri si leggono gia' in punta di occhi.
+   ⚠️ Il primo sospetto era il riquadro delle notifiche di webpushr, che
+   risultava largo 388 px. Era una conseguenza, non la causa: essendo
+   ancorato allo schermo si adeguava alla pagina gia' sbordata. Guardare
+   l'elemento PIU' PROFONDO che esce, non il piu' grande.
+   --------------------------------------------------------------------- */
+@media (max-width: 480px) {
+  .pa-tbl th, .pa-tbl td { padding: 8px 6px; }
+}
+
+/* ---------------------------------------------------------------------
+   UNA TABELLA CHE SCORRE INVECE DI SFONDARE LA PAGINA
+   Una tabella di dati non si restringe sotto la larghezza minima del suo
+   contenuto: e' fatta cosi', e nessuna regola la convince. Metterla in un
+   riquadro che scorre di lato e' l'unico modo onesto: la pagina resta
+   ferma, la tabella si sfoglia con il dito.
+   Il bordo sfumato a destra serve a far capire che c'e' altro oltre.
+   --------------------------------------------------------------------- */
+.pa-tab-scorre {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  margin: 22px 0;
+  max-width: 100%;
+}
+.pa-tab-scorre > table { margin: 0; min-width: 460px; }
+@media (max-width: 600px) {
+  .pa-tab-scorre {
+    background:
+      linear-gradient(to right, #fff 30%, rgba(255,255,255,0)) left / 24px 100% no-repeat,
+      linear-gradient(to left,  #fff 30%, rgba(255,255,255,0)) right / 24px 100% no-repeat;
+  }
+}
+
+/* =====================================================================
+   LA BARRA CHE RESTA, MA SI FA PICCOLA — 9 agosto 2026
+   =====================================================================
+   Chiesto da Fernando: «scorrendo il menu sparisce e sono costretto a
+   risalire». Aveva ragione, e il guadagno e' misurato: Nielsen Norman
+   Group rileva circa il 22% di tempo di navigazione risparmiato con una
+   barra sempre visibile.
+
+   MA la stessa ricerca dice di tenerla sotto il 10% dello schermo, e sul
+   telefono ridurla all'essenziale. La nostra e' 130 px su 812 = 16%:
+   troppo, per un sito dove il 68% legge dal telefono.
+
+   Quindi resta sempre, ma appena si scorre si stringe: il logo si
+   rimpicciolisce, il nome sparisce, i margini si riducono. Non e' un
+   vezzo — e' la differenza fra rubare un sesto dello schermo a ogni riga
+   letta e rubarne un decimo.
+
+   Il nome del movimento non si perde: ricompare appena si torna in cima.
+   ===================================================================== */
+.navbar { transition: padding .18s ease; }
+.navbar .nav-logo img,
+.navbar .nav-nome { transition: width .18s ease, height .18s ease, font-size .18s ease; }
+
+.navbar.pa-compatta { padding-top: 2px; padding-bottom: 2px; }
+.navbar.pa-compatta .nav-logo img { width: 40px; height: 40px; }
+.navbar.pa-compatta .nav-nome { font-size: .95em; }
+.navbar.pa-compatta .nav-nome small { display: none; }
+
+/* Chi ha chiesto meno movimento non vede nessuna transizione. */
+@media (prefers-reduced-motion: reduce) {
+  .navbar, .navbar .nav-logo img, .navbar .nav-nome { transition: none; }
+}
+
+/* I collegamenti interni (#iscriviti, #blog, #statuto...) atterravano
+   NASCOSTI SOTTO la barra: e' il difetto piu' comune dei menu che
+   restano, e si cura con una riga. La misura e' quella della barra
+   stretta, perche' quando si salta a un'ancora si sta gia' scorrendo. */
+html { scroll-padding-top: 84px; }
+@media (max-width: 1260px) { html { scroll-padding-top: 96px; } }
+
+/* Sul telefono la barra stretta si riduce all'essenziale — logo, i due
+   pulsanti e il menu — come raccomanda Nielsen Norman Group. Il nome del
+   movimento non sparisce dal sito: torna appena si risale in cima, ed e'
+   comunque scritto nel titolo della pagina e nel pie'.
+   Sotto i 1260 px, cioe' dove il menu e' gia' a tendina. */
+@media (max-width: 1260px) {
+  .navbar.pa-compatta .nav-nome { display: none; }
+  .navbar.pa-compatta .nav-logo img { width: 36px; height: 36px; }
+  .navbar.pa-compatta .nav-cta a { padding-top: 8px; padding-bottom: 8px; }
+}
+
+/* Sui telefoni piccolissimi (iPhone SE e simili, 320 px) logo + due
+   pulsanti + menu non stanno in una riga sola e la barra ne occupa due.
+   Si stringono i pulsanti invece di toglierne uno: «Iscriviti» e
+   «Sostienici» sono le due azioni del sito, e chi ha lo schermo piccolo
+   non deve avere meno strade degli altri.
+   L'altezza da toccare col dito resta di 44 px: si toglie larghezza, non
+   bersaglio. */
+@media (max-width: 400px) {
+  .navbar.pa-compatta .nav-cta { gap: 5px; }
+  .navbar.pa-compatta .nav-cta a { font-size: .72em; padding: 13px 9px; }
+  .navbar.pa-compatta { gap: 6px; padding-left: 8px; padding-right: 8px; }
+}
+
+/* ── spazio sotto il piè di pagina per i pulsanti che galleggiano ─────────
+   MISURATO il 19/08/2026 su telefono a 375 px: arrivati in fondo alla pagina
+   il link «Privacy Policy» finisce sotto il pulsante dell'assistente, e li'
+   non si puo' piu' scorrere via — un collegamento cliccabile ostruito per
+   sempre. I due pulsanti fissi (assistente 58 px + 18 di margine; campanella
+   Webpushr 34 + 15) stanno entro 76 px dal bordo: 88 px liberano entrambi.
+   Vale solo dove i pulsanti stanno davvero addosso al contenuto. */
+@media (max-width: 768px) {
+  body .foot-bottom, body .footer-bottom { padding-bottom: 88px; }
+}

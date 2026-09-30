@@ -1,0 +1,66 @@
+/* Stile comune a 35 pagine. Stava copiato dentro ognuna di esse.
+   Lo estrae _tools/estrai_css.py — le modifiche si fanno QUI, non nelle pagine. */
+
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:montserrat,sans-serif;background:#fafafa;color:#222}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.article-hero{background:linear-gradient(120deg,#8a4e00 0%,#e8900a 100%);padding:56px 32px 0;color:#fff;text-align:center}
+.article-hero .categoria{display:inline-block;background:rgba(255,255,255,.2);border:1px solid rgba(255,255,255,.4);color:#fff;font-size:.72em;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:5px 16px;border-radius:50px;margin-bottom:20px}
+.article-hero h1{font-family:merriweather,serif;font-size:2em;font-weight:700;line-height:1.3;max-width:800px;margin:0 auto 20px}
+.article-hero .sottotitolo{font-size:1em;color:rgba(255,255,255,.85);max-width:680px;margin:0 auto 28px;line-height:1.6}
+.article-meta{display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap;font-size:.78em;color:rgba(255,255,255,.75);margin-bottom:36px}
+.article-meta .badge-pa{background:#fff;color:#9c5b00;font-weight:900;padding:3px 12px;border-radius:50px;font-size:.9em}
+.author-hero{display:flex;align-items:center;justify-content:center;gap:16px;margin-bottom:36px}
+.author-hero img{width:72px;height:72px;border-radius:50%;object-fit:cover;border:3px solid rgba(255,255,255,.4)}
+.author-hero-info{text-align:left}
+.author-hero-info .nome{font-weight:900;color:#fff;font-size:.85em}
+.author-hero-info .ruolo{color:#ffd580;font-size:.78em;font-weight:600}
+.article-wrap{max-width:780px;margin:0 auto;padding:56px 24px 80px}
+.article-wrap p{font-family:merriweather,serif;font-size:1em;line-height:1.85;color:#333;margin-bottom:24px}
+.article-wrap h2{font-family:montserrat,sans-serif;font-size:1.2em;font-weight:900;color:#8a4e00;text-transform:uppercase;letter-spacing:1px;margin:44px 0 16px;padding-left:16px;border-left:4px solid #e8900a}
+.box-info{background:#fff8ee;border-left:4px solid #e8900a;border-radius:0 12px 12px 0;padding:20px 24px;margin:32px 0;font-family:montserrat,sans-serif;font-size:.9em;line-height:1.6;color:#555}
+.box-info strong{color:#8a4e00;display:block;margin-bottom:6px}
+.box-evento{background:#fff8ee;border:2px solid #e8900a;border-radius:14px;padding:28px 24px;margin:32px 0;text-align:center;font-family:montserrat,sans-serif}
+.box-evento .data-evento{font-family:merriweather,serif;font-size:1.6em;color:#8a4e00;font-weight:900;margin-bottom:6px}
+.box-evento .luogo-evento{font-size:1.1em;color:#333;font-weight:700;margin-bottom:4px}
+.box-evento .orario-evento{font-size:.85em;color:#555}
+.box-evento .streaming{font-size:.9em;color:#9c5b00;margin-top:12px;font-weight:600}
+.box-comunicato{background:#fff3f3;border:2px solid #c0392b;border-radius:12px;padding:28px 32px;margin:36px 0}
+.box-comunicato .label{display:inline-flex;align-items:center;gap:8px;background:#c0392b;color:#fff;font-size:.7em;font-weight:900;letter-spacing:2px;text-transform:uppercase;padding:4px 14px;border-radius:50px;margin-bottom:16px}
+.box-comunicato p{font-family:merriweather,serif;font-size:.85em;line-height:1.8;color:#333;margin-bottom:0;font-style:italic}
+.condividi{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:48px 0 0;padding:24px;background:#fff8ee;border-radius:16px;border:1px solid #f0e6d3}
+.condividi-label{font-family:montserrat,sans-serif;font-size:.85em;font-weight:700;color:#8a4e00}
+.condividi a{display:inline-flex;align-items:center;gap:7px;padding:9px 18px;border-radius:50px;text-decoration:none;font-family:montserrat,sans-serif;font-size:.76em;font-weight:700}
+.btn-wa{background:#127a38;color:#fff}
+.btn-fb{background:#0d6ae0;color:#fff}
+.cta-finale{background:linear-gradient(120deg,#8a4e00 0%,#e8900a 100%);color:#fff;padding:56px 32px;text-align:center;margin-top:60px}
+.cta-finale h2{font-family:merriweather,serif;font-size:1.8em;font-weight:700;margin-bottom:16px}
+.cta-finale p{font-size:.85em;color:rgba(255,255,255,.85);max-width:560px;margin:0 auto 28px;line-height:1.6}
+.cta-finale a{display:inline-block;background:#fff;color:#9c5b00;padding:14px 36px;border-radius:50px;text-decoration:none;font-weight:900;font-size:.9em}
+footer{background:#222;color:#aaa;padding:32px;text-align:center;font-size:.76em}
+footer a{color:#ffd580;text-decoration:none}
+.modal-overlay{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,.6);z-index:999;align-items:center;justify-content:center}
+.modal-box{background:#fff;border-radius:16px;padding:32px;max-width:420px;width:90%;text-align:center;position:relative}
+.modal-box h3{color:#8a4e00;margin-bottom:12px}
+.modal-box p{font-size:.9em;color:#555;line-height:1.6;margin-bottom:8px}
+.modal-box .iban{background:#fff8ee;padding:12px;border-radius:8px;font-family:monospace;font-size:.85em;color:#8a4e00;font-weight:700;margin:12px 0;word-break:break-all}
+.modal-close{position:absolute;top:12px;right:16px;background:none;border:none;font-size:1.4em;cursor:pointer;color:#999}
+@media(max-width:768px){.article-hero h1{font-size:1.4em}.article-wrap{padding:32px 18px 60px}.box-comunicato{padding:20px}}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}/*PA-NAV-V2*/
