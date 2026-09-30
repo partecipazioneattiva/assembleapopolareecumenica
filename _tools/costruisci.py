@@ -10,7 +10,8 @@ l'intestazione e il pie' di pagina dell'APE, e si riscrivono i collegamenti:
   - immagini, documenti, fogli di stile e caratteri si COPIANO qui.
 Quando cambia una pagina APE sul sito di PA, si rilancia questo e si pubblica.
 
-    python3 _tools/costruisci.py          # rigenera tutto nella cartella del sito
+    python3 _tools/costruisci.py             # rigenera tutto (sito visibile su github.io)
+    python3 _tools/costruisci.py --dominio   # idem + file CNAME: SOLO quando i DNS di Aruba puntano a GitHub
 """
 import html
 import os
@@ -288,7 +289,12 @@ def main():
     open(QUI + 'sitemap.xml', 'w').write('<?xml version="1.0" encoding="UTF-8"?>\n'
         '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + voci + '</urlset>\n')
     open(QUI + 'robots.txt', 'w').write(f'User-agent: *\nAllow: /\nSitemap: {SITO}sitemap.xml\n')
-    open(QUI + 'CNAME', 'w').write('www.assembleapopolareecumenica.it\n')
+    # Il file CNAME dice a GitHub Pages di servire il sito sul dominio. Finche' i DNS di Aruba non
+    # puntano a GitHub, con il CNAME il sito sarebbe IRRAGGIUNGIBILE: si scrive solo con --dominio.
+    if '--dominio' in sys.argv:
+        open(QUI + 'CNAME', 'w').write('www.assembleapopolareecumenica.it\n')
+    elif os.path.exists(QUI + 'CNAME'):
+        os.remove(QUI + 'CNAME')
     open(QUI + '.nojekyll', 'w').write('')
     open(QUI + '404.html', 'w', encoding='utf-8').write(
         '<!DOCTYPE html><html lang="it"><head><meta charset="UTF-8"><meta name="viewport" '

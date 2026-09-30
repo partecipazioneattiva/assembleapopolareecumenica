@@ -143,10 +143,114 @@ main a.btn,main a.btn:visited,main a[href^="mailto:"][style*="background"]{backg
 </div>
 
 <h2>Come aderire</h2>
-<p>L&#8217;adesione &#232; gratuita e paritaria. Scrivi una email con i tuoi dati o quelli della tua organizzazione: nome, tipo (cittadino, associazione, movimento, comitato, partito), territorio di riferimento e &#8212; se aderisci come gruppo &#8212; il nome del referente. Riceverai conferma entro 7 giorni.</p>
+<p>L&#8217;adesione &#232; gratuita e paritaria. Compila il modulo: ti arriva un&#8217;email per confermare, e ricevi una risposta entro 7 giorni.</p>
+
+<form id="aderisci" class="ra-modulo" novalidate>
+  <h3>Aderisci alla Rete APE</h3>
+  <p class="ra-nota">Gratuita e paritaria. Ti arriva un&rsquo;email: l&rsquo;adesione vale dopo che la confermi.</p>
+
+  <label for="ra-tipo">Chi aderisce</label>
+  <select id="ra-tipo" name="tipo" required>
+    <option value="cittadino">Un cittadino, a titolo personale</option>
+    <option value="associazione">Un&rsquo;associazione</option>
+    <option value="movimento">Un movimento</option>
+    <option value="comitato">Un comitato</option>
+    <option value="partito">Un partito</option>
+  </select>
+
+  <label for="ra-nome" id="ra-nome-et">Nome e cognome</label>
+  <input id="ra-nome" name="nome" type="text" required maxlength="120" autocomplete="name">
+
+  <div id="ra-ref-blocco" hidden>
+    <label for="ra-referente">Nome del referente</label>
+    <input id="ra-referente" name="referente" type="text" maxlength="120" autocomplete="name">
+  </div>
+
+  <label for="ra-territorio">Territorio di riferimento</label>
+  <input id="ra-territorio" name="territorio" type="text" required maxlength="120" placeholder="Comune, provincia o regione">
+
+  <label for="ra-email">Email</label>
+  <input id="ra-email" name="email" type="email" required maxlength="160" autocomplete="email" inputmode="email">
+
+  <label for="ra-descrizione">Due righe di presentazione <span class="ra-facolt">(facoltativo)</span></label>
+  <textarea id="ra-descrizione" name="descrizione" rows="3" maxlength="600"></textarea>
+
+  <!-- esca per i robot: chi la riempie non e' una persona -->
+  <div class="ra-esca" aria-hidden="true"><label for="ra-sito">Non compilare</label><input id="ra-sito" name="sito" type="text" tabindex="-1" autocomplete="off"></div>
+
+  <label class="ra-spunta"><input type="checkbox" id="ra-consenso" required>
+    <span>Acconsento al trattamento dei dati per l&rsquo;adesione alla Rete APE. So che aderire esprime un&rsquo;opinione politica. <a href="https://partecipazione-attiva.it/privacy.html">Informativa</a></span></label>
+  <label class="ra-spunta"><input type="checkbox" id="ra-elenco">
+    <span>Acconsento a comparire con il nome nell&rsquo;<strong>elenco pubblico</strong> dei soggetti aderenti <span class="ra-facolt">(facoltativo)</span></span></label>
+
+  <button type="submit" id="ra-invia">Invia l&rsquo;adesione</button>
+  <p id="ra-esito" role="status" aria-live="polite"></p>
+</form>
+<style>
+.ra-modulo{max-width:620px;margin:28px auto;padding:24px;background:#f0f7fd;border:2px solid #2981c9;border-radius:16px;font-family:Montserrat,system-ui,sans-serif}
+.ra-modulo h3{font-family:Merriweather,Georgia,serif;color:#134a77;font-size:1.25em;margin:0 0 6px}
+.ra-modulo .ra-nota{margin:0 0 14px;color:#444;font-size:1em;line-height:1.5}
+.ra-modulo label{display:block;font-weight:700;color:#081f32;margin:14px 0 6px;font-size:1em}
+.ra-modulo input[type=text],.ra-modulo input[type=email],.ra-modulo select,.ra-modulo textarea{width:100%;box-sizing:border-box;font:inherit;font-size:1.05em;padding:12px;border:2px solid #134a77;border-radius:10px;background:#fff;color:#222;min-height:48px}
+.ra-modulo input:focus,.ra-modulo select:focus,.ra-modulo textarea:focus{outline:3px solid #0d6ae0;outline-offset:2px}
+.ra-modulo .ra-facolt{font-weight:400;color:#555}
+.ra-modulo .ra-spunta{display:flex;gap:12px;align-items:flex-start;font-weight:400;line-height:1.5}
+.ra-modulo .ra-spunta input{width:24px;height:24px;flex:0 0 24px;margin-top:2px}
+.ra-modulo .ra-spunta a{color:#134a77;font-weight:700}
+.ra-modulo button{margin-top:20px;width:100%;min-height:54px;border:0;border-radius:50px;background:#134a77;color:#fff;font:inherit;font-weight:800;font-size:1.1em;cursor:pointer}
+.ra-modulo button[disabled]{opacity:.6;cursor:progress}
+.ra-modulo #ra-esito{margin:14px 0 0;font-weight:700;line-height:1.5}
+.ra-modulo #ra-esito.ok{color:#127a38}.ra-modulo #ra-esito.ko{color:#b3261e}
+.ra-esca{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+</style>
+<script>
+(function(){
+  var F='https://hfraarlzltoiuvplushi.supabase.co/functions/v1/ape-aderisci', K='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhmcmFhcmx6bHRvaXV2cGx1c2hpIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODM3Njk1NjEsImV4cCI6MjA5OTM0NTU2MX0.7hM-Tthgd8QQry3XCXmcfDeIRB-QAmLzFYwkEbbL7FI';
+  var f=document.getElementById('aderisci'); if(!f) return;
+  var g=function(i){return document.getElementById(i)}, esito=g('ra-esito');
+  var dire=function(t,ok){esito.textContent=t; esito.className=ok?'ok':'ko'};
+  g('ra-tipo').addEventListener('change',function(){
+    var gruppo=this.value!=='cittadino';
+    g('ra-ref-blocco').hidden=!gruppo; g('ra-referente').required=gruppo;
+    g('ra-nome-et').textContent=gruppo?'Nome dell’organizzazione':'Nome e cognome';
+  });
+  var ERR={tipo:'Scegli chi aderisce.',nome:'Scrivi il nome.',territorio:'Scrivi il territorio di riferimento.',
+    email:'L’indirizzo email non sembra giusto.',referente:'Scrivi il nome del referente.',
+    consenso:'Serve il consenso al trattamento dei dati.',gia_aderente:'Questa email ha già aderito alla Rete APE.',
+    email_non_inviata:'Non siamo riusciti a mandarti l’email di conferma. Riprova fra poco.'};
+  // arrivo dal link di conferma nell'email: ?conferma=<codice>
+  var cod=new URLSearchParams(location.search).get('conferma');
+  if(cod){
+    dire('Sto confermando la tua adesione…',true);
+    fetch(F,{method:'POST',headers:{'content-type':'application/json',apikey:K,authorization:'Bearer '+K},body:JSON.stringify({conferma:cod})})
+    .then(function(r){return r.json()}).then(function(j){
+      if(j.ok) dire('Adesione confermata. Grazie: riceverai una risposta entro 7 giorni.',true);
+      else dire('Il collegamento di conferma non è valido.',false)})
+    .catch(function(){dire('Connessione non riuscita. Riapri il collegamento fra poco.',false)});
+    f.scrollIntoView();
+  }
+  f.addEventListener('submit',function(e){
+    e.preventDefault();
+    if(!g('ra-consenso').checked){dire(ERR.consenso,false);g('ra-consenso').focus();return}
+    var b=g('ra-invia'); b.disabled=true; dire('Invio in corso…',true);
+    fetch(F,{method:'POST',headers:{'content-type':'application/json',apikey:K,authorization:'Bearer '+K},
+      body:JSON.stringify({tipo:g('ra-tipo').value,nome:g('ra-nome').value,referente:g('ra-referente').value,
+        territorio:g('ra-territorio').value,email:g('ra-email').value,descrizione:g('ra-descrizione').value,
+        consenso_dati:true,consenso_elenco:g('ra-elenco').checked,sito:g('ra-sito').value})})
+    .then(function(r){return r.json().then(function(j){return {ok:r.ok,j:j}})})
+    .then(function(x){
+      if(x.ok&&x.j.ok){f.reset();dire('Fatto. Ti abbiamo mandato un’email: apri il collegamento per confermare l’adesione.',true)}
+      else dire(ERR[x.j.errore]||'Qualcosa non ha funzionato. Riprova, oppure scrivici via email.',false)})
+    .catch(function(){dire('Connessione non riuscita. Riprova fra poco.',false)})
+    .then(function(){b.disabled=false});
+  });
+})();
+</script>
+
+<p style="text-align:center;color:#555;margin:24px 0 0">Preferisci scrivere? Puoi aderire anche via email:</p>
 
 <div style="text-align:center;margin:32px 0">
-<a href="mailto:partecipazioneattiva21@gmail.com?subject=Adesione%20Rete%20APE&body=Nome%20%28persona%20o%20organizzazione%29%3A%0ATipo%20%28cittadino%2Fassociazione%2Fmovimento%2Fcomitato%2Fpartito%29%3A%0ATerritorio%3A%0AReferente%20%28solo%20se%20aderisci%20come%20gruppo%29%3A%0ABreve%20descrizione%3A" target="_blank" rel="noopener" style="display:inline-block;background:#2981c9;color:#061725;padding:16px 40px;border-radius:50px;text-decoration:none;font-weight:700;font-size:1em;box-shadow:0 4px 16px rgba(42,111,152,.35)">&#127811; Aderisci alla Rete APE</a>
+<a href="mailto:partecipazioneattiva21@gmail.com?subject=Adesione%20Rete%20APE&body=Nome%20%28persona%20o%20organizzazione%29%3A%0ATipo%20%28cittadino%2Fassociazione%2Fmovimento%2Fcomitato%2Fpartito%29%3A%0ATerritorio%3A%0AReferente%20%28solo%20se%20aderisci%20come%20gruppo%29%3A%0ABreve%20descrizione%3A" target="_blank" rel="noopener" style="display:inline-block;background:#2981c9;color:#061725;padding:16px 40px;border-radius:50px;text-decoration:none;font-weight:700;font-size:1em;box-shadow:0 4px 16px rgba(42,111,152,.35)">&#9993; Aderisci via email</a>
 </div>
 
 <div style="background:#f0f7fd;border-radius:12px;padding:24px;margin-top:32px">
