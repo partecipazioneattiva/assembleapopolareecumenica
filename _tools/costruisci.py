@@ -33,26 +33,26 @@ PAGINE = {
 DESCRIZIONI = {'index.html': 'APE, Assemblea Popolare Ecumenica: un&#x27;assemblea permanente di cittadini sorteggiati che obbliga le istituzioni a rispondere. Un progetto aperto a tutti.'}
 VOLTO = 'images/angelo-nicotra-volto.webp'     # solo il viso: i ritratti di PA sono manifesti col marchio
 
-# La cornice non deve dare senso di proprieta' (Fernando, 30/09/2026): dove la pagina di PA
+# Fernando, 30/09/2026: «non è che PA non si può nominare» — PA si nomina (chi ha elaborato, chi
+# propone, chi aderisce); quello che NON deve passare e' la proprieta' ESCLUSIVA. Dove la pagina di PA
 # dice «di Partecipazione Attiva» NELLA CORNICE (titolo, qualifica, etichette), qui si riscrive.
 # (vecchio, nuovo, quante volte deve comparire). Se il sorgente cambia, lo script si ferma.
 RISCRITTURE = {
     'index.html': [
         ('La proposta di Partecipazione Attiva per un canale permanente di voce dei cittadini, oltre la democrazia delegativa.',
          'Un canale permanente di voce dei cittadini, oltre la democrazia delegativa. Aperto a tutti.', 1),
-        ('<div class="ruolo">Presidente &mdash; Partecipazione Attiva</div>', '<div class="ruolo">Ideatore del Progetto APE</div>', 1),
+        ('<div class="ruolo">Presidente &mdash; Partecipazione Attiva</div>', '<div class="ruolo">Ideatore del Progetto APE &middot; Presidente di Partecipazione Attiva</div>', 1),
         ('<span class="badge-pa">Partecipazione Attiva</span>', '', 1),
         ('<p class="pa-lead">Con APE (Assemblea Popolare Ecumenica), Partecipazione Attiva lancia una nuova idea di Democrazia Partecipativa per rendere i cittadini parte attiva nella gestione politica del nostro Paese.</p>',
          '<p class="pa-lead">APE (Assemblea Popolare Ecumenica) è una nuova idea di Democrazia Partecipativa per rendere i cittadini parte attiva nella gestione politica del nostro Paese.</p>', 1),
         ('<p>È la proposta di legge più importante del movimento: una riforma costituzionale che non aggiunge un partito né un candidato, ma uno strumento permanente attraverso cui ogni cittadino può obbligare le istituzioni ad ascoltare e a rispondere. Elaborata da Angelo Nicotra, Presidente di Partecipazione Attiva, ed è oggi proposta ufficiale del movimento.</p>',
-         '<p>È una riforma costituzionale che non aggiunge un partito né un candidato, ma uno strumento permanente attraverso cui ogni cittadino può obbligare le istituzioni ad ascoltare e a rispondere. L’ha elaborata Angelo Nicotra.</p>', 1),
+         '<p>È una riforma costituzionale che non aggiunge un partito né un candidato, ma uno strumento permanente attraverso cui ogni cittadino può obbligare le istituzioni ad ascoltare e a rispondere. L’ha elaborata Angelo Nicotra, Presidente di Partecipazione Attiva: il movimento l’ha fatta propria e la propone a tutti, senza esclusive.</p>', 1),
         ('alt="Angelo Nicotra Presidente Partecipazione Attiva" width="500" height="750"', 'alt="Angelo Nicotra" width="300" height="300"', 1),
         ('images/organigramma/angelo-nicotra-finale.webp', VOLTO, 1),
     ],
     'rete.html': [
-        ('<span class="article-date">Presidente di Partecipazione Attiva</span>', '<span class="article-date">Ideatore del Progetto APE</span>', 1),
+        ('<span class="article-date">Presidente di Partecipazione Attiva</span>', '<span class="article-date">Ideatore del Progetto APE &middot; Presidente di Partecipazione Attiva</span>', 1),
         ('object-position:top center" width="1024" height="1536"', 'object-position:center" width="300" height="300"', 1),
-        (', Presidente di Partecipazione Attiva.', '.', 2),
         ('Leggi%20questo%20articolo%20di%20Partecipazione%20Attiva%3A%20', 'Rete%20APE%2C%20Assemblea%20Popolare%20Ecumenica%3A%20', None),
     ],
 }
@@ -198,12 +198,6 @@ def pagina(uscita, sorgente, titolo, anteprima, copiati):
         if k < 0:
             stop('rete: non trovo la fine dell articolo')
         corpo = corpo[:k + len('</article>')]
-    if uscita == 'index.html':
-        # lo spot «Tocca a noi» porta il marchio di PA dentro il filmato: sul sito APE non va
-        spot = re.findall(r'<div class="pa-fig">\s*<video.*?</figcaption>\s*</div>', corpo, flags=re.S)
-        if len(spot) != 1:
-            stop(f'index: aspettavo 1 blocco dello spot, ne trovo {len(spot)}')
-        corpo = corpo.replace(spot[0], '')
     for vecchio, nuovo, quante in RISCRITTURE.get(uscita, []):
         c = corpo.count(vecchio)
         if (quante is not None and c != quante):
