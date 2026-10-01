@@ -45,7 +45,19 @@ PERCHE_SITO = (
     '<p>Qui chiunque &mdash; un cittadino, un comitato, un&rsquo;associazione, un movimento o un '
     'partito &mdash; pu&ograve; conoscere la proposta e <a href="rete.html">aderire alla Rete APE</a> '
     'alla pari. L&rsquo;ha ideata Angelo Nicotra; Partecipazione Attiva l&rsquo;ha fatta propria ed '
-    '&egrave; tra i promotori della Rete.</p></div>\n')     # solo il viso: i ritratti di PA sono manifesti col marchio
+    '&egrave; tra i promotori della Rete.</p></div>\n')
+
+# Fernando, 01/10/2026: anche sul sito APE il video «E dopo il voto?» (6 minuti, il piu' breve):
+# va per primo, subito dopo «Perche' questo sito». youtube-nocookie come nel resto dei siti.
+VIDEO_DOPO_IL_VOTO = (
+    '<div class="pa-box" id="video"><h3>L&rsquo;APE in sei minuti</h3>'
+    '<div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:10px;margin:6px 0 12px">'
+    '<iframe src="https://www.youtube-nocookie.com/embed/GCq6ldo8om0" '
+    'title="E dopo il voto? La proposta APE spiegata: che cos&rsquo;&egrave; e come funziona" '
+    'style="position:absolute;top:0;left:0;width:100%;height:100%;border:0" loading="lazy" allowfullscreen></iframe></div>'
+    '<p style="margin:0">Cittadini sorteggiati, istituzioni obbligate a rispondere, referendum senza quorum, '
+    'e i punti deboli che la proposta stessa riconosce. Con la trascrizione completa: '
+    '<a href="https://partecipazione-attiva.it/ape-dopo-il-voto-video.html">la pagina del video</a>.</p></div>\n')     # solo il viso: i ritratti di PA sono manifesti col marchio
 
 # Fernando, 30/09/2026: «non è che PA non si può nominare» — PA si nomina (chi ha elaborato, chi
 # propone, chi aderisce); quello che NON deve passare e' la proprieta' ESCLUSIVA. Dove la pagina di PA
@@ -216,7 +228,7 @@ def pagina(uscita, sorgente, titolo, anteprima, copiati):
         aggancio = '<p class="pa-lead">Con APE (Assemblea Popolare Ecumenica), Partecipazione Attiva lancia'
         if corpo.count(aggancio) != 1:
             stop('index: non trovo dove mettere «Perche questo sito»')
-        corpo = corpo.replace(aggancio, PERCHE_SITO + aggancio, 1)
+        corpo = corpo.replace(aggancio, PERCHE_SITO + VIDEO_DOPO_IL_VOTO + aggancio, 1)
     for vecchio, nuovo, quante in RISCRITTURE.get(uscita, []):
         c = corpo.count(vecchio)
         if (quante is not None and c != quante):
