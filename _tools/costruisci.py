@@ -260,6 +260,10 @@ def pagina(uscita, sorgente, titolo, anteprima, copiati):
 <meta property="og:description" content="{desc}">
 <meta property="og:url" content="{mia}">
 <meta property="og:image" content="{SITO}{anteprima}">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="APE, Assemblea Popolare Ecumenica: un canale permanente di voce dei cittadini">
+<meta property="og:locale" content="it_IT">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="{titolo}">
 <meta name="twitter:description" content="{desc}">
