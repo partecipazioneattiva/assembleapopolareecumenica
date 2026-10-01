@@ -32,7 +32,20 @@ PAGINE = {
                   'images/rete-ape-anteprima.jpg'),
 }
 DESCRIZIONI = {'index.html': 'APE, Assemblea Popolare Ecumenica: un&#x27;assemblea permanente di cittadini sorteggiati che obbliga le istituzioni a rispondere. Un progetto aperto a tutti.'}
-VOLTO = 'images/angelo-nicotra-volto.webp'     # solo il viso: i ritratti di PA sono manifesti col marchio
+VOLTO = 'images/angelo-nicotra-volto.webp'
+
+# Fernando, 01/10/2026: «anche sul sito APE va scritto almeno il perche' della sua nascita».
+# Testo SOLO del sito APE (non esiste su PA), in voce neutra: non il «noi» del movimento.
+PERCHE_SITO = (
+    '<div class="pa-box" id="perche"><h3>Perch&eacute; questo sito</h3>'
+    '<p><strong>&laquo;Ecumenica&raquo; vuol dire aperta a tutti, senza distinzioni.</strong> '
+    'L&rsquo;APE non &egrave; un partito e non appartiene a nessuno: chiede a ogni cittadino di '
+    'partecipare con lo stesso peso degli altri. Per questo ha una casa sua, neutra, senza simboli '
+    'n&eacute; bandiere: <strong>un&rsquo;unione d&rsquo;intenti, non di simboli o ideologie</strong>.</p>'
+    '<p>Qui chiunque &mdash; un cittadino, un comitato, un&rsquo;associazione, un movimento o un '
+    'partito &mdash; pu&ograve; conoscere la proposta e <a href="rete.html">aderire alla Rete APE</a> '
+    'alla pari. L&rsquo;ha ideata Angelo Nicotra; Partecipazione Attiva l&rsquo;ha fatta propria ed '
+    '&egrave; tra i promotori della Rete.</p></div>\n')     # solo il viso: i ritratti di PA sono manifesti col marchio
 
 # Fernando, 30/09/2026: «non è che PA non si può nominare» — PA si nomina (chi ha elaborato, chi
 # propone, chi aderisce); quello che NON deve passare e' la proprieta' ESCLUSIVA. Dove la pagina di PA
@@ -199,6 +212,11 @@ def pagina(uscita, sorgente, titolo, anteprima, copiati):
         if k < 0:
             stop('rete: non trovo la fine dell articolo')
         corpo = corpo[:k + len('</article>')]
+    if uscita == 'index.html':
+        aggancio = '<p class="pa-lead">Con APE (Assemblea Popolare Ecumenica), Partecipazione Attiva lancia'
+        if corpo.count(aggancio) != 1:
+            stop('index: non trovo dove mettere «Perche questo sito»')
+        corpo = corpo.replace(aggancio, PERCHE_SITO + aggancio, 1)
     for vecchio, nuovo, quante in RISCRITTURE.get(uscita, []):
         c = corpo.count(vecchio)
         if (quante is not None and c != quante):
