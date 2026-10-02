@@ -103,7 +103,7 @@ INGRESSO = (
     '.ap-faq details p{margin:0;padding:0 18px 16px}'
     '.ap-libro{display:block;max-width:220px;margin:6px auto 8px;border-radius:10px;box-shadow:0 8px 22px rgba(0,0,0,.15)}'
     '.ap-oggi{font-family:Montserrat,system-ui,sans-serif;font-size:.92em;color:#d6e6f3;margin:16px auto 0;max-width:640px;line-height:1.5}'
-    '.ap-oggi b{color:#ffd75e}'
+    '.ap-oggi b{color:#ffd75e}.ap-oggi span,.ap-in .k span{display:block}'
     '.ap-passi{list-style:none;counter-reset:p;padding:0;margin:18px 0 6px}'
     '.ap-passi li{counter-increment:p;position:relative;padding:12px 14px 12px 58px;margin:0 0 22px;background:#fff;border:2px solid #9cc3e0;border-radius:12px;line-height:1.5}'
     '.ap-passi li::before{content:counter(p);position:absolute;left:12px;top:12px;width:32px;height:32px;border-radius:50%;background:#17507a;color:#fff;'
@@ -121,17 +121,18 @@ INGRESSO = (
     '@media(max-width:600px){.ap-in h1{font-size:1.6em}.ap-porte a{width:100%;justify-content:center}.ap-noe{grid-template-columns:1fr}}'
     '</style>'
     '<section class="ap-in" aria-labelledby="ap-domanda">'
-    '<p class="k">APE &middot; Assemblea Popolare Ecumenica &middot; proposta di riforma costituzionale</p>'
-    '<h1 id="ap-domanda">Tra un voto e l&rsquo;altro, chi ti ascolta?</h1>'
+    '<p class="k"><span>APE &middot; Assemblea Popolare Ecumenica</span> <span>Proposta di riforma costituzionale</span></p>'
+    '<h1 id="ap-domanda">Tra un voto e l&rsquo;altro,<br>chi ti ascolta?</h1>'
     '<ul class="ap-tre">'
-    '<li><b>20 milioni</b> di italiani non hanno votato alle ultime politiche.</li>'
-    '<li>Oggi una richiesta dei cittadini si pu&ograve; <b>ignorare a costo zero</b>.</li>'
-    '<li>Con l&rsquo;APE chi governa <b>deve rispondere</b>: s&igrave;, oppure un no motivato in pubblico.</li>'
+    '<li><b>20&nbsp;milioni</b> di italiani non hanno votato alle ultime politiche.</li>'
+    '<li>Oggi una richiesta dei cittadini si pu&ograve; <b>ignorare a&nbsp;costo&nbsp;zero</b>.</li>'
+    '<li>Con l&rsquo;APE chi governa <b>deve&nbsp;rispondere</b>: s&igrave;, oppure un no motivato in&nbsp;pubblico.</li>'
     '</ul>'
     '<div class="ap-porte"><a class="p1" href="#video">&#9654; Capire in 6 minuti</a>'
     '<a class="p2" href="#in-breve">Leggere in 2 minuti</a></div>'
-    '<p class="ap-oggi"><b>Oggi l&rsquo;APE &egrave; una proposta</b>: per esistere serve una riforma della Costituzione. '
-    'La <b>Rete APE</b> &egrave; chi, gi&agrave; adesso, sceglie di sostenerla.</p>'
+    # Fernando 02/10/2026: «andare a capo sempre a frasi compiute» — una frase per riga
+    '<p class="ap-oggi"><span><b>Oggi l&rsquo;APE &egrave; una proposta</b>:</span> <span>per esistere serve una&nbsp;riforma della&nbsp;Costituzione.</span> '
+    '<span>La&nbsp;<b>Rete&nbsp;APE</b> &egrave; chi&nbsp;la&nbsp;sostiene gi&agrave;&nbsp;adesso.</span></p>'
     '</section>\n')
 
 # L'esempio e' quello di «E dopo il voto?» (copione del 26/09), dichiarato inventato come nel video.
@@ -275,6 +276,8 @@ STILE = """
 .ape-voci a.ape-aderisci{background:rgb(255,215,94);color:rgb(11,31,51)}
 /* i pulsanti di PA hanno testo scuro su arancio: sul blu serve il bianco (pa11y: 4,39 -> a norma) */
 main a.btn,main a.btn:visited,main a[href^="mailto:"][style*="background"]{background:#17507a!important;color:#fff!important}
+h1,h2,h3,.sottotitolo,.article-subtitle,.ap-in p,.ap-hero p,.ape-piede p,summary{text-wrap:balance}
+p,li{text-wrap:pretty}
 .ape-salta{position:absolute;left:-9999px}
 .ape-salta:focus{left:8px;top:8px;background:#fff;padding:10px 14px;z-index:99;border:2px solid #8a4e00}
 .ape-piede{background:#3a2000;color:#fff;padding:34px 18px;text-align:center;
