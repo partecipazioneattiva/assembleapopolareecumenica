@@ -51,12 +51,22 @@ PERCHE_SITO = (
 # va per primo, subito dopo «Perche' questo sito». youtube-nocookie come nel resto dei siti.
 VIDEO_DOPO_IL_VOTO = (
     '<div class="pa-box" id="video"><h3>L&rsquo;APE in sei minuti</h3>'
-    '<div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:10px;margin:6px 0 12px">'
-    '<iframe src="https://www.youtube-nocookie.com/embed/5Z9MGRmQo04" '
-    'title="E dopo il voto? La proposta APE spiegata: che cos&rsquo;&egrave; e come funziona" '
-    'style="position:absolute;top:0;left:0;width:100%;height:100%;border:0" loading="lazy" allowfullscreen></iframe></div>'
+    # 02/10/2026 Fernando (schermata): YouTube mette in testa al video il canale «Partecipazione Attiva» e non si toglie.
+    # Il filmato sta sul sito APE (stesso video di YouTube 5Z9MGRmQo04, H.264 720p): nessun marchio di nessuno.
+    '<video controls preload="none" playsinline poster="images/ape-dopo-il-voto-copertina.webp" '
+    'style="width:100%;height:auto;border-radius:10px;margin:6px 0 12px;background:#0b1a2e" '
+    'aria-label="E dopo il voto? La proposta APE spiegata: che cos&rsquo;&egrave; e come funziona">'
+    '<source src="video/ape-dopo-il-voto.mp4" type="video/mp4">Il tuo browser non riproduce il video.</video>'
     '<p style="margin:0">Cittadini sorteggiati, istituzioni obbligate a rispondere, referendum senza quorum, '
-    'e i punti deboli che la proposta stessa riconosce.</p></div>\n')
+    'e i punti deboli che la proposta stessa riconosce.</p></div>\n'
+    # lo spot «Tocca a noi» rifatto senza il logo di PA (stesso filmato, fascia in alto coperta: resta il riquadro APE)
+    '<div class="pa-box" id="spot"><h3>Tocca a noi</h3>'
+    '<video controls preload="none" playsinline poster="images/ape-tocca-a-noi-copertina.webp" '
+    'style="display:block;width:100%;max-width:420px;height:auto;margin:6px auto 12px;border-radius:10px;background:#0b1a2e" '
+    'aria-label="Tocca a noi: lo spot della Rete APE"><source src="video/ape-tocca-a-noi.mp4" type="video/mp4">'
+    'Il tuo browser non riproduce il video.</video>'
+    '<p style="margin:0">Da troppo tempo nessuno ascolta una voce. La tua. Per cambiare le cose non serve un salvatore. '
+    'Non arriver&agrave;. Serviamo noi, tutti, alla pari. Possiamo essere i leader di noi stessi. Tocca a noi.</p></div>\n')
 
 # Fernando, 30/09/2026: «non è che PA non si può nominare» — PA si nomina (chi ha elaborato, chi
 # propone, chi aderisce); quello che NON deve passare e' la proprieta' ESCLUSIVA. Dove la pagina di PA
@@ -175,6 +185,8 @@ def riscrivi_link(pezzo, uscita, copiati):
             nuovo = INTERNE[base] + coda
         elif base.endswith('.html'):
             nuovo = SITO_PA + ('' if base == 'index.html' else base) + coda
+        elif base.startswith('video/') and os.path.exists(QUI + base):
+            nuovo = base + coda               # filmato proprio del sito APE (versione senza marchi)
         elif base.startswith('video/'):
             nuovo = SITO_PA + base            # i filmati restano dove sono: pesano
         elif os.path.exists(QUI + base) and not os.path.exists(PA + base):
