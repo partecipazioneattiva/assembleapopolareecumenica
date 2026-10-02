@@ -37,15 +37,15 @@ VOLTO = 'images/angelo-nicotra-volto.webp'
 # Fernando, 01/10/2026: «anche sul sito APE va scritto almeno il perche' della sua nascita».
 # Testo SOLO del sito APE (non esiste su PA), in voce neutra: non il «noi» del movimento.
 PERCHE_SITO = (
-    '<div class="pa-box" id="perche"><h3>Perch&eacute; questo sito</h3>'
-    '<p><strong>&laquo;Ecumenica&raquo; vuol dire aperta a tutti, senza distinzioni.</strong> '
-    'L&rsquo;APE non &egrave; un partito e non appartiene a nessuno: chiede a ogni cittadino di '
-    'partecipare con lo stesso peso degli altri. Per questo ha una casa sua, neutra, senza simboli '
-    'n&eacute; bandiere: <strong>un&rsquo;unione d&rsquo;intenti, non di simboli o ideologie</strong>.</p>'
-    '<p>Qui chiunque &mdash; un cittadino, un comitato, un&rsquo;associazione, un movimento o un '
-    'partito &mdash; pu&ograve; conoscere la proposta e <a href="rete.html">aderire alla Rete APE</a> '
-    'alla pari. L&rsquo;ha ideata Angelo Nicotra; Partecipazione Attiva l&rsquo;ha fatta propria ed '
-    '&egrave; tra i promotori della Rete.</p></div>\n')
+    '<div class="pa-box" id="perche"><h3>Un&rsquo;idea che appartiene a chi la firma</h3>'
+    '<p>Ogni progetto nasce da qualcuno, ma vive solo se diventa di tutti. L&rsquo;APE &egrave; nata come proposta: '
+    'da oggi &egrave; di chi la fa propria. <strong>&laquo;Ecumenica&raquo; vuol dire aperta a tutti, senza distinzioni</strong>: '
+    'per questo ha una casa sua, neutra, senza simboli n&eacute; bandiere. Un&rsquo;unione d&rsquo;intenti, non di simboli o ideologie.</p>'
+    '<p>La Rete APE non si eredita: si fonda insieme. Chi aderisce firma il <a href="patto.html">Patto fondativo</a> ed entra '
+    'nell&rsquo;<a href="albo.html">Albo dei co-fondatori</a>, in ordine alfabetico, senza primi e senza ultimi: pu&ograve; dire '
+    '&laquo;questo progetto &egrave; anche mio, l&rsquo;ho fondato anch&rsquo;io&raquo;. Il testo resta aperto: ogni co-fondatore '
+    'pu&ograve; proporre miglioramenti, e si decide con peso paritario.</p>'
+    '<p style="margin:0"><a href="patto.html"><strong>Non aderisci a un progetto: lo fondi &rarr;</strong></a></p></div>\n')
 
 # Fernando, 01/10/2026: anche sul sito APE il video «E dopo il voto?» (6 minuti, il piu' breve):
 # va per primo, subito dopo «Perche' questo sito». youtube-nocookie come nel resto dei siti.
@@ -72,7 +72,7 @@ RISCRITTURE = {
         ('<p class="pa-lead">Con APE (Assemblea Popolare Ecumenica), Partecipazione Attiva lancia una nuova idea di Democrazia Partecipativa per rendere i cittadini parte attiva nella gestione politica del nostro Paese.</p>',
          '<p class="pa-lead">APE (Assemblea Popolare Ecumenica) è una nuova idea di Democrazia Partecipativa per rendere i cittadini parte attiva nella gestione politica del nostro Paese.</p>', 1),
         ('<p>È la proposta di legge più importante del movimento: una riforma costituzionale che non aggiunge un partito né un candidato, ma uno strumento permanente attraverso cui ogni cittadino può obbligare le istituzioni ad ascoltare e a rispondere. Elaborata da Angelo Nicotra, Presidente di Partecipazione Attiva, ed è oggi proposta ufficiale del movimento.</p>',
-         '<p>È una riforma costituzionale che non aggiunge un partito né un candidato, ma uno strumento permanente attraverso cui ogni cittadino può obbligare le istituzioni ad ascoltare e a rispondere. L’ha elaborata Angelo Nicotra, Presidente di Partecipazione Attiva: il movimento l’ha fatta propria e la propone a tutti, senza esclusive.</p>', 1),
+         '<p>È una riforma costituzionale che non aggiunge un partito né un candidato, ma uno strumento permanente attraverso cui ogni cittadino può obbligare le istituzioni ad ascoltare e a rispondere.</p>', 1),
         ('alt="Angelo Nicotra Presidente Partecipazione Attiva" width="500" height="750"', 'alt="Angelo Nicotra" width="300" height="300"', 1),
         ('images/organigramma/angelo-nicotra-finale.webp', VOLTO, 1),
     ],
@@ -183,7 +183,8 @@ def riscrivi_link(pezzo, uscita, copiati):
 
 
 def testa(uscita, attuale):
-    voci = [('./', 'Il progetto', 'index.html'), ('rete.html', 'Rete APE', 'rete.html'),
+    voci = [('./', 'Il progetto', 'index.html'), ('patto.html', 'Il Patto', 'patto.html'),
+            ('rete.html', 'Rete APE', 'rete.html'), ('albo.html', 'Albo', 'albo.html'),
             ('./#documenti', 'Documenti', None)]
     h = ''.join(f'<a href="{u}"{" aria-current=page" if attuale == f else ""}>{t}</a>'
                 for u, t, f in voci)
@@ -197,8 +198,9 @@ def testa(uscita, attuale):
 
 PIEDE = (f'<footer class="ape-piede"><p><strong>APE &mdash; Assemblea Popolare Ecumenica</strong><br>'
          f'Un progetto aperto a tutti: cittadini, associazioni, movimenti, comitati, con peso paritario.</p>'
-         f'<p>Ideato da Angelo Nicotra. Tra i promotori della <a href="rete.html">Rete APE</a>: '
-         f'<a href="{SITO_PA}" rel="noopener">Partecipazione Attiva</a>.</p>'
+         f'<p>La prima stesura della proposta &egrave; di Angelo Nicotra; '
+         f'<a href="{SITO_PA}" rel="noopener">Partecipazione Attiva</a> l&rsquo;ha fatta propria ed &egrave; tra i promotori '
+         f'della <a href="rete.html">Rete APE</a>. Da quando &egrave; pubblica, la proposta appartiene a chi la sottoscrive.</p>'
          f'<p class="ape-piccolo"><a href="mailto:info@assembleapopolareecumenica.it">info@assembleapopolareecumenica.it</a>'
          f' &middot; <a href="{SITO_PA}privacy.html">Privacy</a> &middot; Questo sito non usa cookie di profilazione '
          f'n&eacute; tracciatori.</p><p class="ape-piccolo">&copy; {datetime.date.today().year}</p></footer>')
@@ -234,13 +236,22 @@ def pagina(uscita, sorgente, titolo, anteprima, copiati):
         if (quante is not None and c != quante):
             stop(f'{uscita}: «{vecchio[:50]}…» compare {c} volte, ne aspettavo {quante}')
         corpo = corpo.replace(vecchio, nuovo)
+    # 02/10/2026 (Patto fondativo): in apertura niente foto e qualifica dell'ideatore, «il progetto non ha padrone».
+    # La riga sull'origine sta nel pie' di pagina.
+    if uscita == 'index.html':
+        corpo, n = re.subn(r'<div class="author-hero">.*?<div class="author-hero-info">.*?</div>\s*</div>\s*</div>', '', corpo, count=1, flags=re.S)
+        if n != 1:
+            stop('index: non trovo il riquadro dell autore da togliere')
+    if uscita == 'rete.html':
+        corpo, n = re.subn(r'<div class="article-meta">\s*<img[^>]*>\s*<div>.*?</div>\s*</div>', '', corpo, count=1, flags=re.S)
+        if n != 1:
+            stop('rete: non trovo il riquadro dell autore da togliere')
     if uscita == 'rete.html':
         # il ritratto di PA e' un manifesto col marchio: in testa va il solo viso, nel testo si toglie
         tag = re.findall(r'<img[^>]*angelo-nicotra-rete-ape\.webp[^>]*>', corpo)
-        if len(tag) != 2:
-            stop(f'rete: aspettavo 2 ritratti di Nicotra, ne trovo {len(tag)}')
-        corpo = corpo.replace(tag[0], tag[0].replace('images/angelo-nicotra-rete-ape.webp', VOLTO), 1)
-        corpo = corpo.replace(tag[1], '', 1)
+        if len(tag) != 1:     # quello in testa e' gia' andato via col riquadro dell'autore
+            stop(f'rete: aspettavo 1 ritratto di Nicotra nel testo, ne trovo {len(tag)}')
+        corpo = corpo.replace(tag[0], '', 1)
     corpo = neutro(riscrivi_link(corpo, uscita, copiati))
     if uscita == 'index.html':
         # ancora per la voce «Documenti»: il primo riquadro di scarico
@@ -252,6 +263,11 @@ def pagina(uscita, sorgente, titolo, anteprima, copiati):
     if not m:
         stop(f'{sorgente}: manca la description')
     desc = DESCRIZIONI.get(uscita, m.group(1))
+    scrivi_pagina(uscita, titolo, desc, anteprima, corpo, stili, f'da {sorgente}')
+
+
+def scrivi_pagina(uscita, titolo, desc, anteprima, corpo, stili, da):
+    mia = SITO + ('' if uscita == 'index.html' else uscita)
     if not os.path.exists(QUI + anteprima):
         stop(f'manca {anteprima}: lancia prima  python3 _tools/immagini.py')
     ld = ('{"@context":"https://schema.org","@type":"WebPage","name":%s,"url":"%s",'
@@ -298,7 +314,30 @@ def pagina(uscita, sorgente, titolo, anteprima, copiati):
 </html>
 '''
     open(QUI + uscita, 'w', encoding='utf-8').write(doc)
-    print(f'  {uscita:12} da {sorgente:14} {len(doc) // 1024} KB')
+    print(f'  {uscita:12} {da:18} {len(doc) // 1024} KB')
+
+
+# Pagine che esistono SOLO sul sito APE (02/10/2026): il contenuto sta in _contenuti/<nome>.html.
+# (uscita: titolo, descrizione, anteprima)
+PAGINE_PROPRIE = {
+    'patto.html': ('Patto fondativo della Rete APE | Assemblea Popolare Ecumenica',
+                   'Il Patto fondativo della Rete APE: sei principi, peso paritario, un Albo pubblico. Chi lo firma non entra in un progetto altrui: ne diventa co-fondatore.',
+                   'images/rete-ape-anteprima.jpg'),
+    'albo.html': ('Albo dei co-fondatori della Rete APE',
+                  'L&#x27;Albo dei co-fondatori della Rete APE: chi ha firmato il Patto fondativo, in ordine alfabetico, senza primi e senza ultimi.',
+                  'images/rete-ape-anteprima.jpg'),
+}
+
+
+def pagina_propria(uscita, titolo, desc, anteprima):
+    corpo = open(QUI + '_contenuti/' + uscita, encoding='utf-8').read()
+    if '__ANON__' in corpo:
+        # la chiave anon PUBBLICA di Supabase, la stessa gia' in chiaro in mappa.html di PA
+        k = re.search(r'eyJ[A-Za-z0-9_-]+\.[A-Za-z0-9_-]+\.[A-Za-z0-9_-]+', open(PA + 'mappa.html', encoding='utf-8').read())
+        if not k:
+            stop('non trovo la chiave anon in mappa.html')
+        corpo = corpo.replace('__ANON__', k.group(0))
+    scrivi_pagina(uscita, titolo, desc, anteprima, corpo, '', 'da _contenuti')
 
 
 def json_s(s):
@@ -317,9 +356,11 @@ def main():
         open(QUI + a, 'w', encoding='utf-8').write(neutro(open(PA + da, encoding='utf-8').read()))
     for uscita, (sorgente, titolo, anteprima) in PAGINE.items():
         pagina(uscita, sorgente, titolo, anteprima, copiati)
+    for uscita, (titolo, desc, anteprima) in PAGINE_PROPRIE.items():
+        pagina_propria(uscita, titolo, desc, anteprima)
     oggi = datetime.date.today().isoformat()
     voci = ''.join(f'<url><loc>{SITO}{"" if p == "index.html" else p}</loc><lastmod>{oggi}</lastmod></url>\n'
-                   for p in PAGINE)
+                   for p in list(PAGINE) + list(PAGINE_PROPRIE))
     open(QUI + 'sitemap.xml', 'w').write('<?xml version="1.0" encoding="UTF-8"?>\n'
         '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + voci + '</urlset>\n')
     open(QUI + 'robots.txt', 'w').write(f'User-agent: *\nAllow: /\nSitemap: {SITO}sitemap.xml\n')
