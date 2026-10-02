@@ -27,11 +27,11 @@ SITO_PA = 'https://partecipazione-attiva.it/'
 
 PAGINE = {
     # uscita: (sorgente in PA, titolo, immagine di anteprima — fatta da _tools/immagini.py)
-    'index.html': ('ape.html', 'APE — Assemblea Popolare Ecumenica', 'images/ape-anteprima.jpg'),
+    'index.html': ('ape.html', 'Tra un voto e l’altro, chi ti ascolta? | APE — Assemblea Popolare Ecumenica', 'images/ape-anteprima-domanda.jpg'),
     'rete.html': ('rete-ape.html', 'Rete APE — aderisci | Assemblea Popolare Ecumenica',
                   'images/rete-ape-anteprima.jpg'),
 }
-DESCRIZIONI = {'index.html': 'APE, Assemblea Popolare Ecumenica: un&#x27;assemblea permanente di cittadini sorteggiati che obbliga le istituzioni a rispondere. Un progetto aperto a tutti.'}
+DESCRIZIONI = {'index.html': 'Oggi una richiesta dei cittadini si può ignorare a costo zero. L&#x27;APE, Assemblea Popolare Ecumenica, propone cittadini sorteggiati e istituzioni obbligate a rispondere. Capirla in 6 minuti.'}
 VOLTO = 'images/angelo-nicotra-volto.webp'
 
 # Fernando, 01/10/2026: «anche sul sito APE va scritto almeno il perche' della sua nascita».
@@ -77,6 +77,125 @@ VIDEO_PROGETTO = (
     'style="width:100%;height:auto;border-radius:10px;margin:1.5em 0;background:#0b1a2e" '
     'aria-label="Il Progetto APE, spiegato per intero"><source src="video/ape-progetto-spiegato.mp4" type="video/mp4">'
     'Il tuo browser non riproduce il video.</video>\n\n')
+
+# 02/10/2026 Fernando: «come possiamo migliorare il sito APE per suscitare almeno curiosità a leggere e a capire cos'è».
+# La prima schermata (sul telefono: titolo, data e copertina a tutto schermo) non dava motivo di scorrere.
+# Ora: una domanda, tre fatti, due porte (6 minuti di video, 2 minuti di lettura); poi l'esempio, poi le domande.
+# Fatti dalla Sintesi del 26/09: 20 milioni di astenuti (p. 1), «ignorata a costo zero» e «conformarsi o motivare» (p. 3).
+INGRESSO = (
+    '<style>'
+    '.ap-in{background:linear-gradient(160deg,#0b1f33 0%,#17507a 100%);color:#fff;padding:26px 16px 30px;text-align:center}'
+    '.ap-in .k{font-family:Montserrat,system-ui,sans-serif;font-size:.78em;font-weight:700;letter-spacing:1.6px;text-transform:uppercase;color:#ffd75e;margin:0 0 14px}'
+    '.ap-in h1{font-family:Merriweather,Georgia,serif;font-size:2.05em;line-height:1.25;margin:0 auto 18px;max-width:720px;color:#fff}'
+    '.ap-tre{list-style:none;padding:0;margin:0 auto 20px;max-width:720px;display:grid;gap:8px;text-align:left}'
+    '.ap-tre li{background:rgba(255,255,255,.09);border-left:4px solid #ffd75e;border-radius:10px;padding:9px 14px;'
+    'font-family:Montserrat,system-ui,sans-serif;font-size:1.02em;line-height:1.45;color:#eef4f9}'
+    '.ap-tre b{color:#fff;font-size:1.12em}'
+    '.ap-porte{display:flex;flex-wrap:wrap;gap:12px;justify-content:center}'
+    '.ap-porte a{font-family:Montserrat,system-ui,sans-serif;font-weight:800;text-decoration:none;border-radius:50px;padding:15px 24px;min-height:48px;'
+    'display:inline-flex;align-items:center;gap:8px;font-size:1.02em}'
+    '.ap-porte .p1{background:#ffd75e;color:#0b1f33}.ap-porte .p2{border:2px solid #fff;color:#fff}'
+    '.ap-faq details{border:2px solid #9cc3e0;border-radius:12px;margin:10px 0;background:#fff}'
+    '.ap-faq summary{cursor:pointer;font-family:Montserrat,system-ui,sans-serif;font-weight:800;color:#134a77;padding:14px 18px;min-height:48px;list-style:none}'
+    '.ap-faq summary::-webkit-details-marker{display:none}'
+    '.ap-faq summary::before{content:"+";display:inline-block;width:1.2em;color:#2981c9}'
+    '.ap-faq details[open] summary::before{content:"−"}'
+    '.ap-faq details p{margin:0;padding:0 18px 16px}'
+    '.ap-libro{display:block;max-width:220px;margin:6px auto 8px;border-radius:10px;box-shadow:0 8px 22px rgba(0,0,0,.15)}'
+    '.ap-oggi{font-family:Montserrat,system-ui,sans-serif;font-size:.92em;color:#d6e6f3;margin:16px auto 0;max-width:640px;line-height:1.5}'
+    '.ap-oggi b{color:#ffd75e}'
+    '.ap-passi{list-style:none;counter-reset:p;padding:0;margin:18px 0 6px}'
+    '.ap-passi li{counter-increment:p;position:relative;padding:12px 14px 12px 58px;margin:0 0 22px;background:#fff;border:2px solid #9cc3e0;border-radius:12px;line-height:1.5}'
+    '.ap-passi li::before{content:counter(p);position:absolute;left:12px;top:12px;width:32px;height:32px;border-radius:50%;background:#17507a;color:#fff;'
+    'font-family:Montserrat,system-ui,sans-serif;font-weight:800;display:flex;align-items:center;justify-content:center}'
+    '.ap-passi li:not(:last-child)::after{content:"↓";position:absolute;left:50%;bottom:-22px;transform:translateX(-50%);color:#2981c9;font-weight:900}'
+    '.ap-passi b{font-family:Montserrat,system-ui,sans-serif;color:#0e2a40}'
+    '.ap-noe{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:22px 0}'
+    '.ap-noe div{border-radius:12px;padding:14px 16px;font-family:Montserrat,system-ui,sans-serif;font-size:.95em;line-height:1.7}'
+    '.ap-noe .no{background:#f6eded;border:2px solid #d9b3b3}.ap-noe .si{background:#edf6ef;border:2px solid #a9d1b3}'
+    '.ap-noe h3{margin:0 0 6px;font-size:1em}'
+    '.ap-livelli{display:grid;gap:10px;margin:22px 0}'
+    '.ap-livelli a{display:block;border:2px solid #2981c9;border-radius:12px;padding:12px 16px;text-decoration:none;color:#0e2a40;'
+    'font-family:Montserrat,system-ui,sans-serif;line-height:1.45}'
+    '.ap-livelli a b{display:block;color:#17507a}'
+    '@media(max-width:600px){.ap-in h1{font-size:1.6em}.ap-porte a{width:100%;justify-content:center}.ap-noe{grid-template-columns:1fr}}'
+    '</style>'
+    '<section class="ap-in" aria-labelledby="ap-domanda">'
+    '<p class="k">APE &middot; Assemblea Popolare Ecumenica &middot; proposta di riforma costituzionale</p>'
+    '<h1 id="ap-domanda">Tra un voto e l&rsquo;altro, chi ti ascolta?</h1>'
+    '<ul class="ap-tre">'
+    '<li><b>20 milioni</b> di italiani non hanno votato alle ultime politiche.</li>'
+    '<li>Oggi una richiesta dei cittadini si pu&ograve; <b>ignorare a costo zero</b>.</li>'
+    '<li>Con l&rsquo;APE chi governa <b>deve rispondere</b>: s&igrave;, oppure un no motivato in pubblico.</li>'
+    '</ul>'
+    '<div class="ap-porte"><a class="p1" href="#video">&#9654; Capire in 6 minuti</a>'
+    '<a class="p2" href="#in-breve">Leggere in 2 minuti</a></div>'
+    '<p class="ap-oggi"><b>Oggi l&rsquo;APE &egrave; una proposta</b>: per esistere serve una riforma della Costituzione. '
+    'La <b>Rete APE</b> &egrave; chi, gi&agrave; adesso, sceglie di sostenerla.</p>'
+    '</section>\n')
+
+# L'esempio e' quello di «E dopo il voto?» (copione del 26/09), dichiarato inventato come nel video.
+LIBRO = ('<p style="text-align:center;margin:30px 0 6px"><img class="ap-libro" src="images/ape-copertina.webp" '
+         'alt="Copertina: APE, Assemblea Popolare Ecumenica, un canale permanente di voce dei cittadini" width="1368" height="1935" loading="lazy"></p>'
+         '<p style="text-align:center;font-family:Montserrat,system-ui,sans-serif;font-size:.9em;color:#4a5a66;margin:0 0 26px">'
+         'Il libro, di prossima pubblicazione. La sintesi si pu&ograve; gi&agrave; scaricare <a href="#documenti">qui sotto</a>.</p>\n')
+
+IN_BREVE = (
+    '<div class="pa-box" id="in-breve"><h3>L&rsquo;APE in cinque righe</h3>'
+    '<p>Assemblee di <strong>cittadini comuni, estratti a sorte</strong>, in ogni Comune, in ogni Regione e a livello nazionale. '
+    'Non fanno leggi e non governano: mandano <strong>direttive</strong> a Comuni, Regioni e Governo. '
+    'Chi le riceve deve attuarle, oppure respingerle con un voto a maggioranza assoluta e una motivazione pubblica. '
+    'Si paga abolendo il Senato. E se nessuno risponde, decidono i cittadini con un referendum.</p>'
+    '<p style="margin:16px 0 0"><strong>Un esempio, inventato per capirci.</strong> Un gruppo di genitori chiede un attraversamento '
+    'pedonale sicuro davanti alla scuola. Porta la proposta allo sportello del Comune, che la registra in modo pubblico. '
+    'L&rsquo;assemblea del Comune la esamina e, se la approva, la trasforma in una direttiva. A quel punto il Comune ha due strade: '
+    'la realizza, oppure la respinge votando a maggioranza assoluta e spiegando pubblicamente perch&eacute;. '
+    '<strong>Far finta di niente non &egrave; pi&ugrave; possibile.</strong></p></div>\n')
+
+# I passaggi sono quelli del «ciclo della direttiva» gia' sulla pagina (dal documento integrale v7.0), in breve.
+COME_FUNZIONA = (
+    '<h2 id="come-funziona">Come funziona, passo per passo</h2>'
+    '<ol class="ap-passi">'
+    '<li><b>Il cittadino</b> porta una proposta allo sportello del suo Comune, che la registra con ricevuta.</li>'
+    '<li><b>L&rsquo;assemblea sorteggiata</b> la esamina in sedute pubbliche, ascoltando esperti e cittadini.</li>'
+    '<li><b>Se la approva, diventa una direttiva</b>, pubblicata entro 24 ore.</li>'
+    '<li><b>L&rsquo;istituzione deve rispondere</b>: la attua, oppure la respinge con un voto a maggioranza assoluta e una motivazione pubblica.</li>'
+    '<li><b>Un organo indipendente verifica</b> che quello che &egrave; stato deciso venga fatto davvero.</li>'
+    '<li><b>Se tutto si ferma</b> per 120 giorni, si pu&ograve; chiedere un referendum: decidono i cittadini.</li>'
+    '</ol>'
+    '<div class="ap-noe">'
+    '<div class="no"><h3>L&rsquo;APE non &egrave;</h3>&#10007; un partito<br>&#10007; un governo<br>&#10007; un secondo Parlamento<br>&#10007; un organo che fa leggi</div>'
+    '<div class="si"><h3>L&rsquo;APE &egrave;</h3>&#10003; cittadini sorteggiati<br>&#10003; partecipazione permanente<br>&#10003; obbligo di risposta<br>&#10003; controllo di quello che si fa</div>'
+    '</div>\n')
+
+# Tre livelli di lettura: chi ha pochi minuti, chi vuole capire, chi vuole verificare.
+LIVELLI = (
+    '<h2 id="approfondisci">Vuoi capire tutto?</h2>'
+    '<div class="ap-livelli">'
+    '<a href="#video"><b>&#9654; 6 minuti &middot; il video</b>Che cos&rsquo;&egrave;, com&rsquo;&egrave; fatta, come funziona.</a>'
+    '<a href="documenti/APE_Sintesi_Pubblica.pdf" target="_blank" rel="noopener"><b>&#128196; 7 pagine &middot; la sintesi del volume</b>Il problema, le radici, le tre leggi, i costi, le domande e i punti deboli.</a>'
+    '<a href="documenti/APE_Assemblea_Popolare_Ecumenica_v7.0.pdf" target="_blank" rel="noopener"><b>&#128209; 20 pagine &middot; il documento integrale</b>Le formule costituzionali, i costi voce per voce, le obiezioni e le risposte.</a>'
+    '</div>\n')
+
+# Risposte dalla Sintesi del 26/09 (pp. 2-6), con le parole di tutti i giorni.
+FAQ = (
+    '<div class="ap-faq" id="domande"><h2>Ma allora&hellip;?</h2>'
+    '<details><summary>&Egrave; un partito?</summary><p>No. Non presenta candidati e non si vota. Anzi: chi &egrave; iscritto a un partito, '
+    'o ha avuto cariche politiche nei due anni precedenti, non pu&ograve; essere sorteggiato.</p></details>'
+    '<details><summary>Toglie potere al Parlamento?</summary><p>Non lo sostituisce e non fa leggi. Le direttive non obbligano a dire s&igrave;: '
+    'obbligano a rispondere. Non vincolano il voto del singolo parlamentare, ma l&rsquo;indirizzo del Governo.</p></details>'
+    '<details><summary>Chi ci entra?</summary><p>Cittadini estratti a sorte dalle liste elettorali, con un equilibrio di et&agrave;, '
+    'genere e territorio: oltre 46.000 persone in pi&ugrave; di 6.500 assemblee. Nessuno &egrave; eletto.</p></details>'
+    '<details><summary>Quanto costa?</summary><p>A regime 252 milioni l&rsquo;anno. Il Senato, che la riforma abolisce, ne costa oggi 541: '
+    'il risparmio stimato con prudenza &egrave; di 250-260 milioni l&rsquo;anno.</p></details>'
+    '<details><summary>E se il Governo non risponde?</summary><p>Se una direttiva resta ferma per 120 giorni, senza essere accolta e senza un rifiuto motivato, '
+    'si pu&ograve; chiedere un referendum propositivo: lo chiedono due terzi dell&rsquo;assemblea nazionale oppure 500.000 cittadini. '
+    'Vale senza quorum, e se passa il Governo ha 180 giorni per attuarla.</p></details>'
+    '<details><summary>Chi viene sorteggiato perde il lavoro?</summary><p>&Egrave; uno dei punti deboli che la proposta stessa dichiara: '
+    'chi viene sorteggiato non deve rimetterci stipendio o posto, e dovr&agrave; garantirlo la legge che attua la riforma.</p></details>'
+    '<details><summary>&Egrave; gi&agrave; legge?</summary><p>No, &egrave; una proposta. Serve una riforma della Costituzione approvata dal Parlamento. '
+    'La strada scelta &egrave; la legge di iniziativa popolare: servono 50.000 firme, l&rsquo;obiettivo &egrave; raccoglierne dieci volte tante.</p></details>'
+    '</div>\n')
 
 # Fernando, 30/09/2026: «non è che PA non si può nominare» — PA si nomina (chi ha elaborato, chi
 # propone, chi aderisce); quello che NON deve passare e' la proprieta' ESCLUSIVA. Dove la pagina di PA
@@ -131,6 +250,7 @@ STILE = """
 .ape-voci a:hover,.ape-voci a:focus{background:#fff1dc}
 .ape-voci a[aria-current=page]{background:#8a4e00;color:#fff}
 .ape-voci a.ape-fuori{border:2px solid #e8900a}
+.ape-voci a.ape-aderisci{background:rgb(255,215,94);color:rgb(11,31,51)}
 /* i pulsanti di PA hanno testo scuro su arancio: sul blu serve il bianco (pa11y: 4,39 -> a norma) */
 main a.btn,main a.btn:visited,main a[href^="mailto:"][style*="background"]{background:#17507a!important;color:#fff!important}
 .ape-salta{position:absolute;left:-9999px}
@@ -140,7 +260,7 @@ main a.btn,main a.btn:visited,main a[href^="mailto:"][style*="background"]{backg
 .ape-piede a{color:#ffd580;font-weight:700}
 .ape-piede p{max-width:760px;margin:0 auto 10px}
 .ape-piede .ape-piccolo{font-size:.9em;color:#f3e6d3}
-@media(max-width:700px){.ape-testa{position:static}.ape-voci a{padding:8px 11px;font-size:.95em}}
+@media(max-width:700px){.ape-testa{position:static}.ape-voci{flex-wrap:nowrap;overflow-x:auto;width:100%;scrollbar-width:none;-webkit-overflow-scrolling:touch}.ape-voci::-webkit-scrollbar{display:none}.ape-voci a{padding:8px 11px;font-size:.95em;white-space:nowrap;flex:0 0 auto}.ape-voci a.ape-aderisci{order:-1}}
 """
 
 
@@ -210,11 +330,11 @@ def riscrivi_link(pezzo, uscita, copiati):
 
 
 def testa(uscita, attuale):
-    voci = [('./', 'Il progetto', 'index.html'), ('patto.html', 'Il Patto', 'patto.html'),
-            ('rete.html', 'Rete APE', 'rete.html'), ('albo.html', 'Albo', 'albo.html'),
-            ('./#documenti', 'Documenti', None)]
+    voci = [('./', 'Il progetto', 'index.html'), ('./#come-funziona', 'Come funziona', None),
+            ('patto.html', 'Il Patto', 'patto.html'), ('rete.html', 'Rete APE', 'rete.html'),
+            ('albo.html', 'Albo', 'albo.html'), ('./#documenti', 'Documenti', None)]
     h = ''.join(f'<a href="{u}"{" aria-current=page" if attuale == f else ""}>{t}</a>'
-                for u, t, f in voci)
+                for u, t, f in voci) + '<a class="ape-aderisci" href="rete.html#aderisci">Aderisci</a>'
     return ('<a class="ape-salta" href="#contenuto">Salta al contenuto</a>'
             '<header class="ape-testa"><div class="ape-testa-in">'
             '<a class="ape-marchio" href="./" aria-label="APE, Assemblea Popolare Ecumenica: pagina iniziale">'
@@ -256,7 +376,10 @@ def pagina(uscita, sorgente, titolo, anteprima, copiati):
         aggancio = '<p class="pa-lead">Con APE (Assemblea Popolare Ecumenica), Partecipazione Attiva lancia'
         if corpo.count(aggancio) != 1:
             stop('index: non trovo dove mettere «Perche questo sito»')
-        corpo = corpo.replace(aggancio, PERCHE_SITO + VIDEO_DOPO_IL_VOTO + aggancio, 1)
+        corpo = corpo.replace(aggancio, IN_BREVE + COME_FUNZIONA + VIDEO_DOPO_IL_VOTO + FAQ + LIVELLI + LIBRO + PERCHE_SITO + aggancio, 1)
+        corpo, n = re.subn(r'<img class="pa-hero-img"[^>]*>\s*', '', corpo, count=1)
+        if n != 1:
+            stop('index: non trovo la copertina in testa')
     for vecchio, nuovo, quante in RISCRITTURE.get(uscita, []):
         c = corpo.count(vecchio)
         if (quante is not None and c != quante):
@@ -264,10 +387,13 @@ def pagina(uscita, sorgente, titolo, anteprima, copiati):
         corpo = corpo.replace(vecchio, nuovo)
     # 02/10/2026 (Patto fondativo): in apertura niente foto e qualifica dell'ideatore, «il progetto non ha padrone».
     # La riga sull'origine sta nel pie' di pagina.
-    if uscita == 'index.html':
+    if uscita == 'index.html':   # dopo le riscritture (che toccano anche il sottotitolo del titolo di PA)
         corpo, n = re.subn(r'<div class="author-hero">.*?<div class="author-hero-info">.*?</div>\s*</div>\s*</div>', '', corpo, count=1, flags=re.S)
         if n != 1:
             stop('index: non trovo il riquadro dell autore da togliere')
+        corpo, n = re.subn(r'<div class="article-hero">.*?<div class="article-meta">.*?</div>\s*</div>', '<!--INGRESSO-->', corpo, count=1, flags=re.S)
+        if n != 1:
+            stop('index: non trovo il titolo in testa da sostituire')
     if uscita == 'rete.html':
         corpo, n = re.subn(r'<div class="article-meta">\s*<img[^>]*>\s*<div>.*?</div>\s*</div>', '', corpo, count=1, flags=re.S)
         if n != 1:
@@ -295,7 +421,7 @@ def pagina(uscita, sorgente, titolo, anteprima, copiati):
         corpo, n = re.subn(t, '', corpo, count=1, flags=re.S)
         if n != 1:
             stop(f'{uscita}: non trovo il blocco da togliere «{t[:40]}»')
-    corpo = neutro(riscrivi_link(corpo, uscita, copiati))
+    corpo = neutro(riscrivi_link(corpo, uscita, copiati)).replace('<!--INGRESSO-->', INGRESSO)   # il giallo e' dell'APE: non si ruota
     # 02/10/2026 (Fernando, sulla copertina): la riga «Angelo Nicotra · Partecipazione Attiva» non va sul sito APE.
     # images/ape-copertina-neutra.webp e' la stessa copertina con quella riga coperta dallo sfondo (fatta una volta, a mano).
     corpo = corpo.replace('images/ape-copertina.webp', 'images/ape-copertina-neutra.webp')
