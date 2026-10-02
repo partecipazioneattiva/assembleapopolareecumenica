@@ -187,7 +187,7 @@ FAQ = (
     '<details><summary>Chi ci entra?</summary><p>Cittadini estratti a sorte dalle liste elettorali, con un equilibrio di et&agrave;, '
     'genere e territorio: oltre 46.000 persone in pi&ugrave; di 6.500 assemblee. Nessuno &egrave; eletto.</p></details>'
     '<details><summary>Quanto costa?</summary><p>A regime 252 milioni l&rsquo;anno. Il Senato, che la riforma abolisce, ne costa oggi 541: '
-    'il risparmio stimato con prudenza &egrave; di 250-260 milioni l&rsquo;anno.</p></details>'
+    'il risparmio stimato con prudenza &egrave; di 250-260 milioni l&rsquo;anno. Sulla carta sarebbe 289, ma alcune spese del Senato, come immobili e pensioni gi&agrave; maturate, non spariscono.</p></details>'
     '<details><summary>E se il Governo non risponde?</summary><p>Se una direttiva resta ferma per 120 giorni, senza essere accolta e senza un rifiuto motivato, '
     'si pu&ograve; chiedere un referendum propositivo: lo chiedono due terzi dell&rsquo;assemblea nazionale oppure 500.000 cittadini. '
     'Vale senza quorum, e se passa il Governo ha 180 giorni per attuarla.</p></details>'
@@ -219,6 +219,15 @@ RISCRITTURE = {
          'Le cause dell&rsquo;astensione sono molte e non si riducono a una sola. La proposta parte da una lettura precisa: non apatia, ma il rifiuto di un sistema percepito come distante e non più influenzabile.', 1),
         ('Il sorteggio, al contrario, produce uno specchio statistico della popolazione',
          'Il sorteggio, al contrario, con la stratificazione per età, genere e territorio prevista dal progetto, mira a uno specchio statistico della popolazione', 1),
+        # 02/10/2026, revisione delle parole: niente conclusioni piu' grandi dei fatti
+        ('la scelta più identitaria del progetto', 'una delle scelte fondamentali del progetto', 1),
+        ('produce inevitabilmente ciò che si vuole tenere fuori', 'comporta ciò che il progetto vuole tenere fuori', 1),
+        ('è già nel nostro ordinamento e funziona.', 'è già previsto nel nostro ordinamento.', 1),
+        ('prova che la permanenza e il dovere di risposta funzionano.', 'un&rsquo;esperienza concreta di consiglio permanente e di obbligo di risposta.', 1),
+        ('Va detto con chiarezza cosa la Convention Citoyenne francese dimostra e cosa no: non dimostra che il sorteggio non funziona — dimostra che il sorteggio senza obbligo di risposta e senza sbocco è teatro.',
+         'Dalla Convention Citoyenne francese il progetto trae una lezione precisa: senza un obbligo di risposta e senza uno sbocco, il lavoro dei cittadini sorteggiati rischia di restare senza seguito.', 1),
+        ('(risparmio teorico: 289 milioni)',
+         '(sulla carta 289 milioni, cioè 541 meno 252: la stima prudente tiene conto delle spese che non spariscono con il Senato, come immobili, senatori a vita in carica e pensioni già maturate)', 1),
         ('alle tante piccole associazioni — come lo è Partecipazione Attiva — che da sole pesano poco e insieme possono incidere. Per questo Partecipazione Attiva ha aperto una rete che invita',
          'alle tante piccole associazioni che da sole pesano poco e insieme possono incidere. Per questo c’è una rete che invita', 1),
     ],
@@ -229,6 +238,14 @@ RISCRITTURE = {
         (' elaborato da <strong>Angelo Nicotra</strong>, Presidente di Partecipazione Attiva.', '.', 1),
         (', elaborata da Angelo Nicotra, Presidente di Partecipazione Attiva.', '.', 1),
         ('<h2>I soggetti aderenti</h2>', '<h2>I co-fondatori</h2>', 1),
+        # 02/10/2026, tono: la Rete parla come la proposta, non come un movimento contro qualcuno
+        ('<p class="article-subtitle" style="font-size:1.35em;font-weight:700;font-style:italic;margin-bottom:10px">&#8220;Divide et impera&#8221;</p>', '', 1),
+        ('Il potere si mantiene frammentando i cittadini. La Rete APE nasce per rovesciare questa logica &#8212; unire soggetti diversi su principi comuni, con peso paritario per tutti.',
+         'Cittadini, associazioni, comitati e movimenti che sostengono insieme la proposta APE, con peso paritario per tutti.', 1),
+        ('I risultati del &#8220;divide et impera&#8221; sono misurabili: alle', 'Il punto di partenza &#232; un dato: alle', 1),
+        (' Una massa enorme che ha rinunciato a decidere il proprio futuro, consegnando deleghe in bianco a pochi politici, a prescindere dalla posizione ideologica.', '', 1),
+        ('Non &#232; apatia. &#200; la conseguenza diretta di una frammentazione deliberata: associazioni, movimenti e comitati che non si parlano, che si ignorano o si combattono, incapaci di costruire una proposta comune. La Rete APE nasce per rompere questo schema.',
+         'Le cause dell&#8217;astensione sono molte. Una, che la Rete prova ad affrontare, &#232; la dispersione: associazioni, movimenti e comitati che lavorano ciascuno per conto proprio, senza una proposta comune. La Rete APE offre un terreno condiviso. Non &#232; un partito n&#233; una coalizione elettorale: chi aderisce, partiti compresi, lo fa alla pari e senza simboli, e non ottiene alcun ruolo nelle future Assemblee, dove si entra solo per sorteggio.', 1),
     ],
 }
 # pagine APE: come si chiamano qui
@@ -352,9 +369,11 @@ PIEDE = (f'<footer class="ape-piede"><p><strong>APE &mdash; Assemblea Popolare E
          f'Un progetto aperto a tutti: cittadini, associazioni, movimenti, comitati, con peso paritario.</p>'
          f'<p>La proposta &egrave; pubblica e appartiene a chi la sottoscrive: chi firma il <a href="patto.html">Patto fondativo</a> '
          f'ne diventa co-fondatore, alla pari di tutti.</p>'
-         f'<p class="ape-piccolo"><a href="mailto:info@assembleapopolareecumenica.it">info@assembleapopolareecumenica.it</a>'
-         f' &middot; <a href="{SITO_PA}privacy.html">Privacy</a> &middot; Questo sito non usa cookie di profilazione '
-         f'n&eacute; tracciatori.</p><p class="ape-piccolo">&copy; {datetime.date.today().year}</p></footer>')
+         f'<p class="ape-piccolo"><a href="progetto.html">Il progetto per intero</a> &middot; <a href="patto.html">Il Patto</a> &middot; '
+         f'<a href="./#documenti">Documenti</a> &middot; <a href="rete.html#aderisci">Aderisci</a></p>'
+         f'<p class="ape-piccolo">Contatti: <a href="mailto:info@assembleapopolareecumenica.it">info@assembleapopolareecumenica.it</a>'
+         f' &middot; <a href="{SITO_PA}privacy.html">Privacy e informativa sull&rsquo;adesione</a> &middot; Questo sito non usa cookie di profilazione '
+         f'n&eacute; tracciatori.</p><p class="ape-piccolo">Aggiornato il {datetime.date.today().strftime("%d/%m/%Y")} &middot; &copy; {datetime.date.today().year}</p></footer>')
 
 
 def pagina(uscita, sorgente, titolo, anteprima, copiati):
