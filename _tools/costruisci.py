@@ -103,6 +103,8 @@ INGRESSO = (
     '.ap-faq details p{margin:0;padding:0 18px 16px}'
     '.ap-libro{display:block;max-width:220px;margin:6px auto 8px;border-radius:10px;box-shadow:0 8px 22px rgba(0,0,0,.15)}'
     '.ap-oggi{font-family:Montserrat,system-ui,sans-serif;font-size:.92em;color:#d6e6f3;margin:16px auto 0;max-width:640px;line-height:1.5}'
+    '.ap-fig{max-width:720px;margin:0 auto 22px}.ap-fig img{display:block;width:100%;height:auto;border-radius:12px;box-shadow:0 10px 30px rgba(0,0,0,.35)}'
+    '.ap-fig figcaption{font-family:Montserrat,system-ui,sans-serif;font-size:.95em;color:#eef4f9;margin-top:10px}.ap-fig figcaption b{display:block;font-weight:600}.ap-fig figcaption span{display:block;font-size:.75em;opacity:.75;margin-top:4px}'
     '.ap-oggi b{color:#ffd75e}.ap-oggi span,.ap-in .k span{display:block}'
     '.ap-passi{list-style:none;counter-reset:p;padding:0;margin:18px 0 6px}'
     '.ap-passi li{counter-increment:p;position:relative;padding:12px 14px 12px 58px;margin:0 0 22px;background:#fff;border:2px solid #9cc3e0;border-radius:12px;line-height:1.5}'
@@ -128,6 +130,12 @@ INGRESSO = (
     '<li>Oggi una richiesta dei cittadini si pu&ograve; <b>ignorare a&nbsp;costo&nbsp;zero</b>.</li>'
     '<li>Con l&rsquo;APE chi governa <b>deve&nbsp;rispondere</b>: s&igrave;, oppure un no motivato in&nbsp;pubblico.</li>'
     '</ul>'
+    # 02/10/2026 Fernando: l'immagine «subito dopo le tre domande» — il cittadino parla, il consiglio ascolta.
+    # Illustrazione generata con Meta AI (dichiarata: AI Act art. 50); file in LAVORI/ape_immagine_ascolto.
+    '<figure class="ap-fig"><img src="images/ape-il-consiglio-ascolta.webp" '
+    'srcset="images/ape-il-consiglio-ascolta-800.webp 800w, images/ape-il-consiglio-ascolta.webp 1600w" sizes="(max-width:760px) 100vw, 720px" '
+    'width="1600" height="900" alt="Illustrazione: in una sala consiliare un cittadino parla al microfono; sindaca, presidente e consiglieri lo ascoltano, il pubblico &egrave; seduto di spalle">'
+    '<figcaption><b>Con l&rsquo;APE, la voce dei cittadini arriva dove si&nbsp;decide.</b> <b>E chi governa deve&nbsp;rispondere.</b> <span>Illustrazione realizzata con l&rsquo;intelligenza artificiale.</span></figcaption></figure>'
     '<div class="ap-porte"><a class="p1" href="#video">&#9654; Capire in 6 minuti</a>'
     '<a class="p2" href="#in-breve">Leggere in 2 minuti</a></div>'
     # Fernando 02/10/2026: «andare a capo sempre a frasi compiute» — una frase per riga
