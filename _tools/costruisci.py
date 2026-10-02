@@ -214,6 +214,11 @@ RISCRITTURE = {
         ('alt="Angelo Nicotra Presidente Partecipazione Attiva" width="500" height="750"', 'alt="Angelo Nicotra" width="300" height="300"', 1),
         ('images/organigramma/angelo-nicotra-finale.webp', VOLTO, 1),
         ('<h2>La Rete APE: una chiamata unitaria, non di Partecipazione Attiva</h2>', '<h2>La Rete APE: una chiamata unitaria</h2>', 1),
+        # 02/10/2026: «gli studi mostrano» senza fonte, e «produce» uno specchio statistico, erano affermazioni assolute
+        ('Non è apatia: gli studi mostrano che è rifiuto consapevole di un sistema percepito come distante e non più influenzabile.',
+         'Le cause dell&rsquo;astensione sono molte e non si riducono a una sola. La proposta parte da una lettura precisa: non apatia, ma il rifiuto di un sistema percepito come distante e non più influenzabile.', 1),
+        ('Il sorteggio, al contrario, produce uno specchio statistico della popolazione',
+         'Il sorteggio, al contrario, con la stratificazione per età, genere e territorio prevista dal progetto, mira a uno specchio statistico della popolazione', 1),
         ('alle tante piccole associazioni — come lo è Partecipazione Attiva — che da sole pesano poco e insieme possono incidere. Per questo Partecipazione Attiva ha aperto una rete che invita',
          'alle tante piccole associazioni che da sole pesano poco e insieme possono incidere. Per questo c’è una rete che invita', 1),
     ],
@@ -330,7 +335,7 @@ def riscrivi_link(pezzo, uscita, copiati):
 
 
 def testa(uscita, attuale):
-    voci = [('./', 'Il progetto', 'index.html'), ('./#come-funziona', 'Come funziona', None),
+    voci = [('./', 'Il progetto', 'index.html'), ('./#come-funziona', 'Come funziona', None), ('progetto.html', 'Nel dettaglio', 'progetto.html'),
             ('patto.html', 'Il Patto', 'patto.html'), ('rete.html', 'Rete APE', 'rete.html'),
             ('albo.html', 'Albo', 'albo.html'), ('./#documenti', 'Documenti', None)]
     h = ''.join(f'<a href="{u}"{" aria-current=page" if attuale == f else ""}>{t}</a>'
@@ -436,6 +441,35 @@ def pagina(uscita, sorgente, titolo, anteprima, copiati):
     if not m:
         stop(f'{sorgente}: manca la description')
     desc = DESCRIZIONI.get(uscita, m.group(1))
+    if uscita == 'index.html':
+        # 02/10/2026: la home era lunga quasi 3.000 parole. La parte tecnica (dal problema al confronto col mondo)
+        # va in progetto.html; in home resta un rimando con l'elenco dei capitoli.
+        i0 = corpo.find("<h2>Il problema che l'APE vuole risolvere</h2>"); i1 = corpo.find('<h2>La Rete APE: una chiamata unitaria</h2>')
+        k0 = corpo.find('<article class="article-wrap">'); k1 = corpo.find('</style>', k0)
+        if min(i0, i1, k0, k1) < 0 or not (k1 < i0 < i1):
+            stop('index: non trovo dove dividere la pagina')
+        parte = corpo[i0:i1]
+        capitoli = re.findall(r'<h2>(.*?)</h2>', parte)
+        ancora = lambda t: 'cap-' + re.sub(r'[^a-z0-9]+', '-', html.unescape(t).lower().replace("'", ' ')).strip('-')[:40]
+        for t in capitoli:
+            parte = parte.replace(f'<h2>{t}</h2>', f'<h2 id="{ancora(t)}">{t}</h2>', 1)
+        voci_cap = ''.join(f'<li><a href="progetto.html#{ancora(t)}">{t}</a></li>' for t in capitoli)
+        rimando = ('<div class="pa-box" id="dettaglio"><h3>Il progetto per intero</h3>'
+                   '<p style="margin:0 0 10px">Tutti i dettagli, capitolo per capitolo:</p>'
+                   f'<ul style="margin:0 0 14px;padding-left:1.2em;line-height:1.9">{voci_cap}</ul>'
+                   '<p style="margin:0"><a href="progetto.html"><strong>Leggi il progetto per intero &rarr;</strong></a></p></div>\n')
+        corpo = corpo[:i0] + rimando + corpo[i1:]
+        dettaglio = ('<div class="article-hero"><h1>Il progetto APE per intero</h1>'
+                     '<p class="sottotitolo">Il problema, il sorteggio, i tre livelli, il ciclo della direttiva, le tre leggi, i costi, le difese e il confronto con il mondo.</p></div>\n'
+                     '<article class="article-wrap">' + corpo[k0 + len('<article class="article-wrap">'):k1 + len('</style>')] + '\n'
+                     '<p><a href="./">&larr; Torna alla pagina iniziale</a> &middot; <a href="./#come-funziona">Come funziona, in breve</a></p>\n'
+                     + parte +
+                     '<div class="pa-box"><h3>E adesso?</h3><p style="margin:0">Se la proposta ti convince, puoi diventarne co-fondatore firmando il '
+                     '<a href="patto.html">Patto fondativo</a>: &egrave; gratuito e alla pari. <a href="rete.html#aderisci"><strong>Aderisci &rarr;</strong></a></p></div>\n'
+                     '</article>\n')
+        scrivi_pagina('progetto.html', 'Il progetto APE per intero | Assemblea Popolare Ecumenica',
+                      'Il progetto APE nel dettaglio: il problema dell&#x27;astensione, il sorteggio, i tre livelli, il ciclo della direttiva, le tre leggi costituzionali, i costi e le difese.',
+                      'images/ape-anteprima.jpg', dettaglio, stili, 'da ape.html (parte tecnica)')
     scrivi_pagina(uscita, titolo, desc, anteprima, corpo, stili, f'da {sorgente}')
 
 
@@ -533,7 +567,7 @@ def main():
         pagina_propria(uscita, titolo, desc, anteprima)
     oggi = datetime.date.today().isoformat()
     voci = ''.join(f'<url><loc>{SITO}{"" if p == "index.html" else p}</loc><lastmod>{oggi}</lastmod></url>\n'
-                   for p in list(PAGINE) + list(PAGINE_PROPRIE))
+                   for p in list(PAGINE) + ['progetto.html'] + list(PAGINE_PROPRIE))
     open(QUI + 'sitemap.xml', 'w').write('<?xml version="1.0" encoding="UTF-8"?>\n'
         '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + voci + '</urlset>\n')
     open(QUI + 'robots.txt', 'w').write(f'User-agent: *\nAllow: /\nSitemap: {SITO}sitemap.xml\n')
