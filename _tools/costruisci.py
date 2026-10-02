@@ -519,7 +519,7 @@ def scrivi_pagina(uscita, titolo, desc, anteprima, corpo, stili, da):
 <meta property="og:image" content="{SITO}{anteprima}">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="APE, Assemblea Popolare Ecumenica: un canale permanente di voce dei cittadini">
+<meta property="og:image:alt" content="{'Tra un voto e l’altro, chi ti ascolta? APE, Assemblea Popolare Ecumenica: 20 milioni di italiani non votano più, oggi una richiesta dei cittadini si ignora a costo zero, con l’APE chi governa deve rispondere' if anteprima.endswith('domanda.jpg') else 'APE, Assemblea Popolare Ecumenica: un canale permanente di voce dei cittadini'}">
 <meta property="og:locale" content="it_IT">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="{titolo}">
