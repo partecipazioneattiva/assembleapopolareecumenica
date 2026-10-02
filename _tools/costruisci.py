@@ -52,12 +52,11 @@ PERCHE_SITO = (
 VIDEO_DOPO_IL_VOTO = (
     '<div class="pa-box" id="video"><h3>L&rsquo;APE in sei minuti</h3>'
     '<div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:10px;margin:6px 0 12px">'
-    '<iframe src="https://www.youtube-nocookie.com/embed/GCq6ldo8om0" '
+    '<iframe src="https://www.youtube-nocookie.com/embed/5Z9MGRmQo04" '
     'title="E dopo il voto? La proposta APE spiegata: che cos&rsquo;&egrave; e come funziona" '
     'style="position:absolute;top:0;left:0;width:100%;height:100%;border:0" loading="lazy" allowfullscreen></iframe></div>'
     '<p style="margin:0">Cittadini sorteggiati, istituzioni obbligate a rispondere, referendum senza quorum, '
-    'e i punti deboli che la proposta stessa riconosce. Con la trascrizione completa: '
-    '<a href="https://partecipazione-attiva.it/ape-dopo-il-voto-video.html">la pagina del video</a>.</p></div>\n')     # solo il viso: i ritratti di PA sono manifesti col marchio
+    'e i punti deboli che la proposta stessa riconosce.</p></div>\n')
 
 # Fernando, 30/09/2026: «non è che PA non si può nominare» — PA si nomina (chi ha elaborato, chi
 # propone, chi aderisce); quello che NON deve passare e' la proprieta' ESCLUSIVA. Dove la pagina di PA
@@ -75,16 +74,22 @@ RISCRITTURE = {
          '<p>È una riforma costituzionale che non aggiunge un partito né un candidato, ma uno strumento permanente attraverso cui ogni cittadino può obbligare le istituzioni ad ascoltare e a rispondere.</p>', 1),
         ('alt="Angelo Nicotra Presidente Partecipazione Attiva" width="500" height="750"', 'alt="Angelo Nicotra" width="300" height="300"', 1),
         ('images/organigramma/angelo-nicotra-finale.webp', VOLTO, 1),
+        ('<h2>La Rete APE: una chiamata unitaria, non di Partecipazione Attiva</h2>', '<h2>La Rete APE: una chiamata unitaria</h2>', 1),
+        ('alle tante piccole associazioni — come lo è Partecipazione Attiva — che da sole pesano poco e insieme possono incidere. Per questo Partecipazione Attiva ha aperto una rete che invita',
+         'alle tante piccole associazioni che da sole pesano poco e insieme possono incidere. Per questo c’è una rete che invita', 1),
     ],
     'rete.html': [
         ('<span class="article-date">Presidente di Partecipazione Attiva</span>', '<span class="article-date">Ideatore del Progetto APE &middot; Presidente di Partecipazione Attiva</span>', 1),
         ('object-position:top center" width="1024" height="1536"', 'object-position:center" width="300" height="300"', 1),
         ('Leggi%20questo%20articolo%20di%20Partecipazione%20Attiva%3A%20', 'Rete%20APE%2C%20Assemblea%20Popolare%20Ecumenica%3A%20', None),
+        (' elaborato da <strong>Angelo Nicotra</strong>, Presidente di Partecipazione Attiva.', '.', 1),
+        (', elaborata da Angelo Nicotra, Presidente di Partecipazione Attiva.', '.', 1),
+        ('<h2>I soggetti aderenti</h2>', '<h2>I co-fondatori</h2>', 1),
     ],
 }
 # pagine APE: come si chiamano qui
-INTERNE = {'ape.html': './', 'rete-ape.html': 'rete.html'}
-COPIA_FISSA = ['fonts', 'LOGO-PA.webp']
+INTERNE = {'ape.html': './', 'rete-ape.html': 'rete.html', 'patto.html': 'patto.html', 'albo.html': 'albo.html'}   # patto/albo: pagine proprie
+COPIA_FISSA = ['fonts']
 FOGLI = {'css/pa-leggibilita.css': 'css/ape-leggibilita.css', 'css/pa-base.css': 'css/ape-base.css'}
 
 ICONA = ("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E"
@@ -198,9 +203,8 @@ def testa(uscita, attuale):
 
 PIEDE = (f'<footer class="ape-piede"><p><strong>APE &mdash; Assemblea Popolare Ecumenica</strong><br>'
          f'Un progetto aperto a tutti: cittadini, associazioni, movimenti, comitati, con peso paritario.</p>'
-         f'<p>La prima stesura della proposta &egrave; di Angelo Nicotra; '
-         f'<a href="{SITO_PA}" rel="noopener">Partecipazione Attiva</a> l&rsquo;ha fatta propria ed &egrave; tra i promotori '
-         f'della <a href="rete.html">Rete APE</a>. Da quando &egrave; pubblica, la proposta appartiene a chi la sottoscrive.</p>'
+         f'<p>La proposta &egrave; pubblica e appartiene a chi la sottoscrive: chi firma il <a href="patto.html">Patto fondativo</a> '
+         f'ne diventa co-fondatore, alla pari di tutti.</p>'
          f'<p class="ape-piccolo"><a href="mailto:info@assembleapopolareecumenica.it">info@assembleapopolareecumenica.it</a>'
          f' &middot; <a href="{SITO_PA}privacy.html">Privacy</a> &middot; Questo sito non usa cookie di profilazione '
          f'n&eacute; tracciatori.</p><p class="ape-piccolo">&copy; {datetime.date.today().year}</p></footer>')
@@ -252,7 +256,22 @@ def pagina(uscita, sorgente, titolo, anteprima, copiati):
         if len(tag) != 1:     # quello in testa e' gia' andato via col riquadro dell'autore
             stop(f'rete: aspettavo 1 ritratto di Nicotra nel testo, ne trovo {len(tag)}')
         corpo = corpo.replace(tag[0], '', 1)
+    # 02/10/2026 Fernando: «va tolto Nicotra e PA… rendilo veramente aperto e neutro».
+    # Via i blocchi che portano il marchio di PA: lo spot «Tocca a noi» (logo PA in ogni fotogramma),
+    # il video di PensAttivo (la mascotte del movimento), il riquadro «Primo soggetto aderente».
+    # (L'Albo e' in ordine alfabetico, senza primi.) La privacy resta quella di PA: e' il titolare del trattamento.
+    TAGLI = {'index.html': [r'<div class="pa-fig">\s*<video[^>]*>.*?ape-tocca-a-noi.*?</figcaption>\s*</div>\s*',
+                            r'<h2>PensAttivo racconta il Progetto APE</h2>.*?</iframe>\s*</div>\s*'],
+             'rete.html': [r'<p[^>]*>&#127811; Primo soggetto aderente</p>\s*<div style="display:inline-flex.*?</div>\s*</div>\s*']}
+    for t in TAGLI.get(uscita, []):
+        corpo, n = re.subn(t, '', corpo, count=1, flags=re.S)
+        if n != 1:
+            stop(f'{uscita}: non trovo il blocco da togliere «{t[:40]}»')
     corpo = neutro(riscrivi_link(corpo, uscita, copiati))
+    # 02/10/2026 (Fernando, sulla copertina): la riga «Angelo Nicotra · Partecipazione Attiva» non va sul sito APE.
+    # images/ape-copertina-neutra.webp e' la stessa copertina con quella riga coperta dallo sfondo (fatta una volta, a mano).
+    corpo = corpo.replace('images/ape-copertina.webp', 'images/ape-copertina-neutra.webp')
+    corpo = re.sub(r'alt="APE[^"]*Nicotra[^"]*"', 'alt="APE, Assemblea Popolare Ecumenica: un canale permanente di voce dei cittadini"', corpo)
     if uscita == 'index.html':
         # ancora per la voce «Documenti»: il primo riquadro di scarico
         if corpo.count('<div class="pa-dl">') < 1:
@@ -272,7 +291,7 @@ def scrivi_pagina(uscita, titolo, desc, anteprima, corpo, stili, da):
         stop(f'manca {anteprima}: lancia prima  python3 _tools/immagini.py')
     ld = ('{"@context":"https://schema.org","@type":"WebPage","name":%s,"url":"%s",'
           '"description":%s,"inLanguage":"it","isPartOf":{"@type":"WebSite","name":'
-          '"APE — Assemblea Popolare Ecumenica","url":"%s"},"author":{"@type":"Person","name":"Angelo Nicotra"}}'
+          '"APE — Assemblea Popolare Ecumenica","url":"%s"}}'
           % (json_s(titolo), mia, json_s(html.unescape(desc)), SITO))
     doc = f'''<!DOCTYPE html>
 <html lang="it">
