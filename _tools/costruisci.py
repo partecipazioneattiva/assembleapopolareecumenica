@@ -68,6 +68,16 @@ VIDEO_DOPO_IL_VOTO = (
     '<p style="margin:0">Da troppo tempo nessuno ascolta una voce. La tua. Per cambiare le cose non serve un salvatore. '
     'Non arriver&agrave;. Serviamo noi, tutti, alla pari. Possiamo essere i leader di noi stessi. Tocca a noi.</p></div>\n')
 
+VIDEO_PROGETTO = (
+    '<h2>Il Progetto APE, spiegato per intero</h2>\n'
+    '<p>In undici minuti, con i documenti sullo schermo: il problema dell&rsquo;astensione, le radici storiche del sorteggio, '
+    'come funzionano le direttive vincolanti, le tre leggi costituzionali, i costi, le domande pi&ugrave; frequenti e i punti deboli '
+    'dichiarati dalla proposta stessa. Per approfondire c&rsquo;&egrave; la sintesi del volume, qui sotto.</p>\n'
+    '<video controls preload="none" playsinline poster="images/ape-progetto-spiegato-copertina.webp" '
+    'style="width:100%;height:auto;border-radius:10px;margin:1.5em 0;background:#0b1a2e" '
+    'aria-label="Il Progetto APE, spiegato per intero"><source src="video/ape-progetto-spiegato.mp4" type="video/mp4">'
+    'Il tuo browser non riproduce il video.</video>\n\n')
+
 # Fernando, 30/09/2026: «non è che PA non si può nominare» — PA si nomina (chi ha elaborato, chi
 # propone, chi aderisce); quello che NON deve passare e' la proprieta' ESCLUSIVA. Dove la pagina di PA
 # dice «di Partecipazione Attiva» NELLA CORNICE (titolo, qualifica, etichette), qui si riscrive.
@@ -273,8 +283,14 @@ def pagina(uscita, sorgente, titolo, anteprima, copiati):
     # il video di PensAttivo (la mascotte del movimento), il riquadro «Primo soggetto aderente».
     # (L'Albo e' in ordine alfabetico, senza primi.) La privacy resta quella di PA: e' il titolare del trattamento.
     TAGLI = {'index.html': [r'<div class="pa-fig">\s*<video[^>]*>.*?ape-tocca-a-noi.*?</figcaption>\s*</div>\s*',
-                            r'<h2>PensAttivo racconta il Progetto APE</h2>.*?</iframe>\s*</div>\s*'],
+                            ],
              'rete.html': [r'<p[^>]*>&#127811; Primo soggetto aderente</p>\s*<div style="display:inline-flex.*?</div>\s*</div>\s*']}
+    if uscita == 'index.html':
+        # 02/10/2026 Fernando: «il video di PensAttivo trasformiamolo come E dopo il voto» — al suo posto la versione
+        # con voce narrante e cartelli, senza personaggio ne' marchi (file del sito, H.264 720p).
+        corpo, n = re.subn(r'<h2>PensAttivo racconta il Progetto APE</h2>.*?</iframe>\s*</div>\s*', VIDEO_PROGETTO, corpo, count=1, flags=re.S)
+        if n != 1:
+            stop('index: non trovo il video di PensAttivo da sostituire')
     for t in TAGLI.get(uscita, []):
         corpo, n = re.subn(t, '', corpo, count=1, flags=re.S)
         if n != 1:
