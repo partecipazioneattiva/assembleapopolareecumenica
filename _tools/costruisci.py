@@ -127,7 +127,7 @@ INGRESSO = (
     '<h1 id="ap-domanda">Tra un voto e l&rsquo;altro,<br>chi ti ascolta?</h1>'
     '<ul class="ap-tre">'
     '<li><b>20&nbsp;milioni</b> di italiani non hanno votato alle ultime politiche.</li>'
-    '<li>Oggi una richiesta dei cittadini si pu&ograve; <b>ignorare a&nbsp;costo&nbsp;zero</b>.</li>'
+    '<li>Oggi chi ignora una proposta dei cittadini <b>non deve darne conto a&nbsp;nessuno</b>.</li>'
     '<li>Con l&rsquo;APE chi governa <b>deve&nbsp;rispondere</b>: s&igrave;, oppure un no motivato in&nbsp;pubblico.</li>'
     '</ul>'
     # 02/10/2026 Fernando: l'immagine «subito dopo le tre domande» — il cittadino parla, il consiglio ascolta.
