@@ -365,7 +365,7 @@ def riscrivi_link(pezzo, uscita, copiati):
 def testa(uscita, attuale):
     voci = [('./', 'Il progetto', 'index.html'), ('./#come-funziona', 'Come funziona', None), ('progetto.html', 'Nel dettaglio', 'progetto.html'),
             ('patto.html', 'Il Patto', 'patto.html'), ('rete.html', 'Rete APE', 'rete.html'),
-            ('albo.html', 'Albo', 'albo.html'), ('./#documenti', 'Documenti', None)]
+            ('albo.html', 'Albo', 'albo.html'), ('attualita.html', 'Attualità', 'attualita.html'), ('./#documenti', 'Documenti', None)]
     h = ''.join(f'<a href="{u}"{" aria-current=page" if attuale == f else ""}>{t}</a>'
                 for u, t, f in voci) + '<a class="ape-aderisci" href="rete.html#aderisci">Aderisci</a>'
     return ('<a class="ape-salta" href="#contenuto">Salta al contenuto</a>'
@@ -560,6 +560,9 @@ PAGINE_PROPRIE = {
     'patto.html': ('Patto fondativo della Rete APE | Assemblea Popolare Ecumenica',
                    'Il Patto fondativo della Rete APE: sei principi, peso paritario, un Albo pubblico. Chi lo firma non entra in un progetto altrui: ne diventa co-fondatore.',
                    'images/rete-ape-anteprima.jpg'),
+    'attualita.html': ('Attualità: le notizie lette con la domanda dell’APE | Assemblea Popolare Ecumenica',
+                       'Le notizie del giorno lette con una sola domanda: dopo il voto, quanto contano i cittadini? Oggi: la discussione su chi conta di più nel centrosinistra.',
+                       'images/ape-anteprima-domanda.jpg'),
     'albo.html': ('Albo dei co-fondatori della Rete APE',
                   'L&#x27;Albo dei co-fondatori della Rete APE: chi ha firmato il Patto fondativo, in ordine alfabetico, senza primi e senza ultimi.',
                   'images/rete-ape-anteprima.jpg'),
