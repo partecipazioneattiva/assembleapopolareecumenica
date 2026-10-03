@@ -31,7 +31,7 @@ PAGINE = {
     'rete.html': ('rete-ape.html', 'Rete APE — aderisci | Assemblea Popolare Ecumenica',
                   'images/rete-ape-anteprima.jpg'),
 }
-DESCRIZIONI = {'index.html': 'Oggi una richiesta dei cittadini si può ignorare a costo zero. L&#x27;APE, Assemblea Popolare Ecumenica, propone cittadini sorteggiati e istituzioni obbligate a rispondere. Capirla in 6 minuti.'}
+DESCRIZIONI = {'index.html': 'Oggi chi ignora una proposta dei cittadini non deve darne conto a nessuno. L&#x27;APE, Assemblea Popolare Ecumenica, propone cittadini sorteggiati e istituzioni obbligate a rispondere. Capirla in 6 minuti.'}
 VOLTO = 'images/angelo-nicotra-volto.webp'
 
 # Fernando, 01/10/2026: «anche sul sito APE va scritto almeno il perche' della sua nascita».
@@ -527,7 +527,7 @@ def scrivi_pagina(uscita, titolo, desc, anteprima, corpo, stili, da):
 <meta property="og:image" content="{SITO}{anteprima}">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="{'Tra un voto e l’altro, chi ti ascolta? APE, Assemblea Popolare Ecumenica: 20 milioni di italiani non votano più, oggi una richiesta dei cittadini si ignora a costo zero, con l’APE chi governa deve rispondere' if anteprima.endswith('domanda.jpg') else 'APE, Assemblea Popolare Ecumenica: un canale permanente di voce dei cittadini'}">
+<meta property="og:image:alt" content="{'Tra un voto e l’altro, chi ti ascolta? APE, Assemblea Popolare Ecumenica: 20 milioni di italiani non votano più, oggi chi ignora una proposta dei cittadini non deve darne conto a nessuno, con l’APE chi governa deve rispondere' if anteprima.endswith('domanda.jpg') else 'APE, Assemblea Popolare Ecumenica: un canale permanente di voce dei cittadini'}">
 <meta property="og:locale" content="it_IT">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="{titolo}">
