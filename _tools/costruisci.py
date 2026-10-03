@@ -629,6 +629,32 @@ MESI = {m: i for i, m in enumerate(['gennaio', 'febbraio', 'marzo', 'aprile', 'm
                                      'settembre', 'ottobre', 'novembre', 'dicembre'], 1)}
 
 
+def card_titolo(aid, titolo, tipo='Attualità'):
+    """Fernando 03/10/2026: «ci deve sempre essere un'immagine nelle card». Se una voce di Attualità non ha una sua
+    immagine, se ne fa una col marchio APE e il titolo (images/attualita-<id>.webp, 1200x630)."""
+    from PIL import Image, ImageDraw, ImageFont
+    nome = f'images/attualita-{re.sub(r"[^a-z0-9]+", "-", aid.lower()).strip("-")}.webp'
+    W, H = 1200, 630
+    im = Image.new('RGB', (W, H)); d = ImageDraw.Draw(im)
+    for y in range(H):
+        q = y / H; d.line([(0, y), (W, y)], fill=tuple(int(a + (b - a) * q) for a, b in zip((11, 31, 51), (23, 80, 122))))
+    f = lambda sz, i=0: ImageFont.truetype('/System/Library/Fonts/Avenir Next.ttc', sz, index=i)
+    lg = Image.open(QUI + 'images/ape-marchio.webp').convert('RGBA').resize((92, 92)); im.paste(lg, (70, 52), lg)
+    d.text((184, 70), 'APE · ASSEMBLEA POPOLARE ECUMENICA', font=f(26, 0), fill=(255, 215, 94))
+    d.text((184, 104), tipo.lower(), font=f(24, 7), fill=(225, 234, 242))
+    righe, cur = [], ''
+    for w in html.unescape(titolo).split():
+        if d.textlength((cur + ' ' + w).strip(), font=f(64, 0)) > W - 140 and cur: righe.append(cur); cur = w
+        else: cur = (cur + ' ' + w).strip()
+    righe.append(cur)
+    y = 230
+    for r_ in righe[:4]:
+        d.text((70, y), r_, font=f(64, 0), fill=(255, 255, 255)); y += 84
+    d.text((70, H - 56), 'assembleapopolareecumenica.it', font=f(26, 0), fill=(255, 215, 94))
+    im.save(QUI + nome, quality=86)
+    return nome
+
+
 def scrivi_novita():
     import json
     voci = []
@@ -643,14 +669,20 @@ def scrivi_novita():
         par = [testo(x) for x in re.findall(r'<p(?: [^>]*)?>(.*?)</p>', b, flags=re.S)]
         par = [x for x in par if x and not x.lower().startswith(('video di', d.group(1)))]
         img = re.search(r'poster="([^"]+)"', b) or re.search(r'<img[^>]+src="([^"]+)"', b)
+        img = img.group(1) if img else card_titolo(aid, testo(t.group(1)))
+        dom = re.search(r'<div class="at-domanda">(.*?)</div>', b, flags=re.S)
+        if dom: par = [testo(dom.group(1))] + par          # la frase che dice di cosa parla l'articolo
+        par = [x for x in par if not x.endswith(':')]
         voci.append({'data': f'{d.group(3)}-{MESI[d.group(2).lower()]:02d}-{int(d.group(1)):02d}', 'tipo': 'Attualità',
-                     'titolo': testo(t.group(1)), 'riassunto': (par[0] if par else '')[:220],
-                     'url': f'{SITO}attualita.html#{aid}', 'immagine': SITO + img.group(1) if img else ''})
+                     'titolo': testo(t.group(1)), 'riassunto': ' '.join((par[0] if par else '').split())[:200].rsplit(' ', 1)[0] + ('…' if par and len(' '.join(par[0].split())) > 200 else ''),
+                     'url': f'{SITO}attualita.html#{aid}', 'immagine': SITO + img})
     for data, tipo, tit, rias, url, img in NOVITA:
         voci.append({'data': data, 'tipo': tipo, 'titolo': html.unescape(tit), 'riassunto': rias,
                      'url': SITO + url.lstrip('./') if not url.startswith('./#') else SITO + url[2:],
                      'immagine': SITO + img if img else ''})
     for v in voci:
+        if not v['immagine']:
+            stop(f"novita: «{v['titolo']}» senza immagine (ci deve sempre essere)")
         if v['immagine'] and not os.path.exists(QUI + v['immagine'][len(SITO):]):
             stop(f"novita: manca l'immagine {v['immagine']}")
     voci.sort(key=lambda v: v['data'], reverse=True)
