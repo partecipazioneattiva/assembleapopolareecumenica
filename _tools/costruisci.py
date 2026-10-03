@@ -629,6 +629,17 @@ MESI = {m: i for i, m in enumerate(['gennaio', 'febbraio', 'marzo', 'aprile', 'm
                                      'settembre', 'ottobre', 'novembre', 'dicembre'], 1)}
 
 
+def breve(testo, massimo=130):
+    """Riassunto per le card: una o due frasi INTERE entro `massimo` caratteri; solo se la prima non ci sta, si taglia
+    a una parola con «…» (mai a meta' parola, mai senza segno)."""
+    t = ' '.join(testo.split()); frasi = re.split(r'(?<=[.!?])\s+', t); out = ''
+    for fr in frasi:
+        if len((out + ' ' + fr).strip()) <= massimo: out = (out + ' ' + fr).strip()
+        else: break
+    if out: return out
+    return t[:massimo - 1].rsplit(' ', 1)[0].rstrip(',;:') + '…'
+
+
 def card_titolo(aid, titolo, tipo='Attualità'):
     """Fernando 03/10/2026: «ci deve sempre essere un'immagine nelle card». Se una voce di Attualità non ha una sua
     immagine, se ne fa una col marchio APE e il titolo (images/attualita-<id>.webp, 1200x630)."""
@@ -708,7 +719,7 @@ def scrivi_novita():
         if dom: par = [testo(dom.group(1))] + par          # la frase che dice di cosa parla l'articolo
         par = [x for x in par if not x.endswith(':')]
         voci.append({'data': f'{d.group(3)}-{MESI[d.group(2).lower()]:02d}-{int(d.group(1)):02d}', 'tipo': 'Attualità',
-                     'titolo': testo(t.group(1)), 'riassunto': ' '.join((par[0] if par else '').split())[:200].rsplit(' ', 1)[0] + ('…' if par and len(' '.join(par[0].split())) > 200 else ''),
+                     'titolo': testo(t.group(1)), 'riassunto': breve(par[0] if par else ''),
                      'url': f'{SITO}attualita.html#{aid}', 'immagine': SITO + img})
     for data, tipo, tit, rias, url, img in NOVITA:
         voci.append({'data': data, 'tipo': tipo, 'titolo': html.unescape(tit), 'riassunto': rias,
