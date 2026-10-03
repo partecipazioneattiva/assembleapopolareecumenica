@@ -40,7 +40,7 @@ PERCHE_SITO = (
     '<div class="pa-box" id="perche"><h3>Un&rsquo;idea che appartiene a chi la firma</h3>'
     '<p>Ogni progetto nasce da qualcuno, ma vive solo se diventa di tutti. L&rsquo;APE &egrave; nata come proposta: '
     'da oggi &egrave; di chi la fa propria. <strong>&laquo;Ecumenica&raquo; vuol dire aperta a tutti, senza distinzioni</strong>: '
-    'per questo ha una casa sua, neutra, senza simboli n&eacute; bandiere. Un&rsquo;unione d&rsquo;intenti, non di simboli o ideologie.</p>'
+    'per questo ha una casa sua, neutra, senza simboli n&eacute; bandiere. Un&rsquo;unione d&rsquo;intenti, non di simboli o di schieramenti.</p>'
     '<p>La Rete APE non si eredita: si fonda insieme. Chi aderisce firma il <a href="patto.html">Patto fondativo</a> ed entra '
     'nell&rsquo;<a href="albo.html">Albo dei co-fondatori</a>, in ordine alfabetico, senza primi e senza ultimi: pu&ograve; dire '
     '&laquo;questo progetto &egrave; anche mio, l&rsquo;ho fondato anch&rsquo;io&raquo;. Il testo resta aperto: ogni co-fondatore '
@@ -105,6 +105,7 @@ INGRESSO = (
     '.ap-oggi{font-family:Montserrat,system-ui,sans-serif;font-size:.92em;color:#d6e6f3;margin:16px auto 0;max-width:640px;line-height:1.5}'
     '.ap-fig{max-width:720px;margin:0 auto 22px}.ap-fig img{display:block;width:100%;height:auto;border-radius:12px;box-shadow:0 10px 30px rgba(0,0,0,.35)}'
     '.ap-fig figcaption{font-family:Montserrat,system-ui,sans-serif;font-size:.95em;color:#eef4f9;margin-top:10px}.ap-fig figcaption b{display:block;font-weight:600}.ap-fig figcaption span{display:block;font-size:.75em;opacity:.75;margin-top:4px}'
+    '.article-wrap .pa-box h2.ap-box-t{font-family:Montserrat,system-ui,sans-serif;font-size:1em;font-weight:800;color:#165486;letter-spacing:.5px;margin:0 0 10px;padding:0;border:0}'
     '.ap-oggi b{color:#ffd75e}.ap-oggi span,.ap-in .k span{display:block}'
     '.ap-passi{list-style:none;counter-reset:p;padding:0;margin:18px 0 6px}'
     '.ap-passi li{counter-increment:p;position:relative;padding:12px 14px 12px 58px;margin:0 0 22px;background:#fff;border:2px solid #9cc3e0;border-radius:12px;line-height:1.5}'
@@ -132,14 +133,14 @@ INGRESSO = (
     '</ul>'
     # 02/10/2026 Fernando: l'immagine «subito dopo le tre domande» — il cittadino parla, il consiglio ascolta.
     # Illustrazione generata con Meta AI (dichiarata: AI Act art. 50); file in LAVORI/ape_immagine_ascolto.
-    '<figure class="ap-fig"><img src="images/ape-il-consiglio-ascolta.webp" '
+    '<figure class="ap-fig"><img fetchpriority="high" loading="eager" decoding="async" src="images/ape-il-consiglio-ascolta.webp" '
     'srcset="images/ape-il-consiglio-ascolta-800.webp 800w, images/ape-il-consiglio-ascolta.webp 1600w" sizes="(max-width:760px) 100vw, 720px" '
     'width="1600" height="900" alt="Illustrazione: in una sala consiliare un cittadino parla al microfono; sindaca, presidente e consiglieri lo ascoltano, il pubblico &egrave; seduto di spalle">'
     '<figcaption><b>Con l&rsquo;APE, la voce dei cittadini arriva dove si&nbsp;decide.</b> <b>E chi governa deve&nbsp;rispondere.</b> <span>Illustrazione realizzata con l&rsquo;intelligenza artificiale.</span></figcaption></figure>'
     '<div class="ap-porte"><a class="p1" href="#video">&#9654; Capire in 6 minuti</a>'
     '<a class="p2" href="#in-breve">Leggere in 2 minuti</a></div>'
     # Fernando 02/10/2026: «andare a capo sempre a frasi compiute» — una frase per riga
-    '<p class="ap-oggi"><span><b>Oggi l&rsquo;APE &egrave; una proposta</b>:</span> <span>per esistere serve una&nbsp;riforma della&nbsp;Costituzione.</span> '
+    '<p class="ap-oggi"><span><b>Oggi l&rsquo;APE &egrave; una proposta, non &egrave; ancora legge</b>:</span> <span>per esistere serve una&nbsp;riforma della&nbsp;Costituzione.</span> '
     '<span>La&nbsp;<b>Rete&nbsp;APE</b> &egrave; chi&nbsp;la&nbsp;sostiene gi&agrave;&nbsp;adesso.</span></p>'
     '</section>\n')
 
@@ -150,7 +151,7 @@ LIBRO = ('<p style="text-align:center;margin:30px 0 6px"><img class="ap-libro" s
          'Il libro, di prossima pubblicazione. La sintesi si pu&ograve; gi&agrave; scaricare <a href="#documenti">qui sotto</a>.</p>\n')
 
 IN_BREVE = (
-    '<div class="pa-box" id="in-breve"><h3>L&rsquo;APE in cinque righe</h3>'
+    '<div class="pa-box" id="in-breve"><h2 class="ap-box-t">L&rsquo;APE in cinque righe</h2>'
     '<p>Assemblee di <strong>cittadini comuni, estratti a sorte</strong>, in ogni Comune, in ogni Regione e a livello nazionale. '
     'Non fanno leggi e non governano: mandano <strong>direttive</strong> a Comuni, Regioni e Governo. '
     'Chi le riceve deve attuarle, oppure respingerle con un voto a maggioranza assoluta e una motivazione pubblica. '
@@ -226,6 +227,9 @@ RISCRITTURE = {
         # 02/10/2026: «gli studi mostrano» senza fonte, e «produce» uno specchio statistico, erano affermazioni assolute
         ('Non è apatia: gli studi mostrano che è rifiuto consapevole di un sistema percepito come distante e non più influenzabile.',
          'Le cause dell&rsquo;astensione sono molte e non si riducono a una sola. La proposta parte da una lettura precisa: non apatia, ma il rifiuto di un sistema percepito come distante e non più influenzabile.', 1),
+        # 03/10/2026: «non hanno più voce» era assoluto (petizioni, iniziativa popolare, referendum esistono): si dice cosa manca davvero
+        ('e per cinque anni &mdash; ricorda il documento &mdash; non hanno più voce:',
+         'e per cinque anni &mdash; ricorda il documento &mdash; non hanno un canale permanente che obblighi chi decide a rispondere:', 1),
         ('Il sorteggio, al contrario, produce uno specchio statistico della popolazione',
          'Il sorteggio, al contrario, con la stratificazione per età, genere e territorio prevista dal progetto, mira a uno specchio statistico della popolazione', 1),
         # 02/10/2026, revisione delle parole: niente conclusioni piu' grandi dei fatti
@@ -370,7 +374,7 @@ def testa(uscita, attuale):
                 for u, t, f in voci) + '<a class="ape-aderisci" href="rete.html#aderisci">Aderisci</a>'
     return ('<a class="ape-salta" href="#contenuto">Salta al contenuto</a>'
             '<header class="ape-testa"><div class="ape-testa-in">'
-            '<a class="ape-marchio" href="./" aria-label="APE, Assemblea Popolare Ecumenica: pagina iniziale">'
+            '<a class="ape-marchio" href="./">'
             '<span class="ape-ape" aria-hidden="true">&#x1F41D;</span>'
             '<span><b>APE</b><span>Assemblea Popolare Ecumenica</span></span></a>'
             f'<nav class="ape-voci" aria-label="Menu principale">{h}</nav></div></header>')
@@ -503,6 +507,15 @@ def pagina(uscita, sorgente, titolo, anteprima, copiati):
     scrivi_pagina(uscita, titolo, desc, anteprima, corpo, stili, f'da {sorgente}')
 
 
+# 03/10/2026, Lighthouse mobile sulla home: LCP 3,7 s (l'illustrazione) e CLS 0,15 (le tre frasi saltano quando
+# arrivano i caratteri). Si precaricano l'immagine e i quattro caratteri usati nella prima schermata.
+PRECARICO = ('<link rel="preload" as="image" href="images/ape-il-consiglio-ascolta-800.webp" '
+             'imagesrcset="images/ape-il-consiglio-ascolta-800.webp 800w, images/ape-il-consiglio-ascolta.webp 1600w" '
+             'imagesizes="(max-width:760px) 100vw, 720px" fetchpriority="high">\n'
+             + ''.join(f'<link rel="preload" as="font" type="font/woff2" href="fonts/{f}.woff2" crossorigin>\n'
+                       for f in ('montserrat-400-latin', 'merriweather-700-latin')))   # solo i 2 della prima schermata: 4 appesantivano l'LCP simulato
+
+
 def scrivi_pagina(uscita, titolo, desc, anteprima, corpo, stili, da):
     mia = SITO + ('' if uscita == 'index.html' else uscita)
     if not os.path.exists(QUI + anteprima):
@@ -534,7 +547,7 @@ def scrivi_pagina(uscita, titolo, desc, anteprima, corpo, stili, da):
 <meta name="twitter:description" content="{desc}">
 <meta name="twitter:image" content="{SITO}{anteprima}">
 <link rel="icon" href="{ICONA}">
-<link href="fonts/caratteri.css" rel="stylesheet">
+{PRECARICO if uscita == 'index.html' else ''}<link href="fonts/caratteri.css" rel="stylesheet">
 <link rel="stylesheet" href="css/ape-leggibilita.css">
 <link rel="stylesheet" href="css/ape-base.css">
 <style>{neutro(STILE)}</style>
