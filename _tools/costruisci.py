@@ -606,10 +606,9 @@ def main():
     open(QUI + 'robots.txt', 'w').write(f'User-agent: *\nAllow: /\nSitemap: {SITO}sitemap.xml\n')
     # Il file CNAME dice a GitHub Pages di servire il sito sul dominio. Finche' i DNS di Aruba non
     # puntano a GitHub, con il CNAME il sito sarebbe IRRAGGIUNGIBILE: si scrive solo con --dominio.
-    if '--dominio' in sys.argv:
-        open(QUI + 'CNAME', 'w').write('www.assembleapopolareecumenica.it\n')
-    elif os.path.exists(QUI + 'CNAME'):
-        os.remove(QUI + 'CNAME')
+    # 03/10/2026: il dominio e' collegato (commit ca2b879). Un costruisci.py lanciato senza --dominio cancellava il CNAME
+    # e al push il sito sarebbe diventato irraggiungibile: ora il CNAME si scrive SEMPRE.
+    open(QUI + 'CNAME', 'w').write('www.assembleapopolareecumenica.it\n')
     open(QUI + '.nojekyll', 'w').write('')
     open(QUI + '404.html', 'w', encoding='utf-8').write(
         '<!DOCTYPE html><html lang="it"><head><meta charset="UTF-8"><meta name="viewport" '
