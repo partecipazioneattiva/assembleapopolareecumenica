@@ -642,11 +642,13 @@ def card_titolo(aid, titolo, tipo='Attualità'):
     lg = Image.open(QUI + 'images/ape-marchio.webp').convert('RGBA').resize((92, 92)); im.paste(lg, (70, 52), lg)
     d.text((184, 70), 'APE · ASSEMBLEA POPOLARE ECUMENICA', font=f(26, 0), fill=(255, 215, 94))
     d.text((184, 104), tipo.lower(), font=f(24, 7), fill=(225, 234, 242))
-    righe, cur = [], ''
-    for w in html.unescape(titolo).split():
-        if d.textlength((cur + ' ' + w).strip(), font=f(64, 0)) > W - 140 and cur: righe.append(cur); cur = w
-        else: cur = (cur + ' ' + w).strip()
-    righe.append(cur)
+    righe = []   # a capo a frasi compiute (regola di Fernando): prima si spezza dopo ? ! . :, poi solo se una frase non sta in riga
+    for fr in re.split(r'(?<=[?!.:])\s+', html.unescape(titolo)):
+        cur = ''
+        for w in fr.split():
+            if d.textlength((cur + ' ' + w).strip(), font=f(64, 0)) > W - 140 and cur: righe.append(cur); cur = w
+            else: cur = (cur + ' ' + w).strip()
+        if cur: righe.append(cur)
     y = 230
     for r_ in righe[:4]:
         d.text((70, y), r_, font=f(64, 0), fill=(255, 255, 255)); y += 84
