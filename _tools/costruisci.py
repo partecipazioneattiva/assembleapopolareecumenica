@@ -196,7 +196,7 @@ FAQ = (
     'obbligano a rispondere. Non vincolano il voto del singolo parlamentare, ma l&rsquo;indirizzo del Governo.</p></details>'
     '<details><summary>Chi ci entra?</summary><p>Cittadini estratti a sorte dalle liste elettorali, con un equilibrio di et&agrave;, '
     'genere e territorio: oltre 46.000 persone in pi&ugrave; di 6.500 assemblee. Nessuno &egrave; eletto.</p></details>'
-    '<details><summary>Quanto costa?</summary><p>A regime 252 milioni l&rsquo;anno. Il Senato, che la riforma abolisce, ne costa oggi 541: '
+    '<details><summary>Quanto costa?</summary><p>A regime 252 milioni l&rsquo;anno. Il Senato, che la riforma abolisce, nei conti della proposta ne costa 541: '
     'il risparmio stimato con prudenza &egrave; di 250-260 milioni l&rsquo;anno. Sulla carta sarebbe 289, ma alcune spese del Senato, come immobili e pensioni gi&agrave; maturate, non spariscono.</p></details>'
     '<details><summary>E se il Governo non risponde?</summary><p>Se una direttiva resta ferma per 120 giorni, senza essere accolta e senza un rifiuto motivato, '
     'si pu&ograve; chiedere un referendum propositivo: lo chiedono due terzi dell&rsquo;assemblea nazionale oppure 500.000 cittadini. '
@@ -240,7 +240,7 @@ RISCRITTURE = {
         ('Va detto con chiarezza cosa la Convention Citoyenne francese dimostra e cosa no: non dimostra che il sorteggio non funziona — dimostra che il sorteggio senza obbligo di risposta e senza sbocco è teatro.',
          'Dalla Convention Citoyenne francese il progetto trae una lezione precisa: senza un obbligo di risposta e senza uno sbocco, il lavoro dei cittadini sorteggiati rischia di restare senza seguito.', 1),
         ('(risparmio teorico: 289 milioni)',
-         '(sulla carta 289 milioni, cioè 541 meno 252: la stima prudente tiene conto delle spese che non spariscono con il Senato, come immobili, senatori a vita in carica e pensioni già maturate)', 1),
+         '(sulla carta 289 milioni, cioè 541 meno 252, con il costo del Senato usato dalla proposta: la stima prudente tiene conto delle spese che non spariscono con il Senato, come immobili, senatori a vita in carica e pensioni già maturate)', 1),
         ('alle tante piccole associazioni — come lo è Partecipazione Attiva — che da sole pesano poco e insieme possono incidere. Per questo Partecipazione Attiva ha aperto una rete che invita',
          'alle tante piccole associazioni che da sole pesano poco e insieme possono incidere. Per questo c’è una rete che invita', 1),
     ],
@@ -251,6 +251,17 @@ RISCRITTURE = {
         (' elaborato da <strong>Angelo Nicotra</strong>, Presidente di Partecipazione Attiva.', '.', 1),
         (', elaborata da Angelo Nicotra, Presidente di Partecipazione Attiva.', '.', 1),
         ('<h2>I soggetti aderenti</h2>', '<h2>I co-fondatori</h2>', 1),
+        # 03/10/2026: la privacy detta in chiaro PRIMA delle caselle (aderire rivela un'opinione politica, art. 9 GDPR)
+        ('  <label class="ra-spunta"><input type="checkbox" id="ra-patto" required>',
+         '  <div class="ra-perche" style="background:#eef5fb;border-left:4px solid #2981c9;border-radius:8px;padding:12px 14px;margin:16px 0;font-size:.95em;line-height:1.55">'
+         '<strong>Perch&eacute; ti chiediamo questi dati.</strong> Nome, Comune ed email servono solo a gestire la tua adesione, che vale dopo la conferma via email. '
+         'Aderire rivela un&rsquo;opinione politica: per questo serve il tuo consenso esplicito, che puoi ritirare quando vuoi. '
+         'I dati non sono pubblici e li leggono solo gli incaricati. Nell&rsquo;Albo compaiono soltanto nome e Comune, e solo se lo scegli tu con l&rsquo;ultima casella. '
+         'Le richieste non confermate si cancellano entro 30 giorni. '
+         '<a href="https://partecipazione-attiva.it/privacy.html#rete-ape">Informativa completa</a></div>\n'
+         '  <label class="ra-spunta"><input type="checkbox" id="ra-patto" required>', 1),
+        ('So che aderire esprime un&rsquo;opinione politica. <a href="https://partecipazione-attiva.it/privacy.html">Informativa</a>',
+         'So che aderire esprime un&rsquo;opinione politica. <a href="https://partecipazione-attiva.it/privacy.html#rete-ape">Informativa</a>', 1),
         # 02/10/2026, tono: la Rete parla come la proposta, non come un movimento contro qualcuno
         ('<p class="article-subtitle" style="font-size:1.35em;font-weight:700;font-style:italic;margin-bottom:10px">&#8220;Divide et impera&#8221;</p>', '', 1),
         ('Il potere si mantiene frammentando i cittadini. La Rete APE nasce per rovesciare questa logica &#8212; unire soggetti diversi su principi comuni, con peso paritario per tutti.',
