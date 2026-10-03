@@ -69,7 +69,7 @@ VIDEO_DOPO_IL_VOTO = (
     'Non arriver&agrave;. Serviamo noi, tutti, alla pari. Possiamo essere i leader di noi stessi. Tocca a noi.</p></div>\n')
 
 VIDEO_PROGETTO = (
-    '<h2>Il Progetto APE, spiegato per intero</h2>\n'
+    '<h2 id="video-progetto">Il Progetto APE, spiegato per intero</h2>\n'
     '<p>In undici minuti, con i documenti sullo schermo: il problema dell&rsquo;astensione, le radici storiche del sorteggio, '
     'come funzionano le direttive vincolanti, le tre leggi costituzionali, i costi, le domande pi&ugrave; frequenti e i punti deboli '
     'dichiarati dalla proposta stessa. Per approfondire c&rsquo;&egrave; la sintesi del volume, qui sotto.</p>\n'
@@ -609,6 +609,56 @@ def json_s(s):
     return json.dumps(s, ensure_ascii=False)
 
 
+# 03/10/2026 Fernando: «quando c'è un aggiornamento sul sito APE (articolo, video, attualità o altro) va
+# automaticamente aggiornato sul sito PA» — e «PA non ne chiede la proprietà ma lo divulga».
+# Ogni build scrive aggiornamenti.json (dal piu' recente): le voci di Attualita' si leggono da sole dalla pagina,
+# le altre novita' (video, pagine) si aggiungono in NOVITA. La home di PA legge questo file a ogni visita.
+NOVITA = [
+    # (data AAAA-MM-GG, tipo, titolo, riassunto, indirizzo nel sito APE, immagine nel sito APE)
+    ('2026-10-02', 'Video', 'Il Progetto APE, spiegato per intero',
+     'Undici minuti, con i documenti sullo schermo: il problema, le radici, le tre leggi, i costi e i punti deboli.',
+     './#video-progetto', 'images/ape-progetto-spiegato-copertina.webp'),
+    ('2026-10-02', 'Video', 'E dopo il voto? L\u2019APE in sei minuti',
+     'Cittadini sorteggiati, istituzioni obbligate a rispondere, referendum senza quorum.',
+     './#video', 'images/ape-dopo-il-voto-copertina.webp'),
+    ('2026-10-02', 'Pagina', 'Il progetto APE per intero',
+     'Il problema, il sorteggio, i tre livelli, il ciclo della direttiva, le tre leggi, i costi e le difese.',
+     'progetto.html', 'images/ape-il-consiglio-ascolta-800.webp'),
+]
+MESI = {m: i for i, m in enumerate(['gennaio', 'febbraio', 'marzo', 'aprile', 'maggio', 'giugno', 'luglio', 'agosto',
+                                     'settembre', 'ottobre', 'novembre', 'dicembre'], 1)}
+
+
+def scrivi_novita():
+    import json
+    voci = []
+    att = open(QUI + 'attualita.html', encoding='utf-8').read() if os.path.exists(QUI + 'attualita.html') else ''
+    for m in re.finditer(r'<article class="at-voce" id="([^"]+)">(.*?)</article>', att, flags=re.S):
+        aid, b = m.group(1), m.group(2)
+        d = re.search(r'<p class="at-data">\s*(\d{1,2})\s+(\w+)\s+(\d{4})', b)
+        t = re.search(r'<h2[^>]*>(.*?)</h2>', b, flags=re.S)
+        if not (d and t and d.group(2).lower() in MESI):
+            stop(f'attualita: voce «{aid}» senza data o titolo leggibili')
+        testo = lambda h: html.unescape(re.sub(r'<[^>]+>', '', h)).strip()
+        par = [testo(x) for x in re.findall(r'<p(?: [^>]*)?>(.*?)</p>', b, flags=re.S)]
+        par = [x for x in par if x and not x.lower().startswith(('video di', d.group(1)))]
+        img = re.search(r'poster="([^"]+)"', b) or re.search(r'<img[^>]+src="([^"]+)"', b)
+        voci.append({'data': f'{d.group(3)}-{MESI[d.group(2).lower()]:02d}-{int(d.group(1)):02d}', 'tipo': 'Attualità',
+                     'titolo': testo(t.group(1)), 'riassunto': (par[0] if par else '')[:220],
+                     'url': f'{SITO}attualita.html#{aid}', 'immagine': SITO + img.group(1) if img else ''})
+    for data, tipo, tit, rias, url, img in NOVITA:
+        voci.append({'data': data, 'tipo': tipo, 'titolo': html.unescape(tit), 'riassunto': rias,
+                     'url': SITO + url.lstrip('./') if not url.startswith('./#') else SITO + url[2:],
+                     'immagine': SITO + img if img else ''})
+    for v in voci:
+        if v['immagine'] and not os.path.exists(QUI + v['immagine'][len(SITO):]):
+            stop(f"novita: manca l'immagine {v['immagine']}")
+    voci.sort(key=lambda v: v['data'], reverse=True)
+    json.dump({'sito': SITO, 'aggiornato': datetime.date.today().isoformat(), 'voci': voci},
+              open(QUI + 'aggiornamenti.json', 'w', encoding='utf-8'), ensure_ascii=False, indent=1)
+    print(f'  aggiornamenti.json  {len(voci)} novita (la home di PA le legge da sola)')
+
+
 def main():
     if not os.path.isdir(PA):
         stop('non trovo il repository di Partecipazione Attiva accanto a questo')
@@ -625,6 +675,7 @@ def main():
     oggi = datetime.date.today().isoformat()
     voci = ''.join(f'<url><loc>{SITO}{"" if p == "index.html" else p}</loc><lastmod>{oggi}</lastmod></url>\n'
                    for p in list(PAGINE) + ['progetto.html'] + list(PAGINE_PROPRIE))
+    scrivi_novita()
     open(QUI + 'sitemap.xml', 'w').write('<?xml version="1.0" encoding="UTF-8"?>\n'
         '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + voci + '</urlset>\n')
     open(QUI + 'robots.txt', 'w').write(f'User-agent: *\nAllow: /\nSitemap: {SITO}sitemap.xml\n')

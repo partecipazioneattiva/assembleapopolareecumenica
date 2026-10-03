@@ -1,0 +1,46 @@
+{
+ "sito": "https://www.assembleapopolareecumenica.it/",
+ "aggiornato": "2026-10-03",
+ "voci": [
+  {
+   "data": "2026-10-03",
+   "tipo": "Attualità",
+   "titolo": "Non basta scegliere chi governa",
+   "riassunto": "Non basta scegliere chi governa. Bisogna poter partecipare anche dopo averlo scelto.",
+   "url": "https://www.assembleapopolareecumenica.it/attualita.html#non-basta-scegliere",
+   "immagine": "https://www.assembleapopolareecumenica.it/images/ape-ma-dopo-il-voto-copertina.webp"
+  },
+  {
+   "data": "2026-10-03",
+   "tipo": "Attualità",
+   "titolo": "Chi conta di più? La domanda che manca",
+   "riassunto": "Nel centrosinistra si discute su chi debba guidare la coalizione. Le due posizioni, come sono state dette:",
+   "url": "https://www.assembleapopolareecumenica.it/attualita.html#2026-10-03",
+   "immagine": ""
+  },
+  {
+   "data": "2026-10-02",
+   "tipo": "Video",
+   "titolo": "Il Progetto APE, spiegato per intero",
+   "riassunto": "Undici minuti, con i documenti sullo schermo: il problema, le radici, le tre leggi, i costi e i punti deboli.",
+   "url": "https://www.assembleapopolareecumenica.it/#video-progetto",
+   "immagine": "https://www.assembleapopolareecumenica.it/images/ape-progetto-spiegato-copertina.webp"
+  },
+  {
+   "data": "2026-10-02",
+   "tipo": "Video",
+   "titolo": "E dopo il voto? L’APE in sei minuti",
+   "riassunto": "Cittadini sorteggiati, istituzioni obbligate a rispondere, referendum senza quorum.",
+   "url": "https://www.assembleapopolareecumenica.it/#video",
+   "immagine": "https://www.assembleapopolareecumenica.it/images/ape-dopo-il-voto-copertina.webp"
+  },
+  {
+   "data": "2026-10-02",
+   "tipo": "Pagina",
+   "titolo": "Il progetto APE per intero",
+   "riassunto": "Il problema, il sorteggio, i tre livelli, il ciclo della direttiva, le tre leggi, i costi e le difese.",
+   "url": "https://www.assembleapopolareecumenica.it/progetto.html",
+   "immagine": "https://www.assembleapopolareecumenica.it/images/ape-il-consiglio-ascolta-800.webp"
+  }
+ ]
+}
