@@ -657,6 +657,38 @@ def card_titolo(aid, titolo, tipo='Attualità'):
     return nome
 
 
+def miniatura(slug, titolo, tipo, img):
+    """Fernando 03/10/2026: «crea immagini/miniature a misura, troncate sono pessime».
+    Per ogni novita' si fa una miniatura 420x540 (7:9, come lo spazio delle card di PA): l'immagine INTERA in alto
+    (mai tagliata), sotto il marchio, il tipo e il titolo a capo a frasi compiute. Il fondo finisce in tinta unita (#123f63):
+    se la card e' piu' alta, lo spazio sotto resta dello stesso colore."""
+    from PIL import Image, ImageDraw, ImageFont
+    W, H = 420, 540; FONDO = (18, 63, 99)
+    im = Image.new('RGB', (W, H), FONDO); d = ImageDraw.Draw(im)
+    for y in range(300):
+        q = y / 300; d.line([(0, y), (W, y)], fill=tuple(int(a + (b - a) * q) for a, b in zip((11, 31, 51), FONDO)))
+    f = lambda sz, i=0: ImageFont.truetype('/System/Library/Fonts/Avenir Next.ttc', sz, index=i)
+    src = Image.open(QUI + img).convert('RGB'); w = W - 40; h = round(src.height * w / src.width)
+    if h > 250: h = 250; w = round(src.width * h / src.height)      # immagini alte: stanno intere, piu' strette
+    src = src.resize((w, h), Image.LANCZOS); x0 = (W - w) // 2
+    im.paste(src, (x0, 22)); d.rectangle([x0 - 1, 21, x0 + w, 22 + h], outline=(255, 215, 94), width=2)
+    y = 22 + h + 26
+    lg = Image.open(QUI + 'images/ape-marchio.webp').convert('RGBA').resize((40, 40)); im.paste(lg, (22, y), lg)
+    d.text((72, y + 2), 'APE · ' + tipo.upper(), font=f(20, 0), fill=(255, 215, 94))
+    y += 58; righe = []
+    for fr in re.split(r'(?<=[?!.:])\s+', html.unescape(titolo)):
+        cur = ''
+        for wd in fr.split():
+            if d.textlength((cur + ' ' + wd).strip(), font=f(32, 0)) > W - 44 and cur: righe.append(cur); cur = wd
+            else: cur = (cur + ' ' + wd).strip()
+        if cur: righe.append(cur)
+    if len(righe) * 40 > H - y - 12: stop(f'miniatura «{titolo}»: titolo troppo lungo per la miniatura')
+    for r_ in righe:
+        d.text((22, y), r_, font=f(32, 0), fill=(255, 255, 255)); y += 40
+    nome = f'images/mini-{slug}.webp'; im.save(QUI + nome, quality=88)
+    return nome
+
+
 def scrivi_novita():
     import json
     voci = []
@@ -687,6 +719,9 @@ def scrivi_novita():
             stop(f"novita: «{v['titolo']}» senza immagine (ci deve sempre essere)")
         if v['immagine'] and not os.path.exists(QUI + v['immagine'][len(SITO):]):
             stop(f"novita: manca l'immagine {v['immagine']}")
+    for v in voci:
+        slug = re.sub(r'[^a-z0-9]+', '-', html.unescape(v['titolo']).lower()).strip('-')[:40]
+        v['miniatura'] = SITO + miniatura(slug, v['titolo'], v['tipo'], v['immagine'][len(SITO):])
     voci.sort(key=lambda v: v['data'], reverse=True)
     json.dump({'sito': SITO, 'aggiornato': datetime.date.today().isoformat(), 'voci': voci},
               open(QUI + 'aggiornamenti.json', 'w', encoding='utf-8'), ensure_ascii=False, indent=1)
