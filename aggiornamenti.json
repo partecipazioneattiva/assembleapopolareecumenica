@@ -1,7 +1,16 @@
 {
  "sito": "https://www.assembleapopolareecumenica.it/",
- "aggiornato": "2026-10-03",
+ "aggiornato": "2026-10-04",
  "voci": [
+  {
+   "data": "2026-10-04",
+   "tipo": "Attualità",
+   "titolo": "Scegliere, ma tra chi?",
+   "riassunto": "Il voto sceglie tra i nomi che altri hanno già deciso.",
+   "url": "https://www.assembleapopolareecumenica.it/attualita.html#scegliere-ma-tra-chi",
+   "immagine": "https://www.assembleapopolareecumenica.it/images/ape-scegliere-ma-tra-chi-copertina.webp",
+   "miniatura": "https://www.assembleapopolareecumenica.it/images/mini-scegliere-ma-tra-chi.webp"
+  },
   {
    "data": "2026-10-03",
    "tipo": "Attualità",
