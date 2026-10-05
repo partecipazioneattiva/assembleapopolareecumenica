@@ -378,11 +378,12 @@ def riscrivi_link(pezzo, uscita, copiati):
 
 
 def testa(uscita, attuale):
-    voci = [('./', 'Il progetto', 'index.html'), ('./#come-funziona', 'Come funziona', None), ('progetto.html', 'Nel dettaglio', 'progetto.html'),
-            ('patto.html', 'Il Patto', 'patto.html'), ('rete.html', 'Rete APE', 'rete.html'),
-            ('albo.html', 'Albo', 'albo.html'), ('attualita.html', 'Attualità', 'attualita.html'), ('./#documenti', 'Documenti', None)]
+    # 05/10/2026: da 9 voci a 5 + il pulsante (troppe scelte fanno esitare). Patto e Albo restano nel piede e dentro la Rete.
+    voci = [('./#come-funziona', 'Come funziona', None), ('progetto.html', 'Nel dettaglio', 'progetto.html'),
+            ('attualita.html', 'Attualità', 'attualita.html'), ('./#documenti', 'Documenti', None),
+            ('rete.html', 'Rete APE', 'rete.html')]
     h = ''.join(f'<a href="{u}"{" aria-current=page" if attuale == f else ""}>{t}</a>'
-                for u, t, f in voci) + '<a class="ape-aderisci" href="rete.html#aderisci">Aderisci</a>'
+                for u, t, f in voci) + '<a class="ape-aderisci" href="rete.html#aderisci">Diventa co-fondatore</a>'
     return ('<a class="ape-salta" href="#contenuto">Salta al contenuto</a>'
             '<header class="ape-testa"><div class="ape-testa-in">'
             '<a class="ape-marchio" href="./">'
@@ -395,7 +396,7 @@ PIEDE = (f'<footer class="ape-piede"><p><strong>APE &mdash; Assemblea Popolare E
          f'Un progetto aperto a tutti: cittadini, associazioni, movimenti, comitati, con peso paritario.</p>'
          f'<p>La proposta &egrave; pubblica e appartiene a chi la sottoscrive: chi firma il <a href="patto.html">Patto fondativo</a> '
          f'ne diventa co-fondatore, alla pari di tutti.</p>'
-         f'<p class="ape-piccolo"><a href="progetto.html">Il progetto per intero</a> &middot; <a href="patto.html">Il Patto</a> &middot; '
+         f'<p class="ape-piccolo"><a href="progetto.html">Il progetto per intero</a> &middot; <a href="patto.html">Il Patto</a> &middot; <a href="albo.html">L&rsquo;Albo</a> &middot; '
          f'<a href="./#documenti">Documenti</a> &middot; <a href="rete.html#aderisci">Aderisci</a></p>'
          f'<p class="ape-piccolo">Contatti: <a href="mailto:info@assembleapopolareecumenica.it">info@assembleapopolareecumenica.it</a>'
          f' &middot; <a href="{SITO_PA}privacy.html">Privacy e informativa sull&rsquo;adesione</a> &middot; Questo sito non usa cookie di profilazione '
@@ -476,6 +477,15 @@ def pagina(uscita, sorgente, titolo, anteprima, copiati):
     # images/ape-copertina-neutra.webp e' la stessa copertina con quella riga coperta dallo sfondo (fatta una volta, a mano).
     corpo = corpo.replace('images/ape-copertina.webp', 'images/ape-copertina-neutra.webp')
     corpo = re.sub(r'alt="APE[^"]*Nicotra[^"]*"', 'alt="APE, Assemblea Popolare Ecumenica: un canale permanente di voce dei cittadini"', corpo)
+    if uscita == 'index.html':
+        # 05/10/2026: la stessa idea compariva 6 volte. Via la presentazione di PA che ripete «L'APE in cinque righe»
+        # e il riquadro «campagna elettorale» (ripete «chi ignora una proposta non deve darne conto»).
+        corpo, n = re.subn(r'<p class="pa-lead">APE \(Assemblea Popolare Ecumenica\) \S.*?</p>\s*<p>\S* una riforma costituzionale che non aggiunge.*?</p>\s*', '', corpo, count=1, flags=re.S)
+        if n != 1:
+            stop('index: non trovo la presentazione ripetuta da togliere')
+        corpo, n = re.subn(r'<div class="pa-box">\s*<h3>Perch&eacute; conta proprio in campagna elettorale</h3>.*?</div>\s*|<div class="pa-box">\s*<h3>Perch\S* conta proprio in campagna elettorale</h3>.*?</div>\s*', '', corpo, count=1, flags=re.S)
+        if n != 1:
+            stop('index: non trovo il riquadro campagna elettorale da togliere')
     if uscita == 'index.html':
         # ancora per la voce «Documenti»: il primo riquadro di scarico
         if corpo.count('<div class="pa-dl">') < 1:
