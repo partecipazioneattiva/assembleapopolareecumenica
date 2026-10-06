@@ -308,7 +308,7 @@ p,li{text-wrap:pretty}
 .ape-piede a{color:#ffd580;font-weight:700}
 .ape-piede p{max-width:760px;margin:0 auto 10px}
 .ape-piede .ape-piccolo{font-size:.9em;color:#f3e6d3}
-@media(max-width:700px){.ape-testa{position:static}.ape-voci{flex-wrap:nowrap;overflow-x:auto;width:100%;scrollbar-width:none;-webkit-overflow-scrolling:touch}.ape-voci::-webkit-scrollbar{display:none}.ape-voci a{padding:8px 11px;font-size:.95em;white-space:nowrap;flex:0 0 auto}.ape-voci a.ape-aderisci{order:-1}}
+@media(max-width:700px){.ape-testa{position:static}.ape-voci{flex-wrap:wrap;width:100%;gap:6px}.ape-voci a{padding:7px 10px;font-size:.88em}.ape-voci a.ape-aderisci{order:-1;flex:1 0 100%;text-align:center}}
 """
 
 
@@ -378,10 +378,10 @@ def riscrivi_link(pezzo, uscita, copiati):
 
 
 def testa(uscita, attuale):
-    # 05/10/2026: da 9 voci a 5 + il pulsante (troppe scelte fanno esitare). Patto e Albo restano nel piede e dentro la Rete.
+    # 05/10/2026: da 9 voci a 5 + il pulsante (troppe scelte fanno esitare). 06/10: l'Albo torna nel menù (Fernando: «resta difficile trovarlo»); il Patto resta nel piede e dentro la Rete.
     voci = [('./#come-funziona', 'Come funziona', None), ('progetto.html', 'Nel dettaglio', 'progetto.html'),
             ('attualita.html', 'Attualità', 'attualita.html'), ('./#documenti', 'Documenti', None),
-            ('rete.html', 'Rete APE', 'rete.html')]
+            ('rete.html', 'Rete APE', 'rete.html'), ('albo.html', 'Albo dei co-fondatori', 'albo.html')]
     h = ''.join(f'<a href="{u}"{" aria-current=page" if attuale == f else ""}>{t}</a>'
                 for u, t, f in voci) + '<a class="ape-aderisci" href="rete.html#aderisci">Diventa co-fondatore</a>'
     return ('<a class="ape-salta" href="#contenuto">Salta al contenuto</a>'
