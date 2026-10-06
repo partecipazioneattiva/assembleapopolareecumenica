@@ -1,7 +1,16 @@
 {
  "sito": "https://www.assembleapopolareecumenica.it/",
- "aggiornato": "2026-10-05",
+ "aggiornato": "2026-10-06",
  "voci": [
+  {
+   "data": "2026-10-06",
+   "tipo": "Attualità",
+   "titolo": "Diventa co-fondatore",
+   "riassunto": "Non aderisci a un progetto: lo fondi. Firma il Patto e diventa co-fondatore.",
+   "url": "https://www.assembleapopolareecumenica.it/attualita.html#diventa-cofondatore",
+   "immagine": "https://www.assembleapopolareecumenica.it/images/ape-diventa-cofondatore-copertina.webp",
+   "miniatura": "https://www.assembleapopolareecumenica.it/images/mini-diventa-co-fondatore.webp"
+  },
   {
    "data": "2026-10-05",
    "tipo": "Attualità",
