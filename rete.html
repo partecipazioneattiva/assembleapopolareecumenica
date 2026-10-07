@@ -72,6 +72,21 @@ p,li{text-wrap:pretty}
 </div>
 <article class="article-wrap">
 <div style="max-width:860px;margin:0 auto;padding:40px 24px">
+<div class="ra-chat" id="chat-rete">
+  <h2>Entra nella chat della Rete APE</h2>
+  <p>La chat WhatsApp della Rete APE &egrave; aperta a chi sostiene il progetto. <strong>Entrando, il tuo numero di telefono sar&agrave; visibile agli altri partecipanti.</strong> L&rsquo;ingresso viene approvato dagli amministratori del gruppo.</p>
+  <a class="ra-chat-bt" href="https://chat.whatsapp.com/Kglv6h9DNnV5L3INuDhs7t" target="_blank" rel="noopener noreferrer">&#128172; Entra nella chat WhatsApp</a>
+</div>
+<style>
+.ra-chat{max-width:680px;margin:8px auto 30px;padding:26px 24px 28px;background:#0b6b3a;border-radius:20px;font-family:Montserrat,system-ui,sans-serif;text-align:center;box-shadow:0 8px 24px rgba(11,107,58,.28)}
+.article-wrap .ra-chat h2,.ra-chat h2{font-family:Merriweather,Georgia,serif;color:#fff;font-size:1.55em;line-height:1.3;margin:0 0 12px;padding:0;border:0}
+.ra-chat p{margin:0 0 18px;color:#fff;line-height:1.55;font-size:1.02em}
+.ra-chat strong{color:#fff}
+.ra-chat .ra-chat-bt{display:flex;align-items:center;justify-content:center;gap:10px;min-height:66px;padding:0 22px;border-radius:50px;background:#fff;color:#0b4d2a;font-weight:800;font-size:1.25em;text-decoration:none;text-align:center}
+.ra-chat .ra-chat-bt:hover{background:#eaf6ee}
+.ra-chat .ra-chat-bt:focus{outline:4px solid #75b4e8;outline-offset:3px}
+</style>
+
 
 <p>La <strong>Rete APE</strong> nasce per dare forma concreta a un&#8217;idea semplice e radicale: i cittadini devono poter esercitare la sovranit&#224; ogni giorno, non solo ogni cinque anni. Si ispira al progetto dell&#8217;<strong>Assemblea Popolare Ecumenica</strong>.</p>
 
@@ -188,18 +203,6 @@ p,li{text-wrap:pretty}
   <p id="ra-esito" role="status" aria-live="polite"></p>
 </form>
 
-<div class="ra-chat" id="chat-rete">
-  <h3>Entra nella chat della Rete APE</h3>
-  <p>La chat WhatsApp della Rete APE &egrave; aperta a chi sostiene il progetto. <strong>Entrando, il tuo numero di telefono sar&agrave; visibile agli altri partecipanti.</strong> L&rsquo;ingresso viene approvato dagli amministratori del gruppo.</p>
-  <a class="ra-chat-bt" href="https://chat.whatsapp.com/Kglv6h9DNnV5L3INuDhs7t" target="_blank" rel="noopener noreferrer">Entra nella chat WhatsApp</a>
-</div>
-<style>
-.ra-chat{max-width:620px;margin:0 auto 28px;padding:22px 24px;background:#eef7f1;border:2px solid #0b6b3a;border-radius:16px;font-family:Montserrat,system-ui,sans-serif}
-.ra-chat h3{font-family:Merriweather,Georgia,serif;color:#0b4d2a;font-size:1.2em;margin:0 0 8px}
-.ra-chat p{margin:0 0 14px;color:#222;line-height:1.55}
-.ra-chat .ra-chat-bt{display:flex;align-items:center;justify-content:center;min-height:54px;padding:0 20px;border-radius:50px;background:#0b6b3a;color:#fff;font-weight:800;font-size:1.1em;text-decoration:none;text-align:center}
-.ra-chat .ra-chat-bt:focus{outline:3px solid #0d6ae0;outline-offset:2px}
-</style>
 <style>
 .ra-modulo{max-width:620px;margin:28px auto;padding:24px;background:#f0f7fd;border:2px solid #2981c9;border-radius:16px;font-family:Montserrat,system-ui,sans-serif}
 .ra-modulo h3{font-family:Merriweather,Georgia,serif;color:#134a77;font-size:1.25em;margin:0 0 6px}
@@ -240,7 +243,7 @@ p,li{text-wrap:pretty}
     dire('Sto confermando la tua adesione…',true);
     fetch(F,{method:'POST',headers:{'content-type':'application/json',apikey:K,authorization:'Bearer '+K},body:JSON.stringify({conferma:cod})})
     .then(function(r){return r.json()}).then(function(j){
-      if(j.ok) dire('Firma confermata: ora sei co-fondatore della Rete APE. Grazie! Qui sotto puoi entrare nella chat della Rete.',true);
+      if(j.ok) dire('Firma confermata: ora sei co-fondatore della Rete APE. Grazie! Il riquadro verde in cima alla pagina ti porta nella chat della Rete.',true);setTimeout(function(){var ch=document.getElementById('chat-rete');if(ch)ch.scrollIntoView({behavior:'smooth',block:'center'})},2500);
       else dire('Il collegamento di conferma non è valido.',false)})
     .catch(function(){dire('Connessione non riuscita. Riapri il collegamento fra poco.',false)});
     f.scrollIntoView();

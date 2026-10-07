@@ -144,6 +144,21 @@ INGRESSO = (
     '<span>La&nbsp;<b>Rete&nbsp;APE</b> &egrave; chi&nbsp;la&nbsp;sostiene gi&agrave;&nbsp;adesso.</span></p>'
     '</section>\n')
 
+# 07/10/2026 Fernando: «deve essere visibilissimo». Fascia verde con il bottone della chat WhatsApp della Rete, subito dopo la prima schermata.
+# L'ingresso e' approvato dagli amministratori (impostazione «Approva nuovi membri» attiva, verificata 07/10); il numero e' visibile ai partecipanti.
+CHAT_HOME = (
+    '<style>'
+    '.ap-chat{background:#0b6b3a;color:#fff;text-align:center;padding:26px 16px 28px;font-family:Montserrat,system-ui,sans-serif}'
+    '.ap-chat h2{font-family:Merriweather,Georgia,serif;font-size:1.5em;line-height:1.3;color:#fff;margin:0 auto 10px;max-width:640px;padding:0;border:0}'
+    '.ap-chat p{margin:0 auto 16px;max-width:600px;line-height:1.5;color:#fff;font-size:1em}'
+    '.ap-chat a.ap-chat-bt{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:62px;padding:0 28px;border-radius:50px;background:#fff;color:#0b4d2a;font-weight:800;font-size:1.2em;text-decoration:none}'
+    '.ap-chat a.ap-chat-bt:hover{background:#eaf6ee}.ap-chat a.ap-chat-bt:focus{outline:4px solid #ffd75e;outline-offset:3px}'
+    '@media(max-width:600px){.ap-chat a.ap-chat-bt{width:100%;box-sizing:border-box}}'
+    '</style>'
+    '<section class="ap-chat" id="chat-rete" aria-labelledby="ap-chat-t"><h2 id="ap-chat-t">Entra nella chat della Rete APE</h2>'
+    '<p>Parlane con chi sostiene il progetto. <strong>Il tuo numero di telefono sar&agrave; visibile agli altri partecipanti</strong>; l&rsquo;ingresso viene approvato dagli amministratori del gruppo.</p>'
+    '<a class="ap-chat-bt" href="https://chat.whatsapp.com/Kglv6h9DNnV5L3INuDhs7t" target="_blank" rel="noopener noreferrer">&#128172; Entra nella chat WhatsApp</a></section>\n')
+
 # L'esempio e' quello di «E dopo il voto?» (copione del 26/09), dichiarato inventato come nel video.
 LIBRO = ('<p style="text-align:center;margin:30px 0 6px"><img class="ap-libro" src="images/ape-copertina.webp" '
          'alt="Copertina: APE, Assemblea Popolare Ecumenica, un canale permanente di voce dei cittadini" width="1368" height="1935" loading="lazy"></p>'
@@ -472,7 +487,7 @@ def pagina(uscita, sorgente, titolo, anteprima, copiati):
         corpo, n = re.subn(t, '', corpo, count=1, flags=re.S)
         if n != 1:
             stop(f'{uscita}: non trovo il blocco da togliere «{t[:40]}»')
-    corpo = neutro(riscrivi_link(corpo, uscita, copiati)).replace('<!--INGRESSO-->', INGRESSO)   # il giallo e' dell'APE: non si ruota
+    corpo = neutro(riscrivi_link(corpo, uscita, copiati)).replace('<!--INGRESSO-->', INGRESSO + CHAT_HOME)   # il giallo e' dell'APE: non si ruota
     # 02/10/2026 (Fernando, sulla copertina): la riga «Angelo Nicotra · Partecipazione Attiva» non va sul sito APE.
     # images/ape-copertina-neutra.webp e' la stessa copertina con quella riga coperta dallo sfondo (fatta una volta, a mano).
     corpo = corpo.replace('images/ape-copertina.webp', 'images/ape-copertina-neutra.webp')
