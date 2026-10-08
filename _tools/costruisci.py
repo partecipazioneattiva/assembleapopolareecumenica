@@ -300,7 +300,7 @@ STILE = """
 .ape-testa-in{max-width:1100px;margin:0 auto;padding:10px 16px;display:flex;flex-wrap:wrap;
   align-items:center;justify-content:space-between;gap:8px 18px}
 .ape-marchio{display:flex;align-items:center;gap:10px;text-decoration:none;color:#3a2000}
-.ape-marchio .ape-ape{font-size:2em;line-height:1}
+.ape-marchio .ape-ape{width:46px;height:46px;flex:none;display:block}
 .ape-marchio b{display:block;font-family:Montserrat,system-ui,sans-serif;font-weight:900;
   font-size:1.25em;letter-spacing:1px;color:#8a4e00}
 .ape-marchio span span{display:block;font-family:Montserrat,system-ui,sans-serif;font-size:.72em;
@@ -404,7 +404,7 @@ def testa(uscita, attuale):
     return ('<a class="ape-salta" href="#contenuto">Salta al contenuto</a>'
             '<header class="ape-testa"><div class="ape-testa-in">'
             '<a class="ape-marchio" href="./">'
-            '<span class="ape-ape" aria-hidden="true">&#x1F41D;</span>'
+            '<img class="ape-ape" src="images/ape-logo.svg" alt="" width="46" height="46">'
             '<span><b>APE</b><span>Assemblea Popolare Ecumenica</span></span></a>'
             f'<nav class="ape-voci" aria-label="Menu principale">{h}</nav></div></header>')
 
@@ -584,7 +584,7 @@ def scrivi_pagina(uscita, titolo, desc, anteprima, corpo, stili, da):
 <meta name="twitter:title" content="{titolo}">
 <meta name="twitter:description" content="{desc}">
 <meta name="twitter:image" content="{SITO}{anteprima}">
-<link rel="icon" href="{ICONA}">
+<link rel="icon" href="favicon.ico" sizes="any"><link rel="icon" type="image/png" sizes="192x192" href="images/favicon-192.png"><link rel="apple-touch-icon" href="images/apple-touch-icon.png">
 {PRECARICO if uscita == 'index.html' else ''}<link href="fonts/caratteri.css" rel="stylesheet">
 <link rel="stylesheet" href="css/ape-leggibilita.css">
 <link rel="stylesheet" href="css/ape-base.css">

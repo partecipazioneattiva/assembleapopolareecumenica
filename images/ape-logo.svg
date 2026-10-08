@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-221.19 -221.19 442.38 442.38" width="442.38" height="442.38">
+  <title>APE - icona</title>
+  
+  <circle cx="0" cy="0" r="219.94" fill="#FFFFFF" stroke="#14284B" stroke-width="2.5"/>
+  <circle cx="0.00" cy="-185.00" r="14.19" fill="#C8A84B"/>
+  <circle cx="57.17" cy="-175.95" r="14.19" fill="#14284B"/>
+  <circle cx="108.74" cy="-149.67" r="14.19" fill="#14284B"/>
+  <circle cx="149.67" cy="-108.74" r="14.19" fill="#14284B"/>
+  <circle cx="175.95" cy="-57.17" r="14.19" fill="#14284B"/>
+  <circle cx="185.00" cy="-0.00" r="14.19" fill="#14284B"/>
+  <circle cx="175.95" cy="57.17" r="14.19" fill="#14284B"/>
+  <circle cx="149.67" cy="108.74" r="14.19" fill="#14284B"/>
+  <circle cx="108.74" cy="149.67" r="14.19" fill="#14284B"/>
+  <circle cx="57.17" cy="175.95" r="14.19" fill="#14284B"/>
+  <circle cx="0.00" cy="185.00" r="14.19" fill="#14284B"/>
+  <circle cx="-57.17" cy="175.95" r="14.19" fill="#14284B"/>
+  <circle cx="-108.74" cy="149.67" r="14.19" fill="#14284B"/>
+  <circle cx="-149.67" cy="108.74" r="14.19" fill="#14284B"/>
+  <circle cx="-175.95" cy="57.17" r="14.19" fill="#14284B"/>
+  <circle cx="-185.00" cy="0.00" r="14.19" fill="#14284B"/>
+  <circle cx="-175.95" cy="-57.17" r="14.19" fill="#14284B"/>
+  <circle cx="-149.67" cy="-108.74" r="14.19" fill="#14284B"/>
+  <circle cx="-108.74" cy="-149.67" r="14.19" fill="#14284B"/>
+  <circle cx="-57.17" cy="-175.95" r="14.19" fill="#14284B"/>
+  <g transform="translate(-1 17) scale(1.0)">
+  <!-- zampe -->
+  <g fill="none" stroke="#14284B" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M-62 26 L-76 47 L-70 64"/>
+    <path d="M-46 32 L-49 54 L-40 69"/>
+    <path d="M-28 30 L-12 49 L-4 64"/>
+  </g>
+  <!-- ala posteriore -->
+  <ellipse cx="-6" cy="-70" rx="46" ry="19" transform="rotate(-40 -6 -70)" fill="#CEE9F2" stroke="#14284B" stroke-width="3"/>
+  <!-- addome con strisce -->
+  <g transform="translate(46 8) rotate(12)">
+    <clipPath id="addome_ir"><ellipse cx="0" cy="0" rx="74" ry="50"/></clipPath>
+    <ellipse cx="0" cy="0" rx="74" ry="50" fill="#C8A84B"/>
+    <g clip-path="url(#addome_ir)" fill="#14284B">
+      <rect x="-26" y="-60" width="17" height="120"/>
+      <rect x="9" y="-60" width="17" height="120"/>
+      <rect x="44" y="-60" width="17" height="120"/>
+    </g>
+    
+    <path d="M70 -8 L96 0 L70 8 Z" fill="#14284B"/>
+  </g>
+  <!-- torace -->
+  <circle cx="-44" cy="-2" r="35" fill="#C8A84B"/>
+  <!-- ala anteriore -->
+  <ellipse cx="12" cy="-58" rx="56" ry="22" transform="rotate(-22 12 -58)" fill="#CEE9F2" stroke="#14284B" stroke-width="3"/>
+  <!-- antenne -->
+  <g fill="none" stroke="#14284B" stroke-width="4.5" stroke-linecap="round">
+    <path d="M-100 -36 Q-108 -66 -134 -72"/>
+    <path d="M-88 -38 Q-90 -72 -112 -86"/>
+  </g>
+  <!-- testa -->
+  <circle cx="-94" cy="-8" r="31" fill="#14284B"/>
+  <!-- occhio allegro -->
+  <ellipse cx="-104" cy="-17" rx="12" ry="14" fill="#FFFFFF"/>
+  <circle cx="-107.5" cy="-15" r="7.6" fill="#14284B"/>
+  <circle cx="-104.5" cy="-19.8" r="2.6" fill="#FFFFFF"/>
+  <!-- guancia e sorriso -->
+  <circle cx="-88" cy="4" r="6.5" fill="#E8A7A0"/>
+  <path d="M-122 0 Q-111 16 -95 7" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round"/>
+</g>
+</svg>
