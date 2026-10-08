@@ -247,7 +247,7 @@ p,li{text-wrap:pretty}
     dire('Sto confermando la tua adesione…',true);
     fetch(F,{method:'POST',headers:{'content-type':'application/json',apikey:K,authorization:'Bearer '+K},body:JSON.stringify({conferma:cod})})
     .then(function(r){return r.json()}).then(function(j){
-      if(j.ok) dire('Firma confermata: ora sei co-fondatore della Rete APE. Grazie! Il riquadro verde in cima alla pagina ti porta nella chat della Rete.',true);setTimeout(function(){var ch=document.getElementById('chat-rete');if(ch)ch.scrollIntoView({behavior:'smooth',block:'center'})},2500);
+      if(j.ok){dire('Firma confermata: ora sei co-fondatore della Rete APE. Grazie! Il riquadro verde in cima alla pagina ti porta nella chat della Rete.',true);setTimeout(function(){var ch=document.getElementById('chat-rete');if(ch)ch.scrollIntoView({behavior:'smooth',block:'center'})},2500)}
       else dire('Il collegamento di conferma non è valido.',false)})
     .catch(function(){dire('Connessione non riuscita. Riapri il collegamento fra poco.',false)});
     f.scrollIntoView();
