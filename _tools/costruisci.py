@@ -415,7 +415,7 @@ PIEDE = (f'<footer class="ape-piede"><p><strong>APE &mdash; Assemblea Popolare E
          f'ne diventa co-fondatore, alla pari di tutti.</p>'
          f'<p class="ape-piccolo"><a href="progetto.html">Il progetto per intero</a> &middot; <a href="patto.html">Il Patto</a> &middot; <a href="albo.html">L&rsquo;Albo</a> &middot; '
          f'<a href="./#documenti">Documenti</a> &middot; <a href="rete.html#aderisci">Aderisci</a></p>'
-         f'<p class="ape-piccolo">Contatti: <a href="mailto:info@assembleapopolareecumenica.it">info@assembleapopolareecumenica.it</a>'
+         f'<p class="ape-piccolo">Contatti: <a href="mailto:info@assembleapopolareecumenica.it">info@assembleapopolareecumenica.it</a> &middot; <a href="https://www.facebook.com/profile.php?id=61595012680370" target="_blank" rel="noopener noreferrer">Seguici su Facebook</a>'
          f' &middot; <a href="{SITO_PA}privacy.html">Privacy e informativa sull&rsquo;adesione</a> &middot; Questo sito non usa cookie di profilazione '
          f'n&eacute; tracciatori.</p><p class="ape-piccolo">Aggiornato il {datetime.date.today().strftime("%d/%m/%Y")} &middot; &copy; {datetime.date.today().year}</p></footer>')
 
