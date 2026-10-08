@@ -404,7 +404,7 @@ def testa(uscita, attuale):
     return ('<a class="ape-salta" href="#contenuto">Salta al contenuto</a>'
             '<header class="ape-testa"><div class="ape-testa-in">'
             '<a class="ape-marchio" href="./">'
-            '<img class="ape-ape" src="images/ape-logo.svg" alt="" width="96" height="96">'
+            '<img class="ape-ape" src="images/ape-logo-v2.svg" alt="" width="96" height="96">'
             '<span><span>Assemblea Popolare Ecumenica</span></span></a>'
             f'<nav class="ape-voci" aria-label="Menu principale">{h}</nav></div></header>')
 
