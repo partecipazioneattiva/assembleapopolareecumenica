@@ -612,7 +612,7 @@ PAGINE_PROPRIE = {
                    'Il Patto fondativo della Rete APE: sei principi, peso paritario, un Albo pubblico. Chi lo firma non entra in un progetto altrui: ne diventa co-fondatore.',
                    'images/rete-ape-anteprima.jpg'),
     'attualita.html': ('Attualità: le notizie lette con la domanda dell’APE | Assemblea Popolare Ecumenica',
-                       'Le notizie del giorno lette con una sola domanda: dopo il voto, quanto contano i cittadini? Oggi: come diventare co-fondatore della Rete APE.',
+                       'Le notizie del giorno lette con una sola domanda: dopo il voto, quanto contano i cittadini? Oggi: entra nella chat WhatsApp della Rete APE.',
                        'images/ape-anteprima-domanda.jpg'),
     'albo.html': ('Albo dei co-fondatori della Rete APE',
                   'L&#x27;Albo dei co-fondatori della Rete APE: chi ha firmato il Patto fondativo, in ordine alfabetico, senza primi e senza ultimi.',

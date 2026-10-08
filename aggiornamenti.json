@@ -1,7 +1,16 @@
 {
  "sito": "https://www.assembleapopolareecumenica.it/",
- "aggiornato": "2026-10-06",
+ "aggiornato": "2026-10-08",
  "voci": [
+  {
+   "data": "2026-10-08",
+   "tipo": "Attualità",
+   "titolo": "Entra nella chat della Rete APE",
+   "riassunto": "Parlane con chi la sostiene già. Entra nella chat della Rete APE.",
+   "url": "https://www.assembleapopolareecumenica.it/attualita.html#entra-nella-chat",
+   "immagine": "https://www.assembleapopolareecumenica.it/images/ape-chat-whatsapp-copertina.webp",
+   "miniatura": "https://www.assembleapopolareecumenica.it/images/mini-entra-nella-chat-della-rete-ape.webp"
+  },
   {
    "data": "2026-10-06",
    "tipo": "Attualità",
