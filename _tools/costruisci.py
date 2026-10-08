@@ -300,7 +300,7 @@ STILE = """
 .ape-testa-in{max-width:1100px;margin:0 auto;padding:10px 16px;display:flex;flex-wrap:wrap;
   align-items:center;justify-content:space-between;gap:8px 18px}
 .ape-marchio{display:flex;align-items:center;gap:10px;text-decoration:none;color:#3a2000}
-.ape-marchio .ape-ape{width:46px;height:46px;flex:none;display:block}
+.ape-marchio .ape-ape{width:96px;height:96px;flex:none;display:block}
 .ape-marchio b{display:block;font-family:Montserrat,system-ui,sans-serif;font-weight:900;
   font-size:1.25em;letter-spacing:1px;color:#8a4e00}
 .ape-marchio span span{display:block;font-family:Montserrat,system-ui,sans-serif;font-size:.72em;
@@ -404,8 +404,8 @@ def testa(uscita, attuale):
     return ('<a class="ape-salta" href="#contenuto">Salta al contenuto</a>'
             '<header class="ape-testa"><div class="ape-testa-in">'
             '<a class="ape-marchio" href="./">'
-            '<img class="ape-ape" src="images/ape-logo.svg" alt="" width="46" height="46">'
-            '<span><b>APE</b><span>Assemblea Popolare Ecumenica</span></span></a>'
+            '<img class="ape-ape" src="images/ape-logo.svg" alt="" width="96" height="96">'
+            '<span><span>Assemblea Popolare Ecumenica</span></span></a>'
             f'<nav class="ape-voci" aria-label="Menu principale">{h}</nav></div></header>')
 
 
