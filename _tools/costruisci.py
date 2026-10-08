@@ -314,6 +314,8 @@ STILE = """
 .ape-voci a.ape-aderisci{background:rgb(255,215,94);color:rgb(11,31,51)}
 .ape-voci a.ape-chat{background:#0b6b3a;color:#fff}
 .ape-voci a.ape-chat:hover,.ape-voci a.ape-chat:focus{background:#0b4d2a;color:#fff}
+.ape-voci a.ape-fb{border:2px solid #165486;background:#fff;color:#165486}
+.ape-voci a.ape-fb:hover,.ape-voci a.ape-fb:focus{background:#e8f1f8;color:#0b3a63}
 /* i pulsanti di PA hanno testo scuro su arancio: sul blu serve il bianco (pa11y: 4,39 -> a norma) */
 main a.btn,main a.btn:visited,main a[href^="mailto:"][style*="background"]{background:#17507a!important;color:#fff!important}
 h1,h2,h3,.sottotitolo,.article-subtitle,.ap-in p,.ap-hero p,.ape-piede p,summary{text-wrap:balance}
@@ -325,7 +327,7 @@ p,li{text-wrap:pretty}
 .ape-piede a{color:#ffd580;font-weight:700}
 .ape-piede p{max-width:760px;margin:0 auto 10px}
 .ape-piede .ape-piccolo{font-size:.9em;color:#f3e6d3}
-@media(max-width:700px){.ape-testa{position:static}.ape-voci{flex-wrap:wrap;width:100%;gap:6px}.ape-voci a{padding:7px 10px;font-size:.88em}.ape-voci a.ape-aderisci{order:-1;flex:1 0 100%;text-align:center}.ape-voci a.ape-chat{order:-1;flex:1 0 100%;text-align:center}}
+@media(max-width:700px){.ape-testa{position:static}.ape-voci{flex-wrap:wrap;width:100%;gap:6px}.ape-voci a{padding:7px 10px;font-size:.88em}.ape-voci a.ape-aderisci{order:-1;flex:1 0 100%;text-align:center}.ape-voci a.ape-chat{order:-1;flex:1 1 0;text-align:center;white-space:nowrap}.ape-voci a.ape-fb{order:-1;flex:0 0 auto;text-align:center}}
 """
 
 
@@ -400,7 +402,7 @@ def testa(uscita, attuale):
             ('attualita.html', 'Attualità', 'attualita.html'), ('./#documenti', 'Documenti', None),
             ('rete.html', 'Rete APE', 'rete.html'), ('albo.html', 'Albo dei co-fondatori', 'albo.html')]
     h = ''.join(f'<a href="{u}"{" aria-current=page" if attuale == f else ""}>{t}</a>'
-                for u, t, f in voci) + '<a class="ape-aderisci" href="rete.html#aderisci">Diventa co-fondatore</a>' + '<a class="ape-chat" href="https://chat.whatsapp.com/Kglv6h9DNnV5L3INuDhs7t" target="_blank" rel="noopener noreferrer">&#128172; Chat WhatsApp</a>'
+                for u, t, f in voci) + '<a class="ape-aderisci" href="rete.html#aderisci">Diventa co-fondatore</a>' + '<a class="ape-chat" href="https://chat.whatsapp.com/Kglv6h9DNnV5L3INuDhs7t" target="_blank" rel="noopener noreferrer">&#128172; Chat WhatsApp</a><a class="ape-fb" href="https://www.facebook.com/profile.php?id=61595012680370" target="_blank" rel="noopener noreferrer">Facebook</a>'
     return ('<a class="ape-salta" href="#contenuto">Salta al contenuto</a>'
             '<header class="ape-testa"><div class="ape-testa-in">'
             '<a class="ape-marchio" href="./">'
