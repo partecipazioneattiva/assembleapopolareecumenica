@@ -1,7 +1,16 @@
 {
  "sito": "https://www.assembleapopolareecumenica.it/",
- "aggiornato": "2026-10-08",
+ "aggiornato": "2026-10-10",
  "voci": [
+  {
+   "data": "2026-10-10",
+   "tipo": "Attualità",
+   "titolo": "La legge elettorale è firmata. E dopo il voto?",
+   "riassunto": "Il voto sceglie chi decide. Tra un’elezione e l’altra, quale voce hanno i cittadini?",
+   "url": "https://www.assembleapopolareecumenica.it/attualita.html#legge-elettorale-firmata",
+   "immagine": "https://www.assembleapopolareecumenica.it/images/ape-legge-elettorale-firmata-copertina.webp",
+   "miniatura": "https://www.assembleapopolareecumenica.it/images/mini-la-legge-elettorale-firmata-e-dopo-il-vo.webp"
+  },
   {
    "data": "2026-10-08",
    "tipo": "Attualità",
