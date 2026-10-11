@@ -829,6 +829,54 @@ def novita_home(voci):
     print(f'  index.html   novita in testata: «{p["titolo"]}» + {len(altre)} precedenti')
 
 
+# 11/10/2026 Fernando: il campanello delle notifiche come su PA. Sito APE aggiunto al suo account Webpushr
+# (chiave pubblica qui sotto: sta in chiaro in ogni pagina, non e' un segreto). Interviene SOLO se il visitatore
+# accetta la richiesta del browser: informativa al §9 della privacy di PA, a cui rimanda il piede di pagina.
+# Il banner compare quando il visitatore ha letto il 40% della pagina, GIA' ALLA PRIMA VISITA (diverso da PA): chi arriva
+# all'APE viene quasi sempre da un link social e passa una volta sola. La richiesta del browser parte solo dal bottone.
+WEBPUSHR_CHIAVE = 'BIbIB66xdKuzKuxaECrh8KDL2sxPF3TMhchqEj41QcldhIFbTNHZK3qoGoCyxD00ijQZiCunQCPhtUWR5HLlku4'
+CAMPANELLO = (
+    '<!-- start webpushr code --><script>(function(w,d, s, id) {if(typeof(w.webpushr)!=\'undefined\') return;'
+    'w.webpushr=w.webpushr||function(){(w.webpushr.q=w.webpushr.q||[]).push(arguments)};var js, fjs = d.getElementsByTagName(s)[0];'
+    'js = d.createElement(s); js.id = id;js.async=1;js.src = "https://cdn.webpushr.com/app.min.js";fjs.parentNode.appendChild(js);}'
+    '(window,document, \'script\', \'webpushr-jssdk\'));webpushr(\'setup\',{\'key\':\'' + WEBPUSHR_CHIAVE + '\'});</script><!-- end webpushr code -->'
+    '<style>#ape-notif{display:none;position:fixed;top:0;left:0;right:0;z-index:99999;background:linear-gradient(90deg,#0b1f33 0%,#17507a 100%);'
+    'color:#fff;padding:14px 20px;font-family:Montserrat,system-ui,sans-serif;box-shadow:0 4px 20px rgba(0,0,0,.35);border-bottom:2px solid #ffd75e;'
+    'align-items:center;justify-content:center;gap:16px;flex-wrap:wrap}'
+    '#ape-notif .t{flex:1;min-width:200px}#ape-notif .t b{display:block;font-size:1em}#ape-notif .t span{display:block;font-size:.8em;opacity:.9;margin-top:2px}'
+    '#ape-notif button{border-radius:50px;font-family:Montserrat,system-ui,sans-serif;cursor:pointer;white-space:nowrap}'
+    '#ape-notif .si{background:#ffd75e;color:#0e2a40;border:none;padding:10px 22px;font-weight:800;font-size:.88em}'
+    '#ape-notif .no{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.45);color:#fff;padding:10px 18px;font-size:.78em}'
+    '@media(max-width:700px){#ape-notif{top:auto;bottom:0;padding:10px 12px;gap:8px;border-bottom:0;border-top:2px solid #ffd75e;box-shadow:0 -2px 14px rgba(0,0,0,.35)}'
+    '#ape-notif .ic{display:none}#ape-notif .t{flex:1 1 100%;min-width:0;text-align:center}#ape-notif .t span{display:none}'
+    '#ape-notif button{flex:1 1 0;padding:9px 10px;font-size:.82em}}</style>'
+    '<div id="ape-notif" role="region" aria-label="Notifiche dell&rsquo;APE"><span class="ic" aria-hidden="true" style="font-size:1.5em">&#128276;</span>'
+    '<div class="t"><b>Resta aggiornato sull&rsquo;APE</b><span>Una notifica quando esce una novit&agrave; sul sito.</span></div>'
+    '<button type="button" class="si" onclick="webpushr(\'subscribe\');apeNotifChiudi()">&#128276; Attiva le notifiche</button>'
+    '<button type="button" class="no" onclick="apeNotifChiudi()">No grazie</button></div>'
+    '<script>function apeNotifChiudi(){document.getElementById(\'ape-notif\').style.display=\'none\';try{localStorage.setItem(\'ape-notif-chiuso\',\'1\')}catch(e){}}'
+    '(function(){try{if(localStorage.getItem(\'ape-notif-chiuso\'))return;'
+    'if(typeof Notification!==\'undefined\'&&Notification.permission!==\'default\')return;'
+    'var b=document.getElementById(\'ape-notif\');if(!b)return;'
+    'function s(){var h=document.documentElement.scrollHeight-innerHeight;if(h>0&&scrollY/h>0.4){b.style.display=\'flex\';removeEventListener(\'scroll\',s)}}'
+    'addEventListener(\'scroll\',s,{passive:true})}catch(e){}})();</script>')
+
+
+def metti_campanello():
+    """Il campanello va in tutte le pagine del sito, prima di </body>; il file del service worker nella radice."""
+    open(QUI + 'webpushr-sw.js', 'w').write("importScripts('https://cdn.webpushr.com/sw-server.min.js');\n")
+    pagine = list(PAGINE) + ['progetto.html'] + list(PAGINE_PROPRIE)
+    for nome in dict.fromkeys(pagine):
+        f = QUI + nome
+        h = open(f, encoding='utf-8').read()
+        if 'webpushr-jssdk' in h:
+            stop(f'campanello: {nome} lo ha gia\'')
+        if h.count('</body>') != 1:
+            stop(f'campanello: {nome} non ha un solo </body>')
+        open(f, 'w', encoding='utf-8').write(h.replace('</body>', CAMPANELLO + '</body>'))
+    print(f'  campanello   notifiche in {len(dict.fromkeys(pagine))} pagine + webpushr-sw.js')
+
+
 def main():
     if not os.path.isdir(PA):
         stop('non trovo il repository di Partecipazione Attiva accanto a questo')
@@ -846,6 +894,7 @@ def main():
     voci = ''.join(f'<url><loc>{SITO}{"" if p == "index.html" else p}</loc><lastmod>{oggi}</lastmod></url>\n'
                    for p in list(PAGINE) + ['progetto.html'] + list(PAGINE_PROPRIE))
     novita_home(scrivi_novita())
+    metti_campanello()
     open(QUI + 'sitemap.xml', 'w').write('<?xml version="1.0" encoding="UTF-8"?>\n'
         '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + voci + '</urlset>\n')
     open(QUI + 'robots.txt', 'w').write(f'User-agent: *\nAllow: /\nSitemap: {SITO}sitemap.xml\n')
