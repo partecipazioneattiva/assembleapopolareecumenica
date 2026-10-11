@@ -124,6 +124,7 @@ INGRESSO = (
     '@media(max-width:600px){.ap-in h1{font-size:1.6em}.ap-porte a{width:100%;justify-content:center}.ap-noe{grid-template-columns:1fr}}'
     '</style>'
     '<section class="ap-in" aria-labelledby="ap-domanda">'
+    '<!--NOVITA_HOME-->'
     '<p class="k"><span>APE &middot; Assemblea Popolare Ecumenica</span> <span>Proposta di riforma costituzionale</span></p>'
     '<h1 id="ap-domanda">Tra un voto e l&rsquo;altro,<br>chi ti ascolta?</h1>'
     '<ul class="ap-tre">'
@@ -766,6 +767,66 @@ def scrivi_novita():
     json.dump({'sito': SITO, 'aggiornato': datetime.date.today().isoformat(), 'voci': voci},
               open(QUI + 'aggiornamenti.json', 'w', encoding='utf-8'), ensure_ascii=False, indent=1)
     print(f'  aggiornamenti.json  {len(voci)} novita (la home di PA le legge da sola)')
+    return voci
+
+
+# 11/10/2026 Fernando: «gli spazi vuoti ai lati della testata vanno usati per far sapere quando ci sono aggiornamenti».
+# Sui due lati della prima schermata (schermi larghi, >=1200 px): a sinistra l'ultima novita' con la sua miniatura 7:9
+# (intera, mai tagliata), a destra le tre precedenti. Sotto i 1200 px i lati non ci sono: una riga in cima alla testata.
+# Si scrive a ogni build da aggiornamenti.json: nessun codice gira nel browser.
+NOVITA_CSS = (
+    '<style>'
+    '.ap-in{position:relative}'
+    '.ap-nov{display:none}'
+    '.ap-nov-barra{display:inline-block;max-width:100%;margin:0 0 16px;padding:8px 16px;border:1.5px solid #ffd75e;border-radius:999px;'
+    'color:#fff;text-decoration:none;font-family:Montserrat,system-ui,sans-serif;font-size:.86em;line-height:1.4}'
+    '.ap-nov-barra b{color:#ffd75e}.ap-nov-barra span{display:inline-block}'
+    '@media(min-width:1200px){'
+    '.ap-nov-barra{display:none}'
+    '.ap-nov{display:block;position:absolute;top:26px;width:min(280px,calc((100% - 720px)/2 - 56px));text-align:left;'
+    'font-family:Montserrat,system-ui,sans-serif}'
+    '.ap-nov-s{left:28px}.ap-nov-d{right:28px}'
+    '.ap-nov .ap-nov-t{font-size:.78em;letter-spacing:1.6px;text-transform:uppercase;color:#ffd75e;margin:0 0 10px;font-weight:700}'
+    '.ap-nov-s a{display:block;text-decoration:none;color:#fff}'
+    '.ap-nov-s img{display:block;width:100%;height:auto;border-radius:10px;box-shadow:0 6px 18px rgba(0,0,0,.35)}'
+    '.ap-nov-s a:hover img,.ap-nov-s a:focus img{outline:3px solid #ffd75e;outline-offset:2px}'
+    '.ap-nov-s a p{margin:8px 0 0;font-size:.82em;color:#cfe0ee}'
+    '.ap-nov-d ul{list-style:none;margin:0;padding:0;display:grid;gap:12px}'
+    '.ap-nov-d li a{display:block;padding:8px 0 8px 12px;border-left:3px solid #ffd75e;color:#fff;text-decoration:none;font-size:.88em;line-height:1.4}'
+    '.ap-nov-d li a:hover,.ap-nov-d li a:focus{background:rgba(255,255,255,.08)}'
+    '.ap-nov-d small{display:block;color:#ffd75e;font-weight:700;font-size:.82em;margin-bottom:2px}'
+    '.ap-nov-tutte{display:inline-block;margin-top:14px;color:#ffd75e;font-weight:700;font-size:.86em}'
+    '}'
+    '</style>')
+
+
+def data_it(iso):
+    a, m, g = iso.split('-')
+    return f"{int(g)} {[k for k, v in MESI.items() if v == int(m)][0]} {a}"
+
+
+def novita_home(voci):
+    """Scrive nella home i riquadri delle novita' al posto del segnaposto."""
+    if not voci:
+        stop('novita in home: aggiornamenti.json vuoto')
+    rel = lambda u: u[len(SITO):] if u.startswith(SITO) else u
+    e = lambda t: html.escape(t, quote=True)
+    p, altre = voci[0], voci[1:4]
+    blocco = (NOVITA_CSS +
+        f'<a class="ap-nov-barra" href="{e(rel(p["url"]))}"><b>Ultima novit&agrave;</b> &middot; {e(data_it(p["data"]))}<br>'
+        + ' '.join(f'<span>{e(fr)}</span>' for fr in re.split(r'(?<=[?!.:])\s+', p['titolo'])) + ' &rarr;</a>'
+        f'<aside class="ap-nov ap-nov-s" aria-label="Ultima novit&agrave;"><p class="ap-nov-t">Ultima novit&agrave;</p>'
+        f'<a href="{e(rel(p["url"]))}"><img src="{e(rel(p["miniatura"]))}" width="420" height="540" loading="lazy" decoding="async" '
+        f'alt="{e(p["tipo"])}: {e(p["titolo"])}"><p>{e(data_it(p["data"]))} &middot; {e(p["tipo"])}</p></a></aside>'
+        '<aside class="ap-nov ap-nov-d" aria-label="Le novit&agrave; precedenti"><p class="ap-nov-t">Le novit&agrave; precedenti</p><ul>'
+        + ''.join(f'<li><a href="{e(rel(v["url"]))}"><small>{e(data_it(v["data"]))} &middot; {e(v["tipo"])}</small>{e(v["titolo"])}</a></li>' for v in altre)
+        + '</ul><a class="ap-nov-tutte" href="attualita.html">Tutte le novit&agrave; &rarr;</a></aside>')
+    f = QUI + 'index.html'
+    h = open(f, encoding='utf-8').read()
+    if h.count('<!--NOVITA_HOME-->') != 1:
+        stop('novita in home: segnaposto non trovato una volta sola in index.html')
+    open(f, 'w', encoding='utf-8').write(h.replace('<!--NOVITA_HOME-->', blocco))
+    print(f'  index.html   novita in testata: «{p["titolo"]}» + {len(altre)} precedenti')
 
 
 def main():
@@ -784,7 +845,7 @@ def main():
     oggi = datetime.date.today().isoformat()
     voci = ''.join(f'<url><loc>{SITO}{"" if p == "index.html" else p}</loc><lastmod>{oggi}</lastmod></url>\n'
                    for p in list(PAGINE) + ['progetto.html'] + list(PAGINE_PROPRIE))
-    scrivi_novita()
+    novita_home(scrivi_novita())
     open(QUI + 'sitemap.xml', 'w').write('<?xml version="1.0" encoding="UTF-8"?>\n'
         '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + voci + '</urlset>\n')
     open(QUI + 'robots.txt', 'w').write(f'User-agent: *\nAllow: /\nSitemap: {SITO}sitemap.xml\n')
