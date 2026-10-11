@@ -297,7 +297,7 @@ ICONA = ("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='
          "%3Ctext y='.9em' font-size='90'%3E%F0%9F%90%9D%3C/text%3E%3C/svg%3E")
 
 STILE = """
-.ape-testa{background:#fff;border-bottom:3px solid #e8900a;position:sticky;top:0;z-index:50}
+.ape-testa{background:#fff;border-bottom:3px solid #e8900a;position:relative;z-index:50}
 .ape-testa-in{max-width:1100px;margin:0 auto;padding:10px 16px;display:flex;flex-wrap:wrap;
   align-items:center;justify-content:space-between;gap:8px 18px}
 .ape-marchio{display:flex;align-items:center;gap:10px;text-decoration:none;color:#3a2000}
