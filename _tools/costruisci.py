@@ -409,7 +409,10 @@ def testa(uscita, attuale):
             '<a class="ape-marchio" href="./">'
             '<img class="ape-ape" src="images/ape-logo-v2.svg" alt="" width="96" height="96">'
             '<span><span>Assemblea Popolare Ecumenica</span></span></a>'
-            f'<nav class="ape-voci" aria-label="Menu principale">{h}</nav></div></header>')
+            f'<nav class="ape-voci" aria-label="Menu principale">{h}</nav>'
+            # 11/10/2026 Fernando: la campanella in alto a destra (quella di Webpushr stava in basso e copriva). Visibile solo se si puo' ancora attivare.
+            '<button type="button" class="ape-campanella" hidden onclick="apeNotifAttiva()" aria-label="Attiva le notifiche dell&rsquo;APE">'
+            '<span aria-hidden="true">&#128276;</span><span class="ape-campanella-t">Notifiche</span></button></div></header>')
 
 
 PIEDE = (f'<footer class="ape-piede"><p><strong>APE &mdash; Assemblea Popolare Ecumenica</strong><br>'
@@ -843,6 +846,10 @@ CAMPANELLO = (
     '<style>#ape-notif{display:none;position:fixed;top:0;left:0;right:0;z-index:99999;background:linear-gradient(90deg,#0b1f33 0%,#17507a 100%);'
     'color:#fff;padding:14px 20px;font-family:Montserrat,system-ui,sans-serif;box-shadow:0 4px 20px rgba(0,0,0,.35);border-bottom:2px solid #ffd75e;'
     'align-items:center;justify-content:center;gap:16px;flex-wrap:wrap}'
+    '.ape-campanella{position:absolute;top:14px;right:16px;display:inline-flex;align-items:center;gap:6px;background:#fff;border:2px solid #17507a;'
+    'color:#0e2a40;border-radius:999px;padding:7px 14px;font:700 .88em Montserrat,system-ui,sans-serif;cursor:pointer;z-index:2}'
+    '.ape-campanella[hidden]{display:none}.ape-campanella:hover,.ape-campanella:focus-visible{background:#f2f7fb}'
+    '@media(max-width:700px){.ape-campanella{top:10px;right:10px;padding:7px 10px}.ape-campanella-t{display:none}.ape-marchio{padding-right:50px}}'
     '#ape-notif .t{flex:1;min-width:200px}#ape-notif .t b{display:block;font-size:1em}#ape-notif .t span{display:block;font-size:.8em;opacity:.9;margin-top:2px}'
     '#ape-notif button{border-radius:50px;font-family:Montserrat,system-ui,sans-serif;cursor:pointer;white-space:nowrap}'
     '#ape-notif .si{background:#ffd75e;color:#0e2a40;border:none;padding:10px 22px;font-weight:800;font-size:.88em}'
@@ -852,9 +859,11 @@ CAMPANELLO = (
     '#ape-notif button{flex:1 1 0;padding:9px 10px;font-size:.82em}}</style>'
     '<div id="ape-notif" role="region" aria-label="Notifiche dell&rsquo;APE"><span class="ic" aria-hidden="true" style="font-size:1.5em">&#128276;</span>'
     '<div class="t"><b>Resta aggiornato sull&rsquo;APE</b><span>Una notifica quando esce una novit&agrave; sul sito.</span></div>'
-    '<button type="button" class="si" onclick="webpushr(\'subscribe\');apeNotifChiudi()">&#128276; Attiva le notifiche</button>'
+    '<button type="button" class="si" onclick="apeNotifAttiva()">&#128276; Attiva le notifiche</button>'
     '<button type="button" class="no" onclick="apeNotifChiudi()">No grazie</button></div>'
-    '<script>function apeNotifChiudi(){document.getElementById(\'ape-notif\').style.display=\'none\';try{localStorage.setItem(\'ape-notif-chiuso\',\'1\')}catch(e){}}'
+    '<script>function apeNotifAttiva(){webpushr(\'subscribe\');apeNotifChiudi();var c=document.querySelector(\'.ape-campanella\');if(c)c.hidden=true}'
+    '(function(){var c=document.querySelector(\'.ape-campanella\');if(c&&typeof Notification!==\'undefined\'&&Notification.permission===\'default\')c.hidden=false})();'
+    'function apeNotifChiudi(){document.getElementById(\'ape-notif\').style.display=\'none\';try{localStorage.setItem(\'ape-notif-chiuso\',\'1\')}catch(e){}}'
     '(function(){try{if(localStorage.getItem(\'ape-notif-chiuso\'))return;'
     'if(typeof Notification!==\'undefined\'&&Notification.permission!==\'default\')return;'
     'var b=document.getElementById(\'ape-notif\');if(!b)return;'
