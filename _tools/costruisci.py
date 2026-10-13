@@ -861,7 +861,7 @@ CAMPANELLO = (
     '<div class="t"><b>Resta aggiornato sull&rsquo;APE</b><span>Una notifica quando esce una novit&agrave; sul sito.</span></div>'
     '<button type="button" class="si" onclick="apeNotifAttiva()">&#128276; Attiva le notifiche</button>'
     '<button type="button" class="no" onclick="apeNotifChiudi()">No grazie</button></div>'
-    '<script>function apeNotifAttiva(){webpushr(\'subscribe\');apeNotifChiudi();var c=document.querySelector(\'.ape-campanella\');if(c)c.hidden=true}'
+    '<script>function apeNotifAttiva(){try{if(typeof _webpushrRequestPermission===\'function\')_webpushrRequestPermission();else if(typeof Notification!==\'undefined\')Notification.requestPermission()}catch(e){}apeNotifChiudi();var c=document.querySelector(\'.ape-campanella\');if(c)c.hidden=true}'
     '(function(){var c=document.querySelector(\'.ape-campanella\');if(c&&typeof Notification!==\'undefined\'&&Notification.permission===\'default\')c.hidden=false})();'
     'function apeNotifChiudi(){document.getElementById(\'ape-notif\').style.display=\'none\';try{localStorage.setItem(\'ape-notif-chiuso\',\'1\')}catch(e){}}'
     '(function(){try{if(localStorage.getItem(\'ape-notif-chiuso\'))return;'
