@@ -590,7 +590,7 @@ def scrivi_pagina(uscita, titolo, desc, anteprima, corpo, stili, da):
 <meta name="twitter:title" content="{titolo}">
 <meta name="twitter:description" content="{desc}">
 <meta name="twitter:image" content="{SITO}{anteprima}">
-<link rel="icon" href="favicon.ico" sizes="any"><link rel="icon" type="image/png" sizes="192x192" href="images/favicon-192.png"><link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+<script>if(location.protocol==='http:'&&/assembleapopolareecumenica\.it$/.test(location.hostname))location.replace('https://'+location.host+location.pathname+location.search+location.hash)</script><link rel="icon" href="favicon.ico" sizes="any"><link rel="icon" type="image/png" sizes="192x192" href="images/favicon-192.png"><link rel="apple-touch-icon" href="images/apple-touch-icon.png">
 {PRECARICO if uscita == 'index.html' else ''}<link href="fonts/caratteri.css" rel="stylesheet">
 <link rel="stylesheet" href="css/ape-leggibilita.css">
 <link rel="stylesheet" href="css/ape-base.css">
