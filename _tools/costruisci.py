@@ -289,7 +289,7 @@ RISCRITTURE = {
     ],
 }
 # pagine APE: come si chiamano qui
-INTERNE = {'ape.html': './', 'rete-ape.html': 'rete.html', 'patto.html': 'patto.html', 'albo.html': 'albo.html'}   # patto/albo: pagine proprie
+INTERNE = {'ape.html': './', 'rete-ape.html': 'rete.html', 'patto.html': 'patto.html', 'albo.html': 'albo.html', 'documenti.html': './#documenti-rete'}   # patto/albo: pagine proprie
 COPIA_FISSA = ['fonts']
 FOGLI = {'css/pa-leggibilita.css': 'css/ape-leggibilita.css', 'css/pa-base.css': 'css/ape-base.css'}
 
