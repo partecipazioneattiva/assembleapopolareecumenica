@@ -1,7 +1,16 @@
 {
  "sito": "https://www.assembleapopolareecumenica.it/",
- "aggiornato": "2026-10-11",
+ "aggiornato": "2026-10-15",
  "voci": [
+  {
+   "data": "2026-10-15",
+   "tipo": "Attualità",
+   "titolo": "E chi pensa alle prossime generazioni?",
+   "riassunto": "Nella Rete APE c’è un posto anche per te. Leggi il Patto e diventa co-fondatore · Entra nella chat WhatsApp.",
+   "url": "https://www.assembleapopolareecumenica.it/attualita.html#prossime-generazioni",
+   "immagine": "https://www.assembleapopolareecumenica.it/images/ape-prossime-generazioni-copertina.webp",
+   "miniatura": "https://www.assembleapopolareecumenica.it/images/mini-e-chi-pensa-alle-prossime-generazioni.webp"
+  },
   {
    "data": "2026-10-11",
    "tipo": "Attualità",
