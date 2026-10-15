@@ -746,7 +746,8 @@ def scrivi_novita():
         testo = lambda h: html.unescape(re.sub(r'<[^>]+>', '', h)).strip()
         par = [testo(x) for x in re.findall(r'<p(?: [^>]*)?>(.*?)</p>', b, flags=re.S)]
         par = [x for x in par if x and not x.lower().startswith(('video di', d.group(1)))]
-        img = re.search(r'poster="([^"]+)"', b) or re.search(r'<img[^>]+src="([^"]+)"', b)
+        # 15/10/2026: un poster con l'attributo data-no-card (video verticale) non fa da immagine della card: vale la prima <img>
+        img = re.search(r'<video(?![^>]*data-no-card)[^>]*poster="([^"]+)"', b) or re.search(r'<img[^>]+src="([^"]+)"', b)
         img = img.group(1) if img else card_titolo(aid, testo(t.group(1)))
         dom = re.search(r'<div class="at-domanda">(.*?)</div>', b, flags=re.S)
         if dom: par = [testo(dom.group(1))] + par          # la frase che dice di cosa parla l'articolo
