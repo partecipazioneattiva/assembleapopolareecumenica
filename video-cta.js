@@ -4,7 +4,7 @@
   if (window.__videoCta) return; window.__videoCta = 1;
   var h = location.hostname, p = location.pathname.split('/').pop() || 'index.html';
   var sulleApe = /assembleapopolareecumenica/.test(h);
-  var paApe = !sulleApe && /^(ape|video-ape-tocca-a-noi)\.html$/.test(p);
+  var paApe = !sulleApe && /^(ape|video-ape-tocca-a-noi|ape-dopo-il-voto-video|pensattivo-progetto-ape-video)\.html$/.test(p);
   var CHAT = 'https://chat.whatsapp.com/Kglv6h9DNnV5L3INuDhs7t';
   var FORM_PA = 'https://docs.google.com/forms/d/e/1FAIpQLSdUJHaPB9o6gA7TXHNLNgsKcftZjwCsjepZ3r_C9TH2ODsr3A/viewform';
   var cta;
@@ -65,4 +65,15 @@
     if (cta.ape) blocco(box, CHAT, 'Entra nella chat WhatsApp →', 'In chat il tuo numero di telefono è visibile agli altri partecipanti; l’ingresso lo approvano gli amministratori.', 'vc-wa', 1);
     w.parentNode.insertBefore(box, w.nextSibling);
   })(tutti[i]);
+  /* YouTube incorporato: la policy di YouTube vieta overlay sopra il player, quindi solo il blocco SOTTO */
+  var ifr = document.querySelectorAll('iframe[src*="youtube"]');
+  for (var j = 0; j < ifr.length; j++) (function (fr) {
+    if (fr.getAttribute('data-cta') === 'off' || fr.closest('.vc-w')) return;
+    var box = document.createElement('div');
+    blocco(box, cta.url, cta.sotto + ' \u2192', cta.nota, '', cta.ext);
+    if (cta.ape) blocco(box, CHAT, 'Entra nella chat WhatsApp \u2192', 'In chat il tuo numero di telefono \u00e8 visibile agli altri partecipanti; l\u2019ingresso lo approvano gli amministratori.', 'vc-wa', 1);
+    var ancora = fr;
+    while (ancora.parentNode && ancora.parentNode.children.length === 1 && !/^(MAIN|ARTICLE|SECTION|BODY)$/.test(ancora.parentNode.tagName)) ancora = ancora.parentNode;
+    ancora.parentNode.insertBefore(box, ancora.nextSibling);
+  })(ifr[j]);
 })();
