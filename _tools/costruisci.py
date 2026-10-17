@@ -419,7 +419,7 @@ PIEDE = (f'<footer class="ape-piede"><p><strong>APE &mdash; Assemblea Popolare E
          f'Un progetto aperto a tutti: cittadini, associazioni, movimenti, comitati, con peso paritario.</p>'
          f'<p>La proposta &egrave; pubblica e appartiene a chi la sottoscrive: chi firma il <a href="patto.html">Patto fondativo</a> '
          f'ne diventa co-fondatore, alla pari di tutti.</p>'
-         f'<p class="ape-piccolo"><a href="progetto.html">Il progetto per intero</a> &middot; <a href="patto.html">Il Patto</a> &middot; <a href="albo.html">L&rsquo;Albo</a> &middot; '
+         f'<p class="ape-piccolo"><a href="progetto.html">Il progetto per intero</a> &middot; <a href="patto.html">Il Patto</a> &middot; <a href="albo.html">L&rsquo;Albo</a> &middot; <a href="dirette.html">Dirette</a> &middot; '
          f'<a href="./#documenti">Documenti</a> &middot; <a href="rete.html#aderisci">Aderisci</a></p>'
          f'<p class="ape-piccolo">Contatti: <a href="mailto:info@assembleapopolareecumenica.it">info@assembleapopolareecumenica.it</a> &middot; <a href="https://www.facebook.com/profile.php?id=61595012680370" target="_blank" rel="noopener noreferrer">Seguici su Facebook</a> &middot; <a href="https://www.youtube.com/@partecipazioneattiva" target="_blank" rel="noopener noreferrer">YouTube</a> &middot; <a href="https://www.instagram.com/pa_partecipazioneattiva/" target="_blank" rel="noopener noreferrer">Instagram</a> &middot; <a href="https://www.tiktok.com/@partecipazioneattiva26" target="_blank" rel="noopener noreferrer">TikTok</a>'
          f' &middot; <a href="{SITO_PA}privacy.html">Privacy e informativa sull&rsquo;adesione</a> &middot; Questo sito non usa cookie di profilazione '
@@ -620,6 +620,9 @@ PAGINE_PROPRIE = {
     'attualita.html': ('Attualità: le notizie lette con la domanda dell’APE | Assemblea Popolare Ecumenica',
                        'Le notizie del giorno lette con una sola domanda: dopo il voto, quanto contano i cittadini? Oggi: la legge elettorale è firmata, e dopo il voto?',
                        'images/ape-anteprima-domanda.jpg'),
+    'dirette.html': ('Le dirette dell’APE | Assemblea Popolare Ecumenica',
+                     'Le dirette dell&#x27;APE, Assemblea Popolare Ecumenica: segui qui l&#x27;incontro in corso e rivedi gli incontri già trasmessi.',
+                     'images/rete-ape-anteprima.jpg'),
     'albo.html': ('Albo dei co-fondatori della Rete APE',
                   'L&#x27;Albo dei co-fondatori della Rete APE: chi ha firmato il Patto fondativo, in ordine alfabetico, senza primi e senza ultimi.',
                   'images/rete-ape-anteprima.jpg'),
