@@ -622,7 +622,7 @@ PAGINE_PROPRIE = {
                        'images/ape-anteprima-domanda.jpg'),
     'dirette.html': ('Le dirette dell’APE | Assemblea Popolare Ecumenica',
                      'Le dirette dell&#x27;APE, Assemblea Popolare Ecumenica: segui qui l&#x27;incontro in corso e rivedi gli incontri già trasmessi.',
-                     'images/rete-ape-anteprima.jpg'),
+                     'images/dirette-anteprima.jpg'),
     'albo.html': ('Albo dei co-fondatori della Rete APE',
                   'L&#x27;Albo dei co-fondatori della Rete APE: chi ha firmato il Patto fondativo, in ordine alfabetico, senza primi e senza ultimi.',
                   'images/rete-ape-anteprima.jpg'),
