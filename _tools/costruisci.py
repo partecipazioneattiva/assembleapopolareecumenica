@@ -403,7 +403,7 @@ def testa(uscita, attuale):
             ('attualita.html', 'Attualità', 'attualita.html'), ('./#documenti', 'Documenti', None),
             ('rete.html', 'Rete APE', 'rete.html'), ('albo.html', 'Albo dei co-fondatori', 'albo.html')]
     h = ''.join(f'<a href="{u}"{" aria-current=page" if attuale == f else ""}>{t}</a>'
-                for u, t, f in voci) + '<a class="ape-aderisci" href="rete.html#aderisci">Diventa co-fondatore</a>' + '<a class="ape-chat" href="https://chat.whatsapp.com/Kglv6h9DNnV5L3INuDhs7t" target="_blank" rel="noopener noreferrer">&#128172; Chat WhatsApp</a><a class="ape-fb" href="https://www.facebook.com/profile.php?id=61595012680370" target="_blank" rel="noopener noreferrer">Facebook</a>'
+                for u, t, f in voci) + '<a class="ape-aderisci" href="rete.html#aderisci">Diventa co-fondatore</a>' + '<a class="ape-chat" href="https://chat.whatsapp.com/Kglv6h9DNnV5L3INuDhs7t" target="_blank" rel="noopener noreferrer">&#128172; Chat WhatsApp</a><a class="ape-fb" href="https://www.facebook.com/profile.php?id=61595012680370" target="_blank" rel="noopener noreferrer">Facebook</a><a class="ape-fb" href="dirette.html">Dirette</a>'
     return ('<a class="ape-salta" href="#contenuto">Salta al contenuto</a>'
             '<header class="ape-testa"><div class="ape-testa-in">'
             '<a class="ape-marchio" href="./">'
