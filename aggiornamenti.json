@@ -1,7 +1,16 @@
 {
  "sito": "https://www.assembleapopolareecumenica.it/",
- "aggiornato": "2026-10-15",
+ "aggiornato": "2026-10-22",
  "voci": [
+  {
+   "data": "2026-10-22",
+   "tipo": "Attualità",
+   "titolo": "APE, parola per parola",
+   "riassunto": "Tre parole, un progetto: Assemblea Popolare Ecumenica.",
+   "url": "https://www.assembleapopolareecumenica.it/attualita.html#ape-parola-per-parola",
+   "immagine": "https://www.assembleapopolareecumenica.it/images/ape-spot-01-ape-parola-per-parola-poster.webp",
+   "miniatura": "https://www.assembleapopolareecumenica.it/images/mini-ape-parola-per-parola.webp"
+  },
   {
    "data": "2026-10-15",
    "tipo": "Attualità",
