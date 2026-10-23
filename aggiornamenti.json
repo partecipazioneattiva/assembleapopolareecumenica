@@ -1,7 +1,16 @@
 {
  "sito": "https://www.assembleapopolareecumenica.it/",
- "aggiornato": "2026-10-22",
+ "aggiornato": "2026-10-23",
  "voci": [
+  {
+   "data": "2026-10-23",
+   "tipo": "Attualità",
+   "titolo": "«Ecumenica» non vuol dire Chiesa",
+   "riassunto": "Ecumenica? Ma è un progetto religioso? No. Ti spieghiamo perché.",
+   "url": "https://www.assembleapopolareecumenica.it/attualita.html#ecumenica-non-vuol-dire-chiesa",
+   "immagine": "https://www.assembleapopolareecumenica.it/images/ape-spot-02-ecumenica-non-vuol-dire-chiesa-poster.webp",
+   "miniatura": "https://www.assembleapopolareecumenica.it/images/mini-ecumenica-non-vuol-dire-chiesa.webp"
+  },
   {
    "data": "2026-10-22",
    "tipo": "Attualità",
