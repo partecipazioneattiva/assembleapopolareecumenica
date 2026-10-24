@@ -1,7 +1,16 @@
 {
  "sito": "https://www.assembleapopolareecumenica.it/",
- "aggiornato": "2026-10-23",
+ "aggiornato": "2026-10-25",
  "voci": [
+  {
+   "data": "2026-10-25",
+   "tipo": "Attualità",
+   "titolo": "Come la parola ha cambiato casa",
+   "riassunto": "Una parola, tremila anni, tre significati. Il nostro è il primo.",
+   "url": "https://www.assembleapopolareecumenica.it/attualita.html#come-la-parola-ha-cambiato-casa",
+   "immagine": "https://www.assembleapopolareecumenica.it/images/ape-spot-03-come-la-parola-ha-cambiato-casa-poster.webp",
+   "miniatura": "https://www.assembleapopolareecumenica.it/images/mini-come-la-parola-ha-cambiato-casa.webp"
+  },
   {
    "data": "2026-10-23",
    "tipo": "Attualità",
