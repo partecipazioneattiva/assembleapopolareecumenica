@@ -435,6 +435,8 @@ def pagina(uscita, sorgente, titolo, anteprima, copiati):
     corpo = h[h.find('>', i) + 1:j]
     # via le briciole di pane del sito di PA
     corpo = re.sub(r'<nav[^>]*class="breadcrumb".*?</nav>', '', corpo, count=1, flags=re.S)
+    # il blocco «Segui l'APE: tutti i canali» e' per il sito di PA (che promuove APE): qui sarebbe un rimando a se stessi
+    corpo = re.sub(r'<div class="pa-box" id="canali-ape">.*?</ul>\s*</div>', '', corpo, count=1, flags=re.S)
     # i pulsanti «condividi» puntano a QUESTA pagina (in rete-ape.html erano rimasti su un'altra)
     mia = SITO + ('' if uscita == 'index.html' else uscita)
     corpo = re.sub(r'(facebook\.com/sharer/sharer\.php\?u=)https://partecipazione-attiva\.it/[^"\'&\s]+',
