@@ -1,7 +1,16 @@
 {
  "sito": "https://www.assembleapopolareecumenica.it/",
- "aggiornato": "2026-10-25",
+ "aggiornato": "2026-10-26",
  "voci": [
+  {
+   "data": "2026-10-26",
+   "tipo": "Attualità",
+   "titolo": "«Ecumenica» vuol dire quattro cose",
+   "riassunto": "Quattro parole spiegano «ecumenica»: universale, trasversale, inclusiva, indipendente.",
+   "url": "https://www.assembleapopolareecumenica.it/attualita.html#ecumenica-vuol-dire-quattro-cose",
+   "immagine": "https://www.assembleapopolareecumenica.it/images/ape-spot-04-ecumenica-vuol-dire-quattro-cose-poster.webp",
+   "miniatura": "https://www.assembleapopolareecumenica.it/images/mini-ecumenica-vuol-dire-quattro-cose.webp"
+  },
   {
    "data": "2026-10-25",
    "tipo": "Attualità",
