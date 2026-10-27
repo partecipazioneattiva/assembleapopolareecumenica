@@ -275,10 +275,10 @@ RISCRITTURE = {
          'Aderire rivela un&rsquo;opinione politica: per questo serve il tuo consenso esplicito, che puoi ritirare quando vuoi. '
          'I dati non sono pubblici e li leggono solo gli incaricati. Nell&rsquo;Albo compaiono soltanto nome e Comune, e solo se lo scegli tu con l&rsquo;ultima casella. '
          'Le richieste non confermate si cancellano entro 30 giorni. '
-         '<a href="https://partecipazione-attiva.it/privacy.html#rete-ape">Informativa completa</a></div>\n'
+         '<a href="privacy.html#rete-ape">Informativa completa</a></div>\n'
          '  <label class="ra-spunta"><input type="checkbox" id="ra-patto" required>', 1),
         ('So che aderire esprime un&rsquo;opinione politica. <a href="https://partecipazione-attiva.it/privacy.html">Informativa</a>',
-         'So che aderire esprime un&rsquo;opinione politica. <a href="https://partecipazione-attiva.it/privacy.html#rete-ape">Informativa</a>', 1),
+         'So che aderire esprime un&rsquo;opinione politica. <a href="privacy.html#rete-ape">Informativa</a>', 1),
         # 02/10/2026, tono: la Rete parla come la proposta, non come un movimento contro qualcuno
         ('<p class="article-subtitle" style="font-size:1.35em;font-weight:700;font-style:italic;margin-bottom:10px">&#8220;Divide et impera&#8221;</p>', '', 1),
         ('Il potere si mantiene frammentando i cittadini. La Rete APE nasce per rovesciare questa logica &#8212; unire soggetti diversi su principi comuni, con peso paritario per tutti.',
@@ -423,7 +423,7 @@ PIEDE = (f'<footer class="ape-piede"><p><strong>APE &mdash; Assemblea Popolare E
          f'<p class="ape-piccolo"><a href="progetto.html">Il progetto per intero</a> &middot; <a href="patto.html">Il Patto</a> &middot; <a href="albo.html">L&rsquo;Albo</a> &middot; <a href="dirette.html">Dirette</a> &middot; '
          f'<a href="./#documenti">Documenti</a> &middot; <a href="rete.html#aderisci">Aderisci</a></p>'
          f'<p class="ape-piccolo">Contatti: <a href="mailto:info@assembleapopolareecumenica.it">info@assembleapopolareecumenica.it</a> &middot; <a href="https://www.facebook.com/profile.php?id=61595012680370" target="_blank" rel="noopener noreferrer">Seguici su Facebook</a> &middot; <a href="https://t.me/assembleapopolareecumenica" target="_blank" rel="noopener noreferrer">Telegram</a> &middot; <a href="https://assembleapopolareecumenica.substack.com" target="_blank" rel="noopener noreferrer">Newsletter</a>'
-         f' &middot; <a href="{SITO_PA}privacy.html">Privacy e informativa sull&rsquo;adesione</a> &middot; Questo sito non usa cookie di profilazione '
+         f' &middot; <a href="privacy.html">Privacy e informativa sull&rsquo;adesione</a> &middot; Questo sito non usa cookie di profilazione '
          f'n&eacute; tracciatori.</p><p class="ape-piccolo">Aggiornato il {datetime.date.today().strftime("%d/%m/%Y")} &middot; &copy; {datetime.date.today().year}</p></footer>')
 
 
@@ -626,6 +626,9 @@ PAGINE_PROPRIE = {
     'dirette.html': ('Le dirette dell’APE | Assemblea Popolare Ecumenica',
                      'Le dirette dell&#x27;APE, Assemblea Popolare Ecumenica: segui qui l&#x27;incontro in corso e rivedi gli incontri già trasmessi.',
                      'images/dirette-anteprima.jpg'),
+    'privacy.html': ('Privacy e informativa sull’adesione | Assemblea Popolare Ecumenica',
+                     'Che dati raccoglie la Rete APE, perché, chi li vede e come cancellarli: informativa sulla privacy dell&#x27;APE.',
+                     'images/rete-ape-anteprima.jpg'),
     'albo.html': ('Albo dei co-fondatori della Rete APE',
                   'L&#x27;Albo dei co-fondatori della Rete APE: chi ha firmato il Patto fondativo, in ordine alfabetico, senza primi e senza ultimi.',
                   'images/rete-ape-anteprima.jpg'),
