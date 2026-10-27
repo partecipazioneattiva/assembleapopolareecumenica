@@ -1,7 +1,16 @@
 {
  "sito": "https://www.assembleapopolareecumenica.it/",
- "aggiornato": "2026-10-26",
+ "aggiornato": "2026-10-27",
  "voci": [
+  {
+   "data": "2026-10-27",
+   "tipo": "Attualità",
+   "titolo": "Universale e trasversale",
+   "riassunto": "Che cosa voti? Per l'APE non conta.",
+   "url": "https://www.assembleapopolareecumenica.it/attualita.html#universale-e-trasversale",
+   "immagine": "https://www.assembleapopolareecumenica.it/images/ape-spot-05-universale-e-trasversale-poster.webp",
+   "miniatura": "https://www.assembleapopolareecumenica.it/images/mini-universale-e-trasversale.webp"
+  },
   {
    "data": "2026-10-26",
    "tipo": "Attualità",
