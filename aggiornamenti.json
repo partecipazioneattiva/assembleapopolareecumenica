@@ -1,7 +1,16 @@
 {
  "sito": "https://www.assembleapopolareecumenica.it/",
- "aggiornato": "2026-10-27",
+ "aggiornato": "2026-10-28",
  "voci": [
+  {
+   "data": "2026-10-28",
+   "tipo": "Attualità",
+   "titolo": "Inclusiva, grazie al sorteggio",
+   "riassunto": "Chi non fa mai politica può sedersi in assemblea. Ecco come.",
+   "url": "https://www.assembleapopolareecumenica.it/attualita.html#inclusiva-grazie-al-sorteggio",
+   "immagine": "https://www.assembleapopolareecumenica.it/images/ape-spot-06-inclusiva-grazie-al-sorteggio-poster.webp",
+   "miniatura": "https://www.assembleapopolareecumenica.it/images/mini-inclusiva-grazie-al-sorteggio.webp"
+  },
   {
    "data": "2026-10-27",
    "tipo": "Attualità",
