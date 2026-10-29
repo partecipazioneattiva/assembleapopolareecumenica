@@ -1,7 +1,16 @@
 {
  "sito": "https://www.assembleapopolareecumenica.it/",
- "aggiornato": "2026-10-28",
+ "aggiornato": "2026-10-29",
  "voci": [
+  {
+   "data": "2026-10-29",
+   "tipo": "Attualità",
+   "titolo": "Popolare più Ecumenica",
+   "riassunto": "Popolare ed Ecumenica: due parole che insieme dicono «tutto il popolo».",
+   "url": "https://www.assembleapopolareecumenica.it/attualita.html#popolare-piu-ecumenica",
+   "immagine": "https://www.assembleapopolareecumenica.it/images/ape-spot-07-popolare-piu-ecumenica-poster.webp",
+   "miniatura": "https://www.assembleapopolareecumenica.it/images/mini-popolare-pi-ecumenica.webp"
+  },
   {
    "data": "2026-10-28",
    "tipo": "Attualità",
