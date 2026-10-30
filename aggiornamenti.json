@@ -1,7 +1,16 @@
 {
  "sito": "https://www.assembleapopolareecumenica.it/",
- "aggiornato": "2026-10-29",
+ "aggiornato": "2026-10-30",
  "voci": [
+  {
+   "data": "2026-10-30",
+   "tipo": "Attualità",
+   "titolo": "20 milioni di cittadini non hanno votato",
+   "riassunto": "Alle politiche del 2022 oltre 20 milioni di italiani non hanno votato.",
+   "url": "https://www.assembleapopolareecumenica.it/attualita.html#20-milioni-non-votano",
+   "immagine": "https://www.assembleapopolareecumenica.it/images/ape-spot-08-20-milioni-non-votano-poster.webp",
+   "miniatura": "https://www.assembleapopolareecumenica.it/images/mini-20-milioni-di-cittadini-non-hanno-votato.webp"
+  },
   {
    "data": "2026-10-29",
    "tipo": "Attualità",
