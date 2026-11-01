@@ -1,7 +1,16 @@
 {
  "sito": "https://www.assembleapopolareecumenica.it/",
- "aggiornato": "2026-10-31",
+ "aggiornato": "2026-11-01",
  "voci": [
+  {
+   "data": "2026-11-01",
+   "tipo": "Attualità",
+   "titolo": "Tre livelli, 46.266 cittadini",
+   "riassunto": "Un'assemblea in ogni Comune, in ogni Regione e una nazionale. Ecco i numeri.",
+   "url": "https://www.assembleapopolareecumenica.it/attualita.html#tre-livelli-46266-cittadini",
+   "immagine": "https://www.assembleapopolareecumenica.it/images/ape-spot-10-tre-livelli-46266-cittadini-poster.webp",
+   "miniatura": "https://www.assembleapopolareecumenica.it/images/mini-tre-livelli-46-266-cittadini.webp"
+  },
   {
    "data": "2026-10-31",
    "tipo": "Attualità",
