@@ -1,7 +1,16 @@
 {
  "sito": "https://www.assembleapopolareecumenica.it/",
- "aggiornato": "2026-11-01",
+ "aggiornato": "2026-11-02",
  "voci": [
+  {
+   "data": "2026-11-02",
+   "tipo": "Attualità",
+   "titolo": "Il sorteggio viene da Atene",
+   "riassunto": "Il sorteggio non è un'idea nuova. Lo usavano ad Atene 2.500 anni fa.",
+   "url": "https://www.assembleapopolareecumenica.it/attualita.html#il-sorteggio-viene-da-atene",
+   "immagine": "https://www.assembleapopolareecumenica.it/images/ape-spot-11-il-sorteggio-viene-da-atene-poster.webp",
+   "miniatura": "https://www.assembleapopolareecumenica.it/images/mini-il-sorteggio-viene-da-atene.webp"
+  },
   {
    "data": "2026-11-01",
    "tipo": "Attualità",
