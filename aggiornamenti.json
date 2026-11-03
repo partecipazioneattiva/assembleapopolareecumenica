@@ -1,7 +1,16 @@
 {
  "sito": "https://www.assembleapopolareecumenica.it/",
- "aggiornato": "2026-11-02",
+ "aggiornato": "2026-11-03",
  "voci": [
+  {
+   "data": "2026-11-03",
+   "tipo": "Attualità",
+   "titolo": "L'obbligo di rispondere",
+   "riassunto": "Le direttive dell'APE non impongono nulla. Obbligano a rispondere.",
+   "url": "https://www.assembleapopolareecumenica.it/attualita.html#l-obbligo-di-rispondere",
+   "immagine": "https://www.assembleapopolareecumenica.it/images/ape-spot-12-l-obbligo-di-rispondere-poster.webp",
+   "miniatura": "https://www.assembleapopolareecumenica.it/images/mini-l-obbligo-di-rispondere.webp"
+  },
   {
    "data": "2026-11-02",
    "tipo": "Attualità",
