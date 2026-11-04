@@ -1,7 +1,16 @@
 {
  "sito": "https://www.assembleapopolareecumenica.it/",
- "aggiornato": "2026-11-03",
+ "aggiornato": "2026-11-04",
  "voci": [
+  {
+   "data": "2026-11-04",
+   "tipo": "Attualità",
+   "titolo": "Uno sportello in ogni Comune",
+   "riassunto": "Hai una proposta per il tuo Comune? Nell'APE c'è uno sportello per te.",
+   "url": "https://www.assembleapopolareecumenica.it/attualita.html#uno-sportello-in-ogni-comune",
+   "immagine": "https://www.assembleapopolareecumenica.it/images/ape-spot-13-uno-sportello-in-ogni-comune-poster.webp",
+   "miniatura": "https://www.assembleapopolareecumenica.it/images/mini-uno-sportello-in-ogni-comune.webp"
+  },
   {
    "data": "2026-11-03",
    "tipo": "Attualità",
