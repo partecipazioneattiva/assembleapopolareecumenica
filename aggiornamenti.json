@@ -1,7 +1,16 @@
 {
  "sito": "https://www.assembleapopolareecumenica.it/",
- "aggiornato": "2026-11-04",
+ "aggiornato": "2026-11-05",
  "voci": [
+  {
+   "data": "2026-11-05",
+   "tipo": "Attualità",
+   "titolo": "Quanto costa",
+   "riassunto": "Il Senato costa 541 milioni l'anno. L'APE ne costa 252.",
+   "url": "https://www.assembleapopolareecumenica.it/attualita.html#quanto-costa",
+   "immagine": "https://www.assembleapopolareecumenica.it/images/ape-spot-14-quanto-costa-poster.webp",
+   "miniatura": "https://www.assembleapopolareecumenica.it/images/mini-quanto-costa.webp"
+  },
   {
    "data": "2026-11-04",
    "tipo": "Attualità",
