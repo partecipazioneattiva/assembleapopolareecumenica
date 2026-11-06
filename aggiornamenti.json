@@ -1,7 +1,16 @@
 {
  "sito": "https://www.assembleapopolareecumenica.it/",
- "aggiornato": "2026-11-05",
+ "aggiornato": "2026-11-06",
  "voci": [
+  {
+   "data": "2026-11-06",
+   "tipo": "Attualità",
+   "titolo": "Le tre leggi in un minuto",
+   "riassunto": "Una riforma, tre leggi. Le spieghiamo in un minuto.",
+   "url": "https://www.assembleapopolareecumenica.it/attualita.html#le-tre-leggi-in-un-minuto",
+   "immagine": "https://www.assembleapopolareecumenica.it/images/ape-spot-15-le-tre-leggi-in-un-minuto-poster.webp",
+   "miniatura": "https://www.assembleapopolareecumenica.it/images/mini-le-tre-leggi-in-un-minuto.webp"
+  },
   {
    "data": "2026-11-05",
    "tipo": "Attualità",
