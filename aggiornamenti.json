@@ -1,7 +1,16 @@
 {
  "sito": "https://www.assembleapopolareecumenica.it/",
- "aggiornato": "2026-11-06",
+ "aggiornato": "2026-11-07",
  "voci": [
+  {
+   "data": "2026-11-07",
+   "tipo": "Attualità",
+   "titolo": "Una sola Camera",
+   "riassunto": "L'Italia è l'unico Paese europeo con due Camere dai poteri identici.",
+   "url": "https://www.assembleapopolareecumenica.it/attualita.html#una-sola-camera",
+   "immagine": "https://www.assembleapopolareecumenica.it/images/ape-spot-16-una-sola-camera-poster.webp",
+   "miniatura": "https://www.assembleapopolareecumenica.it/images/mini-una-sola-camera.webp"
+  },
   {
    "data": "2026-11-06",
    "tipo": "Attualità",
