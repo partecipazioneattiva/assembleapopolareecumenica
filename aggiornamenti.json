@@ -1,7 +1,16 @@
 {
  "sito": "https://www.assembleapopolareecumenica.it/",
- "aggiornato": "2026-11-07",
+ "aggiornato": "2026-11-08",
  "voci": [
+  {
+   "data": "2026-11-08",
+   "tipo": "Attualità",
+   "titolo": "Il referendum senza quorum",
+   "riassunto": "Cosa succede se chi governa ignora una direttiva dei cittadini?",
+   "url": "https://www.assembleapopolareecumenica.it/attualita.html#il-referendum-senza-quorum",
+   "immagine": "https://www.assembleapopolareecumenica.it/images/ape-spot-17-il-referendum-senza-quorum-poster.webp",
+   "miniatura": "https://www.assembleapopolareecumenica.it/images/mini-il-referendum-senza-quorum.webp"
+  },
   {
    "data": "2026-11-07",
    "tipo": "Attualità",
