@@ -160,8 +160,8 @@ CHAT_HOME = (
     '<section class="ap-chat" id="chat-rete" aria-labelledby="ap-chat-t"><h2 id="ap-chat-t">Segui APE su WhatsApp</h2>'
     '<p><strong>Il Canale: solo novit&agrave;, il tuo numero resta nascosto.</strong> Tocca il pulsante e premi &laquo;Segui&raquo;.</p>'
     '<a class="ap-chat-bt" href="'+CH_URL+'" target="_blank" rel="noopener noreferrer">&#128226; Segui il Canale WhatsApp</a>'
-    '<h3 style="color:#fff;font-size:1.1em;margin:26px 0 8px">Oppure entra nella chat della Rete</h3>'
-    '<p>Parlane con chi sostiene il progetto. <strong>Il tuo numero di telefono sar&agrave; visibile agli altri partecipanti</strong>; l&rsquo;ingresso viene approvato dagli amministratori del gruppo.</p>'
+    '<h3 style="color:#fff;font-size:1.1em;margin:26px 0 8px">E per dire la tua, entra nella chat della Rete</h3>'
+    '<p>Scrivi e confrontati con chi sostiene il progetto. <strong>Il tuo numero di telefono sar&agrave; visibile agli altri partecipanti</strong>; l&rsquo;ingresso viene approvato dagli amministratori del gruppo.</p>'
     '<a class="ap-chat-bt" href="https://chat.whatsapp.com/Kglv6h9DNnV5L3INuDhs7t" target="_blank" rel="noopener noreferrer">&#128172; Entra nella chat WhatsApp</a>'
     '<p style="margin:18px auto 0;font-size:.95em">Altri canali senza numeri visibili: <a href="https://t.me/assembleapopolareecumenica" target="_blank" rel="noopener noreferrer" style="color:#fff;font-weight:700;text-decoration:underline">canale Telegram</a> &middot; <a href="https://assembleapopolareecumenica.substack.com" target="_blank" rel="noopener noreferrer" style="color:#fff;font-weight:700;text-decoration:underline">newsletter via email</a>.</p></section>\n')
 
