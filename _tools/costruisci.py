@@ -147,6 +147,7 @@ INGRESSO = (
 
 # 07/10/2026 Fernando: «deve essere visibilissimo». Fascia verde con il bottone della chat WhatsApp della Rete, subito dopo la prima schermata.
 # L'ingresso e' approvato dagli amministratori (impostazione «Approva nuovi membri» attiva, verificata 07/10); il numero e' visibile ai partecipanti.
+CH_URL = 'https://whatsapp.com/channel/0029VbDqajVKmCPWBfSQsC2J'
 CHAT_HOME = (
     '<style>'
     '.ap-chat{background:#0b6b3a;color:#fff;text-align:center;padding:26px 16px 28px;font-family:Montserrat,system-ui,sans-serif}'
@@ -156,10 +157,13 @@ CHAT_HOME = (
     '.ap-chat a.ap-chat-bt:hover{background:#eaf6ee}.ap-chat a.ap-chat-bt:focus{outline:4px solid #ffd75e;outline-offset:3px}'
     '@media(max-width:600px){.ap-chat a.ap-chat-bt{width:100%;box-sizing:border-box}}'
     '</style>'
-    '<section class="ap-chat" id="chat-rete" aria-labelledby="ap-chat-t"><h2 id="ap-chat-t">Entra nella chat della Rete APE</h2>'
+    '<section class="ap-chat" id="chat-rete" aria-labelledby="ap-chat-t"><h2 id="ap-chat-t">Segui APE su WhatsApp</h2>'
+    '<p><strong>Il Canale: solo novit&agrave;, il tuo numero resta nascosto.</strong> Tocca il pulsante e premi &laquo;Segui&raquo;.</p>'
+    '<a class="ap-chat-bt" href="'+CH_URL+'" target="_blank" rel="noopener noreferrer">&#128226; Segui il Canale WhatsApp</a>'
+    '<h3 style="color:#fff;font-size:1.1em;margin:26px 0 8px">Oppure entra nella chat della Rete</h3>'
     '<p>Parlane con chi sostiene il progetto. <strong>Il tuo numero di telefono sar&agrave; visibile agli altri partecipanti</strong>; l&rsquo;ingresso viene approvato dagli amministratori del gruppo.</p>'
     '<a class="ap-chat-bt" href="https://chat.whatsapp.com/Kglv6h9DNnV5L3INuDhs7t" target="_blank" rel="noopener noreferrer">&#128172; Entra nella chat WhatsApp</a>'
-    '<p style="margin:18px auto 0;font-size:.95em">Non vuoi mostrare il tuo numero? <a href="https://whatsapp.com/channel/0029VbDqajVKmCPWBfSQsC2J" target="_blank" rel="noopener noreferrer" style="color:#fff;font-weight:700;text-decoration:underline">Segui il Canale WhatsApp dell&rsquo;APE</a> (solo aggiornamenti, nessun numero visibile). Oppure: <a href="https://t.me/assembleapopolareecumenica" target="_blank" rel="noopener noreferrer" style="color:#fff;font-weight:700;text-decoration:underline">canale Telegram</a> &middot; <a href="https://assembleapopolareecumenica.substack.com" target="_blank" rel="noopener noreferrer" style="color:#fff;font-weight:700;text-decoration:underline">newsletter via email</a>.</p></section>\n')
+    '<p style="margin:18px auto 0;font-size:.95em">Altri canali senza numeri visibili: <a href="https://t.me/assembleapopolareecumenica" target="_blank" rel="noopener noreferrer" style="color:#fff;font-weight:700;text-decoration:underline">canale Telegram</a> &middot; <a href="https://assembleapopolareecumenica.substack.com" target="_blank" rel="noopener noreferrer" style="color:#fff;font-weight:700;text-decoration:underline">newsletter via email</a>.</p></section>\n')
 
 # L'esempio e' quello di «E dopo il voto?» (copione del 26/09), dichiarato inventato come nel video.
 LIBRO = ('<p style="text-align:center;margin:30px 0 6px"><img class="ap-libro" src="images/ape-copertina.webp" '
@@ -404,7 +408,7 @@ def testa(uscita, attuale):
             ('attualita.html', 'Attualità', 'attualita.html'), ('./#documenti', 'Documenti', None),
             ('rete.html', 'Rete APE', 'rete.html'), ('albo.html', 'Albo dei co-fondatori', 'albo.html')]
     h = ''.join(f'<a href="{u}"{" aria-current=page" if attuale == f else ""}>{t}</a>'
-                for u, t, f in voci) + '<a class="ape-aderisci" href="rete.html#aderisci">Diventa co-fondatore</a>' + '<a class="ape-chat" href="https://chat.whatsapp.com/Kglv6h9DNnV5L3INuDhs7t" target="_blank" rel="noopener noreferrer">&#128172; Chat WhatsApp</a><a class="ape-fb" href="https://www.facebook.com/profile.php?id=61595012680370" target="_blank" rel="noopener noreferrer">Facebook</a><a class="ape-fb" href="dirette.html">Dirette</a>'
+                for u, t, f in voci) + '<a class="ape-aderisci" href="rete.html#aderisci">Diventa co-fondatore</a>' + '<a class="ape-chat" href="https://whatsapp.com/channel/0029VbDqajVKmCPWBfSQsC2J" target="_blank" rel="noopener noreferrer">&#128226; Canale WhatsApp</a>'+'<a class="ape-chat" href="https://chat.whatsapp.com/Kglv6h9DNnV5L3INuDhs7t" target="_blank" rel="noopener noreferrer">&#128172; Chat WhatsApp</a><a class="ape-fb" href="https://www.facebook.com/profile.php?id=61595012680370" target="_blank" rel="noopener noreferrer">Facebook</a><a class="ape-fb" href="dirette.html">Dirette</a>'
     return ('<a class="ape-salta" href="#contenuto">Salta al contenuto</a>'
             '<header class="ape-testa"><div class="ape-testa-in">'
             '<a class="ape-marchio" href="./">'
