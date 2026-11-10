@@ -1,7 +1,16 @@
 {
  "sito": "https://www.assembleapopolareecumenica.it/",
- "aggiornato": "2026-11-09",
+ "aggiornato": "2026-11-10",
  "voci": [
+  {
+   "data": "2026-11-10",
+   "tipo": "Attualità",
+   "titolo": "Dalle firme alla legge",
+   "riassunto": "Una riforma che riduce il potere del Parlamento deve essere approvata dal Parlamento. Come si fa?",
+   "url": "https://www.assembleapopolareecumenica.it/attualita.html#dalle-firme-alla-legge",
+   "immagine": "https://www.assembleapopolareecumenica.it/images/ape-spot-19-dalle-firme-alla-legge-poster.webp",
+   "miniatura": "https://www.assembleapopolareecumenica.it/images/mini-dalle-firme-alla-legge.webp"
+  },
   {
    "data": "2026-11-09",
    "tipo": "Attualità",
@@ -9,7 +18,7 @@
    "riassunto": "La legge elettorale decide come eleggere i rappresentanti. Ma chi garantisce al popolo sovrano una voce dopo averli eletti?",
    "url": "https://www.assembleapopolareecumenica.it/attualita.html#il-popolo-sovrano-dopo-il-voto",
    "immagine": "https://www.assembleapopolareecumenica.it/images/ape-popolo-sovrano-dopo-il-voto-poster.webp",
-   "miniatura": "https://www.assembleapopolareecumenica.it/images/mini-popolo-sovrano-dopo-il-voto.webp"
+   "miniatura": "https://www.assembleapopolareecumenica.it/images/mini-il-popolo-sovrano-dopo-il-voto.webp"
   },
   {
    "data": "2026-11-09",
