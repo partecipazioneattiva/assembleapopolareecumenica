@@ -1,7 +1,16 @@
 {
  "sito": "https://www.assembleapopolareecumenica.it/",
- "aggiornato": "2026-11-10",
+ "aggiornato": "2026-11-11",
  "voci": [
+  {
+   "data": "2026-11-11",
+   "tipo": "Attualità",
+   "titolo": "Prima in tre Regioni",
+   "riassunto": "Prima di partire in tutta Italia, proviamo in tre Regioni.",
+   "url": "https://www.assembleapopolareecumenica.it/attualita.html#prima-in-tre-regioni",
+   "immagine": "https://www.assembleapopolareecumenica.it/images/ape-spot-20-prima-in-tre-regioni-poster.webp",
+   "miniatura": "https://www.assembleapopolareecumenica.it/images/mini-prima-in-tre-regioni.webp"
+  },
   {
    "data": "2026-11-10",
    "tipo": "Attualità",
