@@ -1,7 +1,16 @@
 {
  "sito": "https://www.assembleapopolareecumenica.it/",
- "aggiornato": "2026-11-11",
+ "aggiornato": "2026-11-12",
  "voci": [
+  {
+   "data": "2026-11-12",
+   "tipo": "Attualità",
+   "titolo": "Il tuo Comune può cominciare oggi",
+   "riassunto": "Il tuo Comune può cominciare senza aspettare la riforma.",
+   "url": "https://www.assembleapopolareecumenica.it/attualita.html#il-tuo-comune-puo-cominciare-oggi",
+   "immagine": "https://www.assembleapopolareecumenica.it/images/ape-spot-21-il-tuo-comune-puo-cominciare-oggi-poster.webp",
+   "miniatura": "https://www.assembleapopolareecumenica.it/images/mini-il-tuo-comune-pu-cominciare-oggi.webp"
+  },
   {
    "data": "2026-11-11",
    "tipo": "Attualità",
