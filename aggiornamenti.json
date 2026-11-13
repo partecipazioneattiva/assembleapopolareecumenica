@@ -1,7 +1,16 @@
 {
  "sito": "https://www.assembleapopolareecumenica.it/",
- "aggiornato": "2026-11-12",
+ "aggiornato": "2026-11-13",
  "voci": [
+  {
+   "data": "2026-11-13",
+   "tipo": "Attualità",
+   "titolo": "La Rete APE",
+   "riassunto": "Una riforma così grande non la porta avanti una persona sola. Nasce la Rete APE.",
+   "url": "https://www.assembleapopolareecumenica.it/attualita.html#la-rete-ape",
+   "immagine": "https://www.assembleapopolareecumenica.it/images/ape-spot-22-la-rete-ape-poster.webp",
+   "miniatura": "https://www.assembleapopolareecumenica.it/images/mini-la-rete-ape.webp"
+  },
   {
    "data": "2026-11-12",
    "tipo": "Attualità",
