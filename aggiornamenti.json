@@ -1,7 +1,16 @@
 {
  "sito": "https://www.assembleapopolareecumenica.it/",
- "aggiornato": "2026-11-13",
+ "aggiornato": "2026-11-14",
  "voci": [
+  {
+   "data": "2026-11-14",
+   "tipo": "Attualità",
+   "titolo": "I sei principi della Rete",
+   "riassunto": "Sei principi per stare nella Rete APE. Eccoli.",
+   "url": "https://www.assembleapopolareecumenica.it/attualita.html#i-sei-principi-della-rete",
+   "immagine": "https://www.assembleapopolareecumenica.it/images/ape-spot-23-i-sei-principi-della-rete-poster.webp",
+   "miniatura": "https://www.assembleapopolareecumenica.it/images/mini-i-sei-principi-della-rete.webp"
+  },
   {
    "data": "2026-11-13",
    "tipo": "Attualità",
