@@ -1,7 +1,16 @@
 {
  "sito": "https://www.assembleapopolareecumenica.it/",
- "aggiornato": "2026-11-14",
+ "aggiornato": "2026-11-15",
  "voci": [
+  {
+   "data": "2026-11-15",
+   "tipo": "Attualità",
+   "titolo": "Come aderire alla Rete APE",
+   "riassunto": "Come diventare co-fondatore della Rete APE: tre modi, due minuti.",
+   "url": "https://www.assembleapopolareecumenica.it/attualita.html#come-aderire-alla-rete-ape",
+   "immagine": "https://www.assembleapopolareecumenica.it/images/ape-spot-24-come-aderire-alla-rete-ape-poster.webp",
+   "miniatura": "https://www.assembleapopolareecumenica.it/images/mini-come-aderire-alla-rete-ape.webp"
+  },
   {
    "data": "2026-11-14",
    "tipo": "Attualità",
