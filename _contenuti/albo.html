@@ -1,4 +1,4 @@
-<!-- Albo dei co-fondatori della Rete APE, 02/10/2026. Pagina SOLO del sito APE.
+<!-- Albo dei Costruttori del progetto APE, 02/10/2026. Pagina SOLO del sito APE.
      Si riempie da sola: legge la vista pubblica Supabase `ape_albo` (nome, comune, tipo) e
      `ape_conteggio`, con la chiave anon. Ordine alfabetico, «senza primi e senza ultimi». -->
 <style>
@@ -15,16 +15,16 @@
 .ap-cta{display:block;max-width:440px;margin:30px auto;text-align:center;background:#17507a;color:#fff!important;font-family:Montserrat,system-ui,sans-serif;font-weight:800;padding:16px 22px;border-radius:50px;text-decoration:none;font-size:1.05em}
 </style>
 <div class="ap-hero">
-  <h1>Albo dei co-fondatori</h1>
+  <h1>Albo dei Costruttori</h1>
   <p>Chi firma il <a href="patto.html" style="color:#ffd75e">Patto fondativo</a> entra qui, in ordine alfabetico: senza primi e senza ultimi.</p>
 </div>
 <div class="ap-wrap">
   <p class="ap-conta" id="ap-conta" aria-live="polite">Caricamento dell&rsquo;Albo&hellip;</p>
   <ul class="ap-albo" id="ap-albo"></ul>
-  <div class="ap-vuoto" id="ap-vuoto" hidden>L&rsquo;Albo si apre con le prime firme. Puoi essere tra i primi co-fondatori della Rete APE.</div>
+  <div class="ap-vuoto" id="ap-vuoto" hidden>L&rsquo;Albo si apre con le prime firme. Puoi essere tra i primi Costruttori del progetto APE.</div>
   <noscript><p>L&rsquo;elenco si carica dal registro pubblico delle firme confermate: se non compare, attiva JavaScript nel browser.</p></noscript>
   <p style="font-size:.92em;color:#4a5a66;margin-top:24px">Nell&rsquo;Albo compaiono solo il nome, o la denominazione, e il Comune di chi ha confermato la firma e ha dato il consenso alla pubblicazione. Chi non ha dato il consenso &egrave; contato nel numero, ma non nominato.</p>
-  <a class="ap-cta" href="rete.html#aderisci">Firmo il Patto e divento co-fondatore</a>
+  <a class="ap-cta" href="rete.html#aderisci">Firmo il Patto e divento Costruttore del progetto APE</a>
 </div>
 <script>
 (function(){
@@ -41,7 +41,7 @@
     if(!Array.isArray(x[0])||!Array.isArray(x[1])) throw new Error('formato');
     var righe=x[0], n=(x[1][0]&&x[1][0].cofondatori)||0;
     righe.sort(function(a,b){return a.nome.localeCompare(b.nome,'it',{sensitivity:'base'})});
-    document.getElementById('ap-conta').textContent=n===1?'1 co-fondatore':n+' co-fondatori';
+    document.getElementById('ap-conta').textContent=n===1?'1 Costruttore':n+' Costruttori';
     if(!righe.length){document.getElementById('ap-vuoto').hidden=false;return}
     document.getElementById('ap-albo').innerHTML=righe.map(function(r){
       return '<li><b>'+esc(r.nome)+'</b><span>'+esc(r.comune)+' &middot; '+esc(TIPI[r.tipo]||'')+'</span></li>'}).join('');

@@ -42,8 +42,8 @@ PERCHE_SITO = (
     'da oggi &egrave; di chi la fa propria. <strong>&laquo;Ecumenica&raquo; vuol dire aperta a tutti, senza distinzioni</strong>: '
     'per questo ha una casa sua, neutra, senza simboli n&eacute; bandiere. Un&rsquo;unione d&rsquo;intenti, non di simboli o di schieramenti.</p>'
     '<p>La Rete APE non si eredita: si fonda insieme. Chi aderisce firma il <a href="patto.html">Patto fondativo</a> ed entra '
-    'nell&rsquo;<a href="albo.html">Albo dei co-fondatori</a>, in ordine alfabetico, senza primi e senza ultimi: pu&ograve; dire '
-    '&laquo;questo progetto &egrave; anche mio, l&rsquo;ho fondato anch&rsquo;io&raquo;. Il testo resta aperto: ogni co-fondatore '
+    'nell&rsquo;<a href="albo.html">Albo dei Costruttori</a>, in ordine alfabetico, senza primi e senza ultimi: pu&ograve; dire '
+    '&laquo;questo progetto &egrave; anche mio, l&rsquo;ho fondato anch&rsquo;io&raquo;. Il testo resta aperto: ogni Costruttore '
     'pu&ograve; proporre miglioramenti, e si decide con peso paritario.</p>'
     '<p style="margin:0"><a href="patto.html"><strong>Non aderisci a un progetto: lo fondi &rarr;</strong></a></p></div>\n')
 
@@ -271,7 +271,7 @@ RISCRITTURE = {
         ('Leggi%20questo%20articolo%20di%20Partecipazione%20Attiva%3A%20', 'Rete%20APE%2C%20Assemblea%20Popolare%20Ecumenica%3A%20', None),
         (' elaborato da <strong>Angelo Nicotra</strong>, Presidente di Partecipazione Attiva.', '.', 1),
         (', elaborata da Angelo Nicotra, Presidente di Partecipazione Attiva.', '.', 1),
-        ('<h2>I soggetti aderenti</h2>', '<h2>I co-fondatori</h2>', 1),
+        ('<h2>I soggetti aderenti</h2>', '<h2>I Costruttori</h2>', 1),
         # 03/10/2026: la privacy detta in chiaro PRIMA delle caselle (aderire rivela un'opinione politica, art. 9 GDPR)
         ('  <label class="ra-spunta"><input type="checkbox" id="ra-patto" required>',
          '  <div class="ra-perche" style="background:#eef5fb;border-left:4px solid #2981c9;border-radius:8px;padding:12px 14px;margin:16px 0;font-size:.95em;line-height:1.55">'
@@ -406,9 +406,9 @@ def testa(uscita, attuale):
     # 05/10/2026: da 9 voci a 5 + il pulsante (troppe scelte fanno esitare). 06/10: l'Albo torna nel menù (Fernando: «resta difficile trovarlo»); il Patto resta nel piede e dentro la Rete.
     voci = [('./#come-funziona', 'Come funziona', None), ('progetto.html', 'Nel dettaglio', 'progetto.html'),
             ('attualita.html', 'Attualità', 'attualita.html'), ('./#documenti', 'Documenti', None),
-            ('rete.html', 'Rete APE', 'rete.html'), ('albo.html', 'Albo dei co-fondatori', 'albo.html')]
+            ('rete.html', 'Rete APE', 'rete.html'), ('albo.html', 'Albo dei Costruttori', 'albo.html')]
     h = ''.join(f'<a href="{u}"{" aria-current=page" if attuale == f else ""}>{t}</a>'
-                for u, t, f in voci) + '<a class="ape-aderisci" href="rete.html#aderisci">Diventa co-fondatore</a>' + '<a class="ape-chat" href="https://whatsapp.com/channel/0029VbDqajVKmCPWBfSQsC2J" target="_blank" rel="noopener noreferrer">&#128226; Canale WhatsApp</a>'+'<a class="ape-chat" href="https://chat.whatsapp.com/Kglv6h9DNnV5L3INuDhs7t" target="_blank" rel="noopener noreferrer">&#128172; Chat WhatsApp</a><a class="ape-fb" href="https://www.facebook.com/profile.php?id=61595012680370" target="_blank" rel="noopener noreferrer">Facebook</a><a class="ape-fb" href="dirette.html">Dirette</a>'
+                for u, t, f in voci) + '<a class="ape-aderisci" href="rete.html#aderisci">Diventa Costruttore del progetto APE</a>' + '<a class="ape-chat" href="https://whatsapp.com/channel/0029VbDqajVKmCPWBfSQsC2J" target="_blank" rel="noopener noreferrer">&#128226; Canale WhatsApp</a>'+'<a class="ape-chat" href="https://chat.whatsapp.com/Kglv6h9DNnV5L3INuDhs7t" target="_blank" rel="noopener noreferrer">&#128172; Chat WhatsApp</a><a class="ape-fb" href="https://www.facebook.com/profile.php?id=61595012680370" target="_blank" rel="noopener noreferrer">Facebook</a><a class="ape-fb" href="dirette.html">Dirette</a>'
     return ('<a class="ape-salta" href="#contenuto">Salta al contenuto</a>'
             '<header class="ape-testa"><div class="ape-testa-in">'
             '<a class="ape-marchio" href="./">'
@@ -423,7 +423,7 @@ def testa(uscita, attuale):
 PIEDE = (f'<footer class="ape-piede"><p><strong>APE &mdash; Assemblea Popolare Ecumenica</strong><br>'
          f'Un progetto aperto a tutti: cittadini, associazioni, movimenti, comitati, con peso paritario.</p>'
          f'<p>La proposta &egrave; pubblica e appartiene a chi la sottoscrive: chi firma il <a href="patto.html">Patto fondativo</a> '
-         f'ne diventa co-fondatore, alla pari di tutti.</p>'
+         f'ne diventa Costruttore del progetto APE, alla pari di tutti.</p>'
          f'<p class="ape-piccolo"><a href="progetto.html">Il progetto per intero</a> &middot; <a href="patto.html">Il Patto</a> &middot; <a href="albo.html">L&rsquo;Albo</a> &middot; <a href="dirette.html">Dirette</a> &middot; '
          f'<a href="./#documenti">Documenti</a> &middot; <a href="rete.html#aderisci">Aderisci</a></p>'
          f'<p class="ape-piccolo">Contatti: <a href="mailto:info@assembleapopolareecumenica.it">info@assembleapopolareecumenica.it</a> &middot; <a href="https://www.facebook.com/profile.php?id=61595012680370" target="_blank" rel="noopener noreferrer">Seguici su Facebook</a> &middot; <a href="https://t.me/assembleapopolareecumenica" target="_blank" rel="noopener noreferrer">Telegram</a> &middot; <a href="https://assembleapopolareecumenica.substack.com" target="_blank" rel="noopener noreferrer">Newsletter</a>'
@@ -549,7 +549,7 @@ def pagina(uscita, sorgente, titolo, anteprima, copiati):
                      '<article class="article-wrap">' + corpo[k0 + len('<article class="article-wrap">'):k1 + len('</style>')] + '\n'
                      '<p><a href="./">&larr; Torna alla pagina iniziale</a> &middot; <a href="./#come-funziona">Come funziona, in breve</a></p>\n'
                      + parte +
-                     '<div class="pa-box"><h3>E adesso?</h3><p style="margin:0">Se la proposta ti convince, puoi diventarne co-fondatore firmando il '
+                     '<div class="pa-box"><h3>E adesso?</h3><p style="margin:0">Se la proposta ti convince, puoi diventarne Costruttore firmando il '
                      '<a href="patto.html">Patto fondativo</a>: &egrave; gratuito e alla pari. <a href="rete.html#aderisci"><strong>Aderisci &rarr;</strong></a></p></div>\n'
                      '</article>\n')
         scrivi_pagina('progetto.html', 'Il progetto APE per intero | Assemblea Popolare Ecumenica',
@@ -622,7 +622,7 @@ def scrivi_pagina(uscita, titolo, desc, anteprima, corpo, stili, da):
 # (uscita: titolo, descrizione, anteprima)
 PAGINE_PROPRIE = {
     'patto.html': ('Patto fondativo della Rete APE | Assemblea Popolare Ecumenica',
-                   'Il Patto fondativo della Rete APE: sei principi, peso paritario, un Albo pubblico. Chi lo firma non entra in un progetto altrui: ne diventa co-fondatore.',
+                   'Il Patto fondativo della Rete APE: sei principi, peso paritario, un Albo pubblico. Chi lo firma non entra in un progetto altrui: ne diventa Costruttore del progetto APE.',
                    'images/rete-ape-anteprima.jpg'),
     'attualita.html': ('Attualità: le notizie lette con la domanda dell’APE | Assemblea Popolare Ecumenica',
                        'Le notizie del giorno lette con una sola domanda: dopo il voto, quanto contano i cittadini? Oggi: la legge elettorale è firmata, e dopo il voto?',
@@ -633,8 +633,8 @@ PAGINE_PROPRIE = {
     'privacy.html': ('Privacy e informativa sull’adesione | Assemblea Popolare Ecumenica',
                      'Che dati raccoglie la Rete APE, perché, chi li vede e come cancellarli: informativa sulla privacy dell&#x27;APE.',
                      'images/rete-ape-anteprima.jpg'),
-    'albo.html': ('Albo dei co-fondatori della Rete APE',
-                  'L&#x27;Albo dei co-fondatori della Rete APE: chi ha firmato il Patto fondativo, in ordine alfabetico, senza primi e senza ultimi.',
+    'albo.html': ('Albo dei Costruttori del progetto APE',
+                  'L&#x27;Albo dei Costruttori del progetto APE: chi ha firmato il Patto fondativo, in ordine alfabetico, senza primi e senza ultimi.',
                   'images/rete-ape-anteprima.jpg'),
 }
 
