@@ -1,7 +1,16 @@
 {
  "sito": "https://www.assembleapopolareecumenica.it/",
- "aggiornato": "2026-11-15",
+ "aggiornato": "2026-11-16",
  "voci": [
+  {
+   "data": "2026-11-16",
+   "tipo": "Attualità",
+   "titolo": "Cosa cambia per te",
+   "riassunto": "Che differenza fa, nella vita di tutti i giorni? Quattro cambiamenti.",
+   "url": "https://www.assembleapopolareecumenica.it/attualita.html#cosa-cambia-per-te",
+   "immagine": "https://www.assembleapopolareecumenica.it/images/ape-spot-25-cosa-cambia-per-te-poster.webp",
+   "miniatura": "https://www.assembleapopolareecumenica.it/images/mini-cosa-cambia-per-te.webp"
+  },
   {
    "data": "2026-11-15",
    "tipo": "Attualità",
