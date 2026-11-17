@@ -920,6 +920,7 @@ def main():
     metti_campanello()
     open(QUI + 'sitemap.xml', 'w').write('<?xml version="1.0" encoding="UTF-8"?>\n'
         '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + voci + '</urlset>\n')
+    import pagine_risposta; pagine_risposta.main()      # 17/11/2026: una pagina per puntata + sitemap + collegamenti interni
     open(QUI + 'robots.txt', 'w').write(f'User-agent: *\nAllow: /\nSitemap: {SITO}sitemap.xml\n')
     # Il file CNAME dice a GitHub Pages di servire il sito sul dominio. Finche' i DNS di Aruba non
     # puntano a GitHub, con il CNAME il sito sarebbe IRRAGGIUNGIBILE: si scrive solo con --dominio.
