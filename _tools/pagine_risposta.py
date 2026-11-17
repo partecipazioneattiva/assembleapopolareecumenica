@@ -118,7 +118,7 @@ def costruisci_pagina(d, tutte, cb):
             {'@type': 'ListItem', 'position': 1, 'name': 'APE', 'item': SITO},
             {'@type': 'ListItem', 'position': 2, 'name': 'Attualità', 'item': f'{SITO}attualita.html'},
             {'@type': 'ListItem', 'position': 3, 'name': titolo, 'item': url}]}], ensure_ascii=False).replace('</', '<\\/')
-    corpo = f'''<section class="rp-hero"><p>APE spiegata a puntate &middot; puntata {g}</p><h1>{e(titolo)}</h1></section>
+    corpo = f'''<section class="rp-hero"><p>Assemblea Popolare Ecumenica (APE) &middot; puntata {g}</p><h1>{e(titolo)}</h1></section>
 <div class="rp-wrap">
 <p class="rp-mig"><a href="./">APE</a> &rsaquo; <a href="attualita.html">Attualit&agrave;</a> &rsaquo; {e(titolo)}</p>
 <p class="rp-data">{data[8:].lstrip('0')} {[k for k, v in MESI.items() if v == int(data[5:7])][0]} {data[:4]}</p>
@@ -194,10 +194,11 @@ def main(numeri=None):
     sys.path.insert(0, QUI + '_tools')
     import costruisci as cb
     tutte = pubblicate()
-    if numeri:
-        tutte = [d for d in tutte if d['g'] in numeri]
-    assert tutte, 'nessuna puntata da generare'
-    files = [costruisci_pagina(d, tutte, cb) for d in tutte]
+    # se si indicano dei numeri si rifanno solo quelle pagine, ma elenchi, collegamenti e sitemap restano su TUTTE le pagine esistenti
+    da_fare = [d for d in tutte if not numeri or d['g'] in numeri]
+    assert da_fare, 'nessuna puntata da generare'
+    tutte = [d for d in tutte if d in da_fare or os.path.exists(f'{QUI}{d["slug"]}.html')]
+    files = [costruisci_pagina(d, tutte, cb) for d in da_fare]
     # elenco in Attualità: sorgente (_contenuti) e pagina già costruita
     elenco = ('<section class="at-voce" id="risposte"><h2>Le risposte dell&rsquo;APE, una per una</h2>'
               '<p>Ogni puntata di &laquo;APE spiegata a puntate&raquo; ha la sua pagina, con la risposta scritta e il video.</p><ul>'
@@ -219,12 +220,23 @@ def main(numeri=None):
     else:
         assert s.count('</main>') == 1
         s = s.replace('</main>', '<!--risposte-->' + box + '<!--/risposte--></main>', 1)
-    vecchio = '<h1 id="ap-domanda">Tra un voto e l&rsquo;altro,<br>chi ti ascolta?</h1>'
-    if vecchio in s:
-        s = s.replace(vecchio, '<h1 id="ap-domanda"><span style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap">Assemblea Popolare Ecumenica (APE): </span>Tra un voto e l&rsquo;altro,<br>chi ti ascolta?</h1>')
+    sr = '<span style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap">Assemblea Popolare Ecumenica (APE): </span>'
+    s = s.replace('<h1 id="ap-domanda">' + sr + 'Tra un voto e l&rsquo;altro,', '<h1 id="ap-domanda">Tra un voto e l&rsquo;altro,')   # niente testo nascosto: il nome sta nel kicker visibile
+    s = s.replace('<span>APE &middot; Assemblea Popolare Ecumenica</span>', '<span>Assemblea Popolare Ecumenica (APE)</span>')
+    org = json.dumps({'@context': 'https://schema.org', '@type': 'Organization', 'name': NOME, 'alternateName': 'APE', 'url': SITO,
+                      'logo': SITO + 'images/favicon-512.png',
+                      'sameAs': ['https://www.facebook.com/profile.php?id=61595012680370', 'https://t.me/assembleapopolareecumenica',
+                                 'https://assembleapopolareecumenica.substack.com']}, ensure_ascii=False)
+    blocco_org = '<!--org--><script type="application/ld+json">' + org + '</script><!--/org-->'
+    if '<!--org-->' in s:
+        s = re.sub(r'<!--org-->.*?<!--/org-->', lambda m: blocco_org, s, flags=re.S)
+    else:
+        s = s.replace('</head>', blocco_org + '\n</head>', 1)
     open(p, 'w', encoding='utf-8').write(s)
     for rel, vec, nuo in (('progetto.html', '<h1>Il progetto APE per intero</h1>', '<h1>Il progetto dell&rsquo;Assemblea Popolare Ecumenica (APE) per intero</h1>'),
-                          ('patto.html', '<h1>Patto fondativo della Rete APE</h1>', '<h1>Patto fondativo della Rete APE &mdash; Assemblea Popolare Ecumenica</h1>')):
+                          ('patto.html', '<h1>Patto fondativo della Rete APE</h1>', '<h1>Patto fondativo della Rete APE &mdash; Assemblea Popolare Ecumenica</h1>'),
+                          ('progetto.html', '<p class="sottotitolo">Il problema, il sorteggio,', '<p class="sottotitolo">Assemblea Popolare Ecumenica (APE): il problema, il sorteggio,'),
+                          ('patto.html', '<p>Chi firma questo Patto non entra in un progetto altrui.', '<p>Chi firma questo Patto della Rete dell&rsquo;Assemblea Popolare Ecumenica (APE) non entra in un progetto altrui.')):
         t = open(QUI + rel, encoding='utf-8').read()
         if vec in t:
             open(QUI + rel, 'w', encoding='utf-8').write(t.replace(vec, nuo))
