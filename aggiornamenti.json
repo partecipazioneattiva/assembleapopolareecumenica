@@ -1,7 +1,16 @@
 {
  "sito": "https://www.assembleapopolareecumenica.it/",
- "aggiornato": "2026-11-17",
+ "aggiornato": "2026-11-18",
  "voci": [
+  {
+   "data": "2026-11-18",
+   "tipo": "Attualità",
+   "titolo": "Il voto digitale è sicuro?",
+   "riassunto": "E chi non usa internet? Nessun cittadino resta fuori.",
+   "url": "https://www.assembleapopolareecumenica.it/attualita.html#il-voto-digitale-e-sicuro",
+   "immagine": "https://www.assembleapopolareecumenica.it/images/ape-spot-27-il-voto-digitale-e-sicuro-poster.webp",
+   "miniatura": "https://www.assembleapopolareecumenica.it/images/mini-il-voto-digitale-sicuro.webp"
+  },
   {
    "data": "2026-11-17",
    "tipo": "Attualità",
