@@ -1,7 +1,16 @@
 {
  "sito": "https://www.assembleapopolareecumenica.it/",
- "aggiornato": "2026-11-19",
+ "aggiornato": "2026-11-20",
  "voci": [
+  {
+   "data": "2026-11-20",
+   "tipo": "Attualità",
+   "titolo": "Dalla buca alla direttiva",
+   "riassunto": "C'è una buca in fondo alla tua strada da due anni. Con l'APE cosa succede?",
+   "url": "https://www.assembleapopolareecumenica.it/attualita.html#dalla-buca-alla-direttiva",
+   "immagine": "https://www.assembleapopolareecumenica.it/images/ape-spot-29-dalla-buca-alla-direttiva-poster.webp",
+   "miniatura": "https://www.assembleapopolareecumenica.it/images/mini-dalla-buca-alla-direttiva.webp"
+  },
   {
    "data": "2026-11-19",
    "tipo": "Attualità",
