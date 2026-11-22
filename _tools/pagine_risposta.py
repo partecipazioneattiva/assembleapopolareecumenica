@@ -61,7 +61,7 @@ def pubblicate():
     P = []
     for f in sorted(glob.glob(POST + 'G[0-9][0-9]_*.md')):
         d = leggi_puntata(f)
-        if os.path.exists(f'{QUI}video/ape-spot-{d["g"]:02d}-{d["slug"]}-h264.mp4') and d['g'] <= 30:
+        if os.path.exists(f'{QUI}video/ape-spot-{d["g"]:02d}-{d["slug"]}-h264.mp4') and d['g'] <= 31:
             P.append(d)
     return P
 
