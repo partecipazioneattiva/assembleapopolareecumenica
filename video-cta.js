@@ -9,8 +9,8 @@
   var FORM_PA = 'https://docs.google.com/forms/d/e/1FAIpQLSdUJHaPB9o6gA7TXHNLNgsKcftZjwCsjepZ3r_C9TH2ODsr3A/viewform';
   var cta;
   if (sulleApe || paApe) {
-    cta = { ape: 1, url: sulleApe ? 'rete.html#aderisci' : 'rete-ape.html#aderisci', et: 'Firma il Patto e diventa Costruttore del progetto APE',
-            sotto: 'Diventa Costruttore del progetto APE', nota: 'Adesione gratuita, alla pari. Si firma il Patto e si conferma via email.', ext: 0 };
+    cta = { ape: 1, url: sulleApe ? 'rete.html#aderisci' : 'rete-ape.html#aderisci', et: 'Firma il Patto ed entra nei Costruttori del Progetto APE',
+            sotto: 'Entra nei Costruttori del Progetto APE', nota: 'Adesione gratuita, alla pari. Si firma il Patto e si conferma via email.', ext: 0 };
   } else {
     cta = { ape: 0, url: FORM_PA, et: 'Iscriviti a Partecipazione Attiva', sotto: 'Iscriviti a Partecipazione Attiva', nota: 'L’iscrizione è gratuita.', ext: 1 };
   }

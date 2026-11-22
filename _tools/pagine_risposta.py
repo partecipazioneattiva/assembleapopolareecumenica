@@ -36,9 +36,9 @@ def leggi_puntata(path):
         p = re.sub(r'Scrivilo nei commenti, oppure scrivi', 'Scrivi', p)
         if re.search(r'nei commenti', p):
             continue
-        p = (p.replace('diventa co-fondatore ed entra nell\'Albo dei co-fondatori', 'diventa Costruttore del progetto APE ed entra nell\'Albo dei Costruttori')
-              .replace('co-fondatore della Rete APE', 'Costruttore del progetto APE')
-              .replace('co-fondatori', 'Costruttori del progetto APE').replace('co-fondatore', 'Costruttore del progetto APE'))
+        p = (p.replace('diventa co-fondatore ed entra nell\'Albo dei co-fondatori', 'diventa uno dei Costruttori del Progetto APE ed entra nell\'Albo dei Costruttori')
+              .replace('co-fondatore della Rete APE', 'uno dei Costruttori del Progetto APE')
+              .replace('co-fondatori', 'Costruttori del Progetto APE').replace('co-fondatore', 'uno dei Costruttori del Progetto APE'))
         par.append(p)
     assert par, f'G{g}: nessun testo estratto'
     return {'g': g, 'slug': slug, 'titolo': titolo, 'par': par}
