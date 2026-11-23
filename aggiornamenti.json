@@ -1,7 +1,16 @@
 {
  "sito": "https://www.assembleapopolareecumenica.it/",
- "aggiornato": "2026-11-23",
+ "aggiornato": "2026-11-24",
  "voci": [
+  {
+   "data": "2026-11-24",
+   "tipo": "Attualità",
+   "titolo": "Dove vanno i soldi risparmiati",
+   "riassunto": "I soldi risparmiati abolendo il Senato: cosa ne facciamo?",
+   "url": "https://www.assembleapopolareecumenica.it/attualita.html#dove-vanno-i-soldi-risparmiati",
+   "immagine": "https://www.assembleapopolareecumenica.it/images/ape-spot-33-dove-vanno-i-soldi-risparmiati-poster.webp",
+   "miniatura": "https://www.assembleapopolareecumenica.it/images/mini-dove-vanno-i-soldi-risparmiati.webp"
+  },
   {
    "data": "2026-11-23",
    "tipo": "Attualità",
