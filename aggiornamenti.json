@@ -1,7 +1,16 @@
 {
  "sito": "https://www.assembleapopolareecumenica.it/",
- "aggiornato": "2026-11-22",
+ "aggiornato": "2026-11-23",
  "voci": [
+  {
+   "data": "2026-11-23",
+   "tipo": "Attualità",
+   "titolo": "I 252 milioni, voce per voce",
+   "riassunto": "252 milioni l'anno: dove vanno, euro per euro?",
+   "url": "https://www.assembleapopolareecumenica.it/attualita.html#i-252-milioni-voce-per-voce",
+   "immagine": "https://www.assembleapopolareecumenica.it/images/ape-spot-32-i-252-milioni-voce-per-voce-poster.webp",
+   "miniatura": "https://www.assembleapopolareecumenica.it/images/mini-i-252-milioni-voce-per-voce.webp"
+  },
   {
    "data": "2026-11-22",
    "tipo": "Attualità",
