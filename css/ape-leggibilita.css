@@ -606,3 +606,11 @@ html { scroll-padding-top: 84px; }
 @media (max-width: 768px) {
   body .foot-bottom, body .footer-bottom { padding-bottom: 88px; }
 }
+
+/* 10/11/2026 (Fernando: «con Opera non si vede il menù»): tra 901 e 1260 px il menu NON va nascosto nell'icona a tre righe:
+   resta visibile come seconda riga sotto logo e pulsanti (su telefono e tablet stretti resta l'icona). */
+@media(min-width:901px) and (max-width:1260px){
+  .nav-links{display:flex;order:4;flex:0 0 100%;justify-content:center;flex-wrap:wrap;gap:0 2px;border-top:1px solid #cfdce6;margin-top:4px}
+  .nav-links a{padding:8px 10px;font-size:.88em}
+  .burger{display:none}
+}
