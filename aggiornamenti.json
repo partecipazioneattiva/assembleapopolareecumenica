@@ -1,7 +1,16 @@
 {
  "sito": "https://www.assembleapopolareecumenica.it/",
- "aggiornato": "2026-11-25",
+ "aggiornato": "2026-11-26",
  "voci": [
+  {
+   "data": "2026-11-26",
+   "tipo": "Attualità",
+   "titolo": "Come si controlla che il sorteggiato non sia di partito",
+   "riassunto": "Come si verifica che un sorteggiato non sia iscritto a un partito?",
+   "url": "https://www.assembleapopolareecumenica.it/attualita.html#come-si-controlla-che-non-sia-di-partito",
+   "immagine": "https://www.assembleapopolareecumenica.it/images/ape-spot-35-come-si-controlla-che-non-sia-di-partito-poster.webp",
+   "miniatura": "https://www.assembleapopolareecumenica.it/images/mini-come-si-controlla-che-il-sorteggiato-non.webp"
+  },
   {
    "data": "2026-11-25",
    "tipo": "Attualità",
