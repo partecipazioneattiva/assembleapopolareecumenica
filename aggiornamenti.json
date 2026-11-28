@@ -1,7 +1,16 @@
 {
  "sito": "https://www.assembleapopolareecumenica.it/",
- "aggiornato": "2026-11-27",
+ "aggiornato": "2026-11-28",
  "voci": [
+  {
+   "data": "2026-11-28",
+   "tipo": "Attualità",
+   "titolo": "Gli italiani hanno già bocciato il sorteggio?",
+   "riassunto": "A marzo 2026 gli italiani hanno già bocciato il sorteggio?",
+   "url": "https://www.assembleapopolareecumenica.it/attualita.html#gli-italiani-hanno-gia-bocciato-il-sorteggio",
+   "immagine": "https://www.assembleapopolareecumenica.it/images/ape-spot-37-gli-italiani-hanno-gia-bocciato-il-sorteggio-poster.webp",
+   "miniatura": "https://www.assembleapopolareecumenica.it/images/mini-gli-italiani-hanno-gi-bocciato-il-sorteg.webp"
+  },
   {
    "data": "2026-11-27",
    "tipo": "Attualità",
